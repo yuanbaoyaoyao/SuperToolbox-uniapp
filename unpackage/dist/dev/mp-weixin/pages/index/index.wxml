@@ -1,0 +1,1 @@
+<view class="content"><view class="content-title">超级工具箱</view><view class="content-description">您的超级助手</view><view class="content-details"><view wx:for="{{a}}" wx:for-item="item" wx:key="b" class="content-detail" bindtap="{{item.c}}">{{item.a}}</view></view></view>

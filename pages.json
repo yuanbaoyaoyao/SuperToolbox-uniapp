@@ -5,62 +5,54 @@
 			"style": {
 				"navigationBarTitleText": "超级工具箱"
 			}
+		}, {
+			"path": "pages/rulerPage/rulerPage",
+			"style": {
+				"navigationBarTitleText": "尺子",
+				"enablePullDownRefresh": false,
+				"orientation": "landscape",
+				"mp-weixin": {
+					"pageOrientation": "landscape"
+				} //横屏
+			}
+
+		}, {
+			"path": "pages/protractorPage/protractorPage",
+			"style": {
+				"navigationBarTitleText": "量角器",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/gradienterPage/gradienterPage",
+			"style": {
+				"navigationBarTitleText": "水平仪",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/compassPage/compassPage",
+			"style": {
+				"navigationBarTitleText": "指南针",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/decibelMeterPage/decibelMeterPage",
+			"style": {
+				"navigationBarTitleText": "分贝仪",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/altitudePage/altitudePage",
+			"style": {
+				"navigationBarTitleText": "海拔仪",
+				"enablePullDownRefresh": false
+			}
+
 		}
-	    ,{
-            "path" : "pages/rulerPage/rulerPage",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "尺子",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/protractorPage/protractorPage",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "量角器",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/gradienterPage/gradienterPage",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "水平仪",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/compassPage/compassPage",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "指南针",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/decibelMeterPage/decibelMeterPage",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "分贝仪",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/altitudePage/altitudePage",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "海拔仪",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "超级工具箱",

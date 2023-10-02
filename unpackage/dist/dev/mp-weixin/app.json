@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/rulerPage/rulerPage",
+    "pages/protractorPage/protractorPage",
+    "pages/gradienterPage/gradienterPage",
+    "pages/compassPage/compassPage",
+    "pages/decibelMeterPage/decibelMeterPage",
+    "pages/altitudePage/altitudePage"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "超级工具箱",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "usingComponents": {}
+}

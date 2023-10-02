@@ -3,24 +3,9 @@
 		<view class="content-title">超级工具箱</view>
 		<view class="content-description">您的超级助手</view>
 		<view class="content-details">
-			<router-link to="pages/rulerPage/rulerPage" class="content-detail">
-				尺子
-			</router-link>
-			<router-link to="pages/protractorPage/protractorPage" class="content-detail">
-				量角器
-			</router-link>
-			<router-link to="pages/gradienterPage/gradienterPage" class="content-detail">
-				水平仪
-			</router-link>
-			<router-link to="pages/compassPage/compassPage" class="content-detail">
-				指南针
-			</router-link>
-			<router-link to="pages/decibelMeterPage/decibelMeterPage" class="content-detail">
-				分贝仪
-			</router-link>
-			<router-link to="pages/altitudePage/altitudePage" class="content-detail">
-				海拔仪
-			</router-link>
+			<view v-for="(item,index) in routers" :key="index" class="content-detail" @click="handleClickRouter(index)">
+				{{item.name}}
+			</view>
 		</view>
 	</view>
 </template>
@@ -29,14 +14,44 @@
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				title: 'Hello',
+				routers: [{
+						url: "/pages/rulerPage/rulerPage",
+						name: "尺子"
+					},
+					{
+						url: "/pages/protractorPage/protractorPage",
+						name: "量角器"
+					},
+					{
+						url: "/pages/gradienterPage/gradienterPage",
+						name: "水平仪"
+					},
+					{
+						url: "/pages/compassPage/compassPage",
+						name: "指南针"
+					},
+					{
+						url: "/pages/decibelMeterPage/decibelMeterPage",
+						name: "分贝仪"
+					},
+					{
+						url: "/pages/altitudePage/altitudePage",
+						name: "海拔仪"
+					},
+				]
 			}
 		},
 		onLoad() {
 
 		},
 		methods: {
-
+			handleClickRouter(index) {
+				uni.navigateTo({
+					url:this.routers[index].url,
+				})
+				
+			}
 		}
 	}
 </script>
@@ -46,22 +61,24 @@
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		padding:10rpx;
+		padding: 10rpx;
 	}
-	.content-title{
-		
-	}
-	.content-details{
+
+	.content-title {}
+
+	.content-details {
 		display: grid;
-		grid-template-columns: 1fr 1fr; 
+		grid-template-columns: 1fr 1fr;
 		width: 100%;
 		justify-items: center;
 	}
-	.content-detail{
+
+	.content-detail {
 		padding: 30rpx;
 		background-color: aquamarine;
 		text-align: center;
 		border-radius: 10rpx;
-		margin:10rpx;
+		margin: 10rpx;
+		width: 70%;
 	}
 </style>
