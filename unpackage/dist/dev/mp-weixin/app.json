@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/protractorPage/protractorPage",
     "pages/index/index",
     "pages/rulerPage/rulerPage",
-    "pages/protractorPage/protractorPage",
     "pages/gradienterPage/gradienterPage",
     "pages/compassPage/compassPage",
     "pages/decibelMeterPage/decibelMeterPage",

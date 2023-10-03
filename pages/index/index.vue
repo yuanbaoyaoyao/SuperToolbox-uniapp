@@ -15,10 +15,11 @@
 		data() {
 			return {
 				title: 'Hello',
-				routers: [{
-						url: "/pages/rulerPage/rulerPage",
-						name: "尺子"
-					},
+				routers: [
+					// {
+					// 	url: "/pages/rulerPage/rulerPage",
+					// 	name: "尺子"
+					// },
 					{
 						url: "/pages/protractorPage/protractorPage",
 						name: "量角器"

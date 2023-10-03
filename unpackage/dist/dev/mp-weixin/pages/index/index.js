@@ -5,10 +5,10 @@ const _sfc_main = {
     return {
       title: "Hello",
       routers: [
-        {
-          url: "/pages/rulerPage/rulerPage",
-          name: "尺子"
-        },
+        // {
+        // 	url: "/pages/rulerPage/rulerPage",
+        // 	name: "尺子"
+        // },
         {
           url: "/pages/protractorPage/protractorPage",
           name: "量角器"
