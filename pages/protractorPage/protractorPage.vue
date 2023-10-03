@@ -37,21 +37,40 @@
 				const centerX = 10; // 圆心的X坐标
 				const centerY = height / 2; // 圆心的Y坐标
 				const radius = height / 2 - 50; // 圆的半径
+				const centerTextX = 10; //文本圆心的X坐标
+				const centerTextY = height / 2 - 10; // 圆心的Y坐标
+				const textRadius = height / 2 - 85; // 圆的半径
 
 				for (let i = 0; i <= degrees; i += tickSpacing) {
 					let tickLength = 10; // 刻度线的长度
 					if (i % 5 == 0) {
 						tickLength = 15
 					}
-					if (i % 10 == 0) {
+					if (i % 10 == 0 || i == 0) {
 						tickLength = 20
 					}
 					const angle = (i * Math.PI) / 180 - Math.PI / 2;
-					console.log("angleeeeee:", i * Math.PI)
 					const startX = centerX + Math.cos(angle) * (radius - tickLength);
 					const startY = centerY + Math.sin(angle) * (radius - tickLength);
 					const endX = centerX + Math.cos(angle) * radius;
 					const endY = centerY + Math.sin(angle) * radius;
+					const textEndX = centerTextX + Math.cos(angle) * textRadius;
+					const textEndY = centerTextY + Math.sin(angle) * textRadius;
+
+					if (i % 10 == 0 || i == 0) {
+						// 绘制文本
+						// ctx.fillText(i, centerX + Math.cos(angle) * (radius - 40),
+						// 	centerY + Math.sin(angle) * (radius - 40));
+						ctx.setFontSize(12);
+
+						ctx.translate(textEndX, textEndY);
+						ctx.rotate(Math.PI / 2);
+
+						ctx.fillText(i, 0, 0);
+
+						ctx.setTransform(1, 0, 0, 1, 0, 0);
+
+					}
 
 					ctx.beginPath();
 					ctx.moveTo(startX, startY);
