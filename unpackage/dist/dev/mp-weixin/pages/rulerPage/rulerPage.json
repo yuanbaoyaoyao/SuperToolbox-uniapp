@@ -3,5 +3,6 @@
   "enablePullDownRefresh": false,
   "orientation": "landscape",
   "pageOrientation": "landscape",
+  "navigationStyle": "custom",
   "usingComponents": {}
 }

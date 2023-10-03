@@ -22,11 +22,24 @@ const _sfc_main = {
       maginL: 5,
       scrollList: [],
       scrollNumList: [],
-      scrollWid: "100vw"
+      scrollWid: "100vw",
+      circleX: 0,
+      circleY: 0,
+      //
+      offsetLeft: 0,
+      offsetTop: 0
     };
   },
   mounted() {
     this.init();
+    common_vendor.index.getSystemInfo({
+      success: function(res) {
+        console.log("devicePixelRatio:", res.devicePixelRatio);
+        console.log("screenWidth:", res.screenWidth);
+        console.log("pxtocm:", 1 / res.devicePixelRatio / res.screenWidth * 2.54);
+        console.log("resssssssss:", res);
+      }
+    });
   },
   methods: {
     init() {
@@ -45,9 +58,6 @@ const _sfc_main = {
         this.scrollList.push(_line);
       }
       this.scrollWid = common_vendor.index.upx2px(750) + (this.scrollEnd - this.scrollStart) * (this.maginL + 2) + "px";
-      console.log("this.scrollWid:", this.scrollWid);
-      console.log("uni.upx2px(750):", common_vendor.index.upx2px(750));
-      console.log("this.maginL:", this.maginL);
       if (this.scrollStart % 10 != 0) {
         if (this.scrollStart > 0) {
           this.allNumLeft = (10 - this.scrollStart % 10) * (this.maginL + 2) + common_vendor.index.upx2px(372) + "px";
@@ -55,6 +65,14 @@ const _sfc_main = {
           this.allNumLeft = Math.abs(this.scrollStart % 10) * (this.maginL + 2) + common_vendor.index.upx2px(372) + "px";
         }
       }
+    },
+    mouseDownHandler(e) {
+      this.offsetTop = e.touches[0].pageY;
+      this.offsetLeft = e.touches[0].pageX;
+    },
+    mouseMoveHandler(e) {
+      this.offsetTop = e.touches[0].pageY;
+      this.offsetLeft = e.touches[0].pageX;
     }
   }
 };
@@ -75,8 +93,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     d: ($data.maginL + 2) * 10 + "px",
     e: -(($data.maginL + 2) * 5) + "px",
-    f: _ctx.allNumLeft,
-    g: $data.scrollWid
+    f: $data.scrollWid,
+    g: $data.offsetLeft + "px",
+    h: $data.offsetTop + "px",
+    i: $data.offsetTop + "px",
+    j: common_vendor.o((...args) => $options.mouseDownHandler && $options.mouseDownHandler(...args)),
+    k: common_vendor.o((...args) => $options.mouseMoveHandler && $options.mouseMoveHandler(...args))
   };
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Data/Code/Project/mine/frontEnd/uni-app-ruler/ruler/pages/rulerPage/rulerPage.vue"]]);

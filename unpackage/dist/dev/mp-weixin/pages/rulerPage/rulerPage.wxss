@@ -33,9 +33,11 @@
 }
 .scroll-con .topLine {
   height: 30px;
+  padding-left: 8rpx;
 }
 .scroll-con .bottomNum {
   height: 30px;
+  padding-left: 8rpx;
   width: 100%;
 }
 .scroll-con .bottomNum .allNum {
@@ -62,4 +64,12 @@
 .scroll-con .SLine {
   height: 15px;
   top: -15px;
+}
+.line {
+  position: absolute;
+  height: 80%;
+  top: 0;
+  cursor: ew-resize;
+  left: 8rpx;
+  border-left: 1px solid #f00;
 }

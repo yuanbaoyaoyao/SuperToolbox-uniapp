@@ -1,18 +1,18 @@
 <template>
-	<view class="scroll-con" :style="{width: scrollWid}">
-		<!-- 这个是线 -->
-		<!-- 根据item.type来设定线的长度 -->
-		<view class="topLine">
-			<!-- 这里控制线 -->
-			<view class="allLine" :style="{'marginRight': maginL + 'px'}" :class="item.type"
-				v-for="(item,index) in scrollList" :key="index"></view>
+	<view style="width: 100vw;height: 100vh;" @touchstart="mouseDownHandler" @touchmove="mouseMoveHandler">
+		<view class=" scroll-con" :style="{width: scrollWid}">
+			<view class="topLine">
+				<view class="allLine" :style="{'marginRight': maginL + 'px'}" :class="item.type"
+					v-for="(item,index) in scrollList" :key="index"></view>
+			</view>
+			<view class="bottomNum">
+				<text class="allNum" :style="{width: (maginL + 2) * 10 + 'px',left: -((maginL + 2) * 5) + 'px'}"
+					v-for="(item,index) in scrollNumList" :key="index">
+					{{item}}
+				</text>
+			</view>
 		</view>
-		<!-- 这个是数字 -->
-		<view class="bottomNum" :style="{'paddingLeft': allNumLeft}">
-			<text class="allNum" :style="{width: (maginL + 2) * 10 + 'px',left: -((maginL + 2) * 5) + 'px'}"
-				v-for="(item,index) in scrollNumList" :key="index">
-				{{item}}
-			</text>
+		<view class="line" id="canvasLine" :style="{left:offsetLeft+'px',bottom:offsetTop+'px',height:offsetTop+'px'}">
 		</view>
 	</view>
 </template>
@@ -20,6 +20,7 @@
 <script>
 	export default {
 		name: 'ScrollChoose',
+
 		data() {
 			return {
 				/**
@@ -41,10 +42,23 @@
 				scrollList: [],
 				scrollNumList: [],
 				scrollWid: '100vw',
+				circleX: 0,
+				circleY: 0,
+				//
+				offsetLeft: 0,
+				offsetTop: 0
 			}
 		},
 		mounted() {
 			this.init();
+			uni.getSystemInfo({
+				success: function(res) {
+					console.log("devicePixelRatio:", res.devicePixelRatio)
+					console.log("screenWidth:", res.screenWidth)
+					console.log("pxtocm:", 1 / res.devicePixelRatio / res.screenWidth * 2.54)
+					console.log("resssssssss:",res)
+				}
+			});
 		},
 		methods: {
 			init() {
@@ -64,9 +78,6 @@
 				}
 				//设置间距
 				this.scrollWid = uni.upx2px(750) + (this.scrollEnd - this.scrollStart) * (this.maginL + 2) + 'px';
-				console.log("this.scrollWid:", this.scrollWid)
-				console.log("uni.upx2px(750):", uni.upx2px(750))
-				console.log("this.maginL:", this.maginL)
 				if (this.scrollStart % 10 != 0) {
 					if (this.scrollStart > 0) {
 						this.allNumLeft = (10 - this.scrollStart % 10) * (this.maginL + 2) + uni.upx2px(372) + 'px';
@@ -75,6 +86,14 @@
 					}
 				}
 			},
+			mouseDownHandler(e) {
+				this.offsetTop = e.touches[0].pageY
+				this.offsetLeft = e.touches[0].pageX
+			},
+			mouseMoveHandler(e) {
+				this.offsetTop = e.touches[0].pageY
+				this.offsetLeft = e.touches[0].pageX
+			}
 		}
 	}
 </script>
@@ -82,25 +101,22 @@
 <style lang="scss">
 	@charset "UTF-8";
 
-
-
 	.scroll-con {
 		background: #f8f8f8;
 		border-bottom: 1px solid #ccc;
 		border-top: 1px solid #ccc;
 		margin: 10px 0;
 		width: 750rpx;
-		// width: 1000rpx;
 		height: 70px;
 
 		.topLine {
 			height: 30px;
-			// padding: 0 372rpx;
+			padding-left: 8rpx;
 		}
 
 		.bottomNum {
 			height: 30px;
-			// padding: 0 0 0 372rpx;
+			padding-left: 8rpx;
 			width: 100%;
 
 			.allNum {
@@ -134,5 +150,14 @@
 			height: 15px;
 			top: -15px;
 		}
+	}
+
+	.line {
+		position: absolute;
+		height: 80%;
+		top: 0;
+		cursor: ew-resize;
+		left: 8rpx;
+		border-left: 1px solid #f00;
 	}
 </style>

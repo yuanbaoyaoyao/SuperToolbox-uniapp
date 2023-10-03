@@ -12,10 +12,10 @@
 				"enablePullDownRefresh": false,
 				"orientation": "landscape",
 				"mp-weixin": {
-					"pageOrientation": "landscape"
+					"pageOrientation": "landscape",
+					"navigationStyle": "custom"
 				} //横屏
 			}
-
 		}, {
 			"path": "pages/protractorPage/protractorPage",
 			"style": {
