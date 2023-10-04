@@ -1,10 +1,11 @@
 <template>
+	<button plain @click="handleCamera">{{!isShowCamera?'打开相机':'关闭相机'}}</button>
 	<view>
 		<camera device-position="back" flash="off" @error="error"
-			:style="{ width: '100vw', height: '100vh',position:'absolute' }" v-if="isShowCamera" />
-		<canvas canvas-id="myCanvas" id="myCanvas" :style="{ width: '100vw', height: '100vh' }">
-			<button plain @click="handleCamera" v-if="isShowCamera">关闭相机</button>
-			<button plain @click="handleCamera" v-else>打开相机</button>
+			:style="{ width: '100vw', height: '100vh',position:'fixed' }" v-if="isShowCamera" />
+		<canvas canvas-id="myCanvas" id="myCanvas" :style="{ width: '100vw', height: '100vh',position:'fixed' }">
+			<canvas canvas-id="myCanvas2" id="myCanvas2" :style="{ width: '100vw', height: '100vh' }"
+				@touchstart="touchstart" @touchmove="touchstart" />
 		</canvas>
 	</view>
 </template>
@@ -14,7 +15,11 @@
 		data() {
 			return {
 				src: "",
-				isShowCamera: false
+				isShowCamera: false,
+				ctx: null,
+				screenHeight: 0,
+				screenWidth: 0,
+				degree: 0
 			}
 		},
 		onReady() {
@@ -30,9 +35,55 @@
 				uni.getSystemInfo({
 					success: function(res) {
 						const ctx = uni.createCanvasContext('myCanvas');
+						const ctx2 = uni.createCanvasContext('myCanvas2');
+						that.ctx = ctx2
+						that.screenHeight = res.screenHeight
+						that.screenWidth = res.screenWidth
 						that.drawRoundImage(res.screenHeight, ctx);
 					}
 				});
+			},
+			// 计算指针角度的函数  
+			calculatePointerAngle(e, centerX, centerY) {
+				const x = e.touches[0].x - centerX;
+				const y = e.touches[0].y - centerY;
+				const angle = Math.atan2(y, x);
+				this.degree = (angle * 180 / Math.PI + 90).toFixed(2);
+			},
+
+			// 绘制指针的函数
+			drawPointerLine(ctx, e, centerX, centerY) {
+				const dx = e.touches[0].x - centerX;
+				const dy = e.touches[0].y - centerY;
+				const direction = Math.atan2(dy, dx);
+				const winWidth = this.screenWidth;
+				const length = this.screenWidth;
+				const endX = centerX + Math.cos(direction) * length;
+				const endY = centerY + Math.sin(direction) * length;
+
+				ctx.beginPath();
+				ctx.moveTo(centerX, centerY);
+				ctx.lineTo(endX, endY);
+
+				ctx.setStrokeStyle('#333333');
+				ctx.stroke();
+				ctx.draw();
+			},
+
+			// 在canvas组件的touchstart回调中调用
+			touchstart(e) {
+				const centerX = 10;
+				const centerY = this.screenHeight / 2;
+
+				this.calculatePointerAngle(e, centerX, centerY);
+				// 绘制指针直线
+				this.drawPointerLine(this.ctx, e, centerX, centerY);
+				this.ctx.translate(centerX + 20, centerY - 20);
+				this.ctx.rotate(Math.PI / 2);
+				this.ctx.setFontSize(20);
+				this.ctx.fillText(this.degree + '°', 0, 0);
+
+				this.ctx.setTransform(1, 0, 0, 1, 0, 0);
 			},
 			drawRoundImage(height, ctx) {
 				// 绘制圆角矩形
@@ -101,16 +152,28 @@
 	};
 </script>
 <style lang="scss">
+	button {
+		border: none;
+		width: fit-content;
+		font-size: 35rpx;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		margin-bottom: 60rpx;
+		margin-right: 20rpx;
+		transform: rotate(90deg);
+		z-index: 1000;
+	}
+
 	#myCanvas {
-		button {
-			border: none;
-			width: fit-content;
-			font-size: 35rpx;
+		text {
 			position: absolute;
-			right: 0;
-			bottom: 0;
-			margin-bottom: 60rpx;
-			margin-right: 20rpx;
+			height: fit-content;
+			background-color: gray;
+			width: fit-content;
+			left: 50rpx;
+			bottom: 50vh;
+			// margin-left: 20rpx;
 			transform: rotate(90deg);
 		}
 	}

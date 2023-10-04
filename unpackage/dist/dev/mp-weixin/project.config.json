@@ -21,6 +21,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "3.0.2",
+  "appid": "wxc20bacbaa3d592f5",
   "projectname": "ruler",
   "condition": {},
   "editorSetting": {

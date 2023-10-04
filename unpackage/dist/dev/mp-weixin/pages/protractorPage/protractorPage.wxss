@@ -23,7 +23,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-#myCanvas button {
+button {
   border: none;
   width: -webkit-fit-content;
   width: fit-content;
@@ -33,5 +33,17 @@
   bottom: 0;
   margin-bottom: 60rpx;
   margin-right: 20rpx;
+  transform: rotate(90deg);
+  z-index: 1000;
+}
+#myCanvas text {
+  position: absolute;
+  height: -webkit-fit-content;
+  height: fit-content;
+  background-color: gray;
+  width: -webkit-fit-content;
+  width: fit-content;
+  left: 50rpx;
+  bottom: 50vh;
   transform: rotate(90deg);
 }
