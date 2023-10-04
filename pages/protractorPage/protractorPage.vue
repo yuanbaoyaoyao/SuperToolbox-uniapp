@@ -1,6 +1,11 @@
 <template>
 	<view>
-		<canvas canvas-id="myCanvas" id="myCanvas" :style="{ width: '100vw', height: '100vh' }"></canvas>
+		<camera device-position="back" flash="off" @error="error"
+			:style="{ width: '100vw', height: '100vh',position:'absolute' }" v-if="isShowCamera" />
+		<canvas canvas-id="myCanvas" id="myCanvas" :style="{ width: '100vw', height: '100vh' }">
+			<button plain @click="handleCamera" v-if="isShowCamera">关闭相机</button>
+			<button plain @click="handleCamera" v-else>打开相机</button>
+		</canvas>
 	</view>
 </template>
 
@@ -8,20 +13,28 @@
 	export default {
 		data() {
 			return {
-
+				src: "",
+				isShowCamera: false
 			}
 		},
 		onReady() {
-			let that = this
-			uni.getSystemInfo({
-				success: function(res) {
-					that.drawRoundImage(res.screenHeight);
-				}
-			});
+			this.handleGetSysInfo()
 		},
 		methods: {
-			drawRoundImage(height) {
-				const ctx = uni.createCanvasContext('myCanvas');
+			handleCamera() {
+				this.isShowCamera = !this.isShowCamera
+				this.handleGetSysInfo()
+			},
+			handleGetSysInfo() {
+				let that = this
+				uni.getSystemInfo({
+					success: function(res) {
+						const ctx = uni.createCanvasContext('myCanvas');
+						that.drawRoundImage(res.screenHeight, ctx);
+					}
+				});
+			},
+			drawRoundImage(height, ctx) {
 				// 绘制圆角矩形
 				ctx.beginPath();
 				ctx.arc(10, height / 2, height / 2 - 50, (90 * Math.PI) / 180, (270 * Math.PI) / 180, true);
@@ -87,3 +100,18 @@
 		},
 	};
 </script>
+<style lang="scss">
+	#myCanvas {
+		button {
+			border: none;
+			width: fit-content;
+			font-size: 35rpx;
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			margin-bottom: 60rpx;
+			margin-right: 20rpx;
+			transform: rotate(90deg);
+		}
+	}
+</style>

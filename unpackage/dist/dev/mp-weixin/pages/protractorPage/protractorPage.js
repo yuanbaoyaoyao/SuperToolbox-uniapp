@@ -2,19 +2,29 @@
 const common_vendor = require("../../common/vendor.js");
 const _sfc_main = {
   data() {
-    return {};
+    return {
+      src: "",
+      isShowCamera: false
+    };
   },
   onReady() {
-    let that = this;
-    common_vendor.index.getSystemInfo({
-      success: function(res) {
-        that.drawRoundImage(res.screenHeight);
-      }
-    });
+    this.handleGetSysInfo();
   },
   methods: {
-    drawRoundImage(height) {
-      const ctx = common_vendor.index.createCanvasContext("myCanvas");
+    handleCamera() {
+      this.isShowCamera = !this.isShowCamera;
+      this.handleGetSysInfo();
+    },
+    handleGetSysInfo() {
+      let that = this;
+      common_vendor.index.getSystemInfo({
+        success: function(res) {
+          const ctx = common_vendor.index.createCanvasContext("myCanvas");
+          that.drawRoundImage(res.screenHeight, ctx);
+        }
+      });
+    },
+    drawRoundImage(height, ctx) {
       ctx.beginPath();
       ctx.arc(10, height / 2, height / 2 - 50, 90 * Math.PI / 180, 270 * Math.PI / 180, true);
       ctx.lineTo(10, height - 50);
@@ -64,7 +74,17 @@ const _sfc_main = {
   }
 };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return {};
+  return common_vendor.e({
+    a: $data.isShowCamera
+  }, $data.isShowCamera ? {
+    b: common_vendor.o((...args) => _ctx.error && _ctx.error(...args))
+  } : {}, {
+    c: $data.isShowCamera
+  }, $data.isShowCamera ? {
+    d: common_vendor.o((...args) => $options.handleCamera && $options.handleCamera(...args))
+  } : {
+    e: common_vendor.o((...args) => $options.handleCamera && $options.handleCamera(...args))
+  });
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Data/Code/Project/mine/frontEnd/uni-app-ruler/ruler/pages/protractorPage/protractorPage.vue"]]);
 wx.createPage(MiniProgramPage);

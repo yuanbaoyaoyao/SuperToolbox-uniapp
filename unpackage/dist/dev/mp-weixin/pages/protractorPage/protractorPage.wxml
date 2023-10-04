@@ -1,1 +1,1 @@
-<view><canvas canvas-id="myCanvas" id="myCanvas" style="{{'width:' + '100vw' + ';' + ('height:' + '100vh')}}"></canvas></view>
+<view><camera wx:if="{{a}}" device-position="back" flash="off" binderror="{{b}}" style="{{'width:' + '100vw' + ';' + ('height:' + '100vh') + ';' + ('position:' + 'absolute')}}"/><canvas canvas-id="myCanvas" id="myCanvas" style="{{'width:' + '100vw' + ';' + ('height:' + '100vh')}}"><button wx:if="{{c}}" plain bindtap="{{d}}">关闭相机</button><button wx:else plain bindtap="{{e}}">打开相机</button></canvas></view>
