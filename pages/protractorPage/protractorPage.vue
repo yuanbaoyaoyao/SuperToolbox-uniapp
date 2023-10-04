@@ -12,6 +12,35 @@
 
 <script>
 	export default {
+		onShareAppMessage() {
+			uni.share({
+				provider: "weixin",
+				scene: "WXSceneSession",
+				type: 1,
+				summary: "我正在使用小匠工具箱的量角器，赶紧跟我一起来体验！",
+				success: function(res) {
+					console.log("success:" + JSON.stringify(res));
+				},
+				fail: function(err) {
+					console.log("fail:" + JSON.stringify(err));
+				}
+			});
+			
+		},
+		onShareTimeline() {
+			uni.share({
+				provider: "weixin",
+				scene: "WXSceneTimeline",
+				type: 1,
+				summary: "我正在使用小匠工具箱的量角器，赶紧跟我一起来体验！",
+				success: function(res) {
+					console.log("success:" + JSON.stringify(res));
+				},
+				fail: function(err) {
+					console.log("fail:" + JSON.stringify(err));
+				}
+			});
+		},
 		data() {
 			return {
 				src: "",
@@ -86,6 +115,9 @@
 				this.ctx.setTransform(1, 0, 0, 1, 0, 0);
 			},
 			drawRoundImage(height, ctx) {
+				if (height / 2 > this.screenWidth) {
+					height = this.screenWidth * 2
+				}
 				// 绘制圆角矩形
 				ctx.beginPath();
 				ctx.arc(10, height / 2, height / 2 - 50, (90 * Math.PI) / 180, (270 * Math.PI) / 180, true);
@@ -100,10 +132,12 @@
 				const tickSpacing = degrees / 180; // 每度之间的刻度线间隔
 				const centerX = 10; // 圆心的X坐标
 				const centerY = height / 2; // 圆心的Y坐标
-				const radius = height / 2 - 50; // 圆的半径
+
+
 				const centerTextX = 10; //文本圆心的X坐标
 				const centerTextY = height / 2 - 10; // 圆心的Y坐标
-				const textRadius = height / 2 - 85; // 圆的半径
+				const radius = height / 2 - 50
+				const textRadius = height / 2 - 85
 
 				for (let i = 0; i <= degrees; i += tickSpacing) {
 					let tickLength = 10; // 刻度线的长度
