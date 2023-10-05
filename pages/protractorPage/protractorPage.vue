@@ -1,5 +1,9 @@
 <template>
-	<button plain @click="handleCamera">{{!isShowCamera?'打开相机':'关闭相机'}}</button>
+	<!-- todo:添加切换方向功能 -->
+	<view class="action-buttons">
+		<button plain @click="handleCamera">{{!isShowCamera?'打开相机':'关闭相机'}}</button>
+		<button plain @click="handleReturn">返回主页</button>
+	</view>
 	<view>
 		<camera device-position="back" flash="off" @error="error"
 			:style="{ width: '100vw', height: '100vh',position:'fixed' }" v-if="isShowCamera" />
@@ -12,38 +16,10 @@
 
 <script>
 	export default {
-		onShareAppMessage() {
-			uni.share({
-				provider: "weixin",
-				scene: "WXSceneSession",
-				type: 1,
-				summary: "我正在使用小匠工具箱的量角器，赶紧跟我一起来体验！",
-				success: function(res) {
-					console.log("success:" + JSON.stringify(res));
-				},
-				fail: function(err) {
-					console.log("fail:" + JSON.stringify(err));
-				}
-			});
-			
-		},
-		onShareTimeline() {
-			uni.share({
-				provider: "weixin",
-				scene: "WXSceneTimeline",
-				type: 1,
-				summary: "我正在使用小匠工具箱的量角器，赶紧跟我一起来体验！",
-				success: function(res) {
-					console.log("success:" + JSON.stringify(res));
-				},
-				fail: function(err) {
-					console.log("fail:" + JSON.stringify(err));
-				}
-			});
-		},
+		onShareAppMessage() {},
+		onShareTimeline() {},
 		data() {
 			return {
-				src: "",
 				isShowCamera: false,
 				ctx: null,
 				screenHeight: 0,
@@ -55,6 +31,9 @@
 			this.handleGetSysInfo()
 		},
 		methods: {
+			handleReturn() {
+				uni.navigateBack()
+			},
 			handleCamera() {
 				this.isShowCamera = !this.isShowCamera
 				this.handleGetSysInfo()
@@ -102,7 +81,10 @@
 			// 在canvas组件的touchstart回调中调用
 			touchstart(e) {
 				const centerX = 10;
-				const centerY = this.screenHeight / 2;
+				let centerY = this.screenHeight / 2
+				if (this.screenHeight / 2 > this.screenWidth) {
+					centerY = this.screenWidth
+				}
 
 				this.calculatePointerAngle(e, centerX, centerY);
 				// 绘制指针直线
@@ -186,7 +168,7 @@
 	};
 </script>
 <style lang="scss">
-	button {
+	.action-buttons {
 		border: none;
 		width: fit-content;
 		font-size: 35rpx;

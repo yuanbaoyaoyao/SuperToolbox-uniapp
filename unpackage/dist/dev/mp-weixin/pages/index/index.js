@@ -14,12 +14,12 @@ const _sfc_main = {
           name: "量角器"
         },
         {
-          url: "/pages/gradienterPage/gradienterPage",
-          name: "水平仪"
-        },
-        {
           url: "/pages/compassPage/compassPage",
           name: "指南针"
+        },
+        {
+          url: "/pages/gradienterPage/gradienterPage",
+          name: "水平仪"
         },
         {
           url: "/pages/decibelMeterPage/decibelMeterPage",

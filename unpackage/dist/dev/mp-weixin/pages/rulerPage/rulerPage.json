@@ -1,7 +1,6 @@
 {
   "navigationBarTitleText": "尺子",
   "enablePullDownRefresh": false,
-  "orientation": "landscape",
   "pageOrientation": "landscape",
   "navigationStyle": "custom",
   "usingComponents": {}

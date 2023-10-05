@@ -2,36 +2,11 @@
 const common_vendor = require("../../common/vendor.js");
 const _sfc_main = {
   onShareAppMessage() {
-    common_vendor.index.share({
-      provider: "weixin",
-      scene: "WXSceneSession",
-      type: 1,
-      summary: "我正在使用小匠工具箱的量角器，赶紧跟我一起来体验！",
-      success: function(res) {
-        console.log("success:" + JSON.stringify(res));
-      },
-      fail: function(err) {
-        console.log("fail:" + JSON.stringify(err));
-      }
-    });
   },
   onShareTimeline() {
-    common_vendor.index.share({
-      provider: "weixin",
-      scene: "WXSceneTimeline",
-      type: 1,
-      summary: "我正在使用小匠工具箱的量角器，赶紧跟我一起来体验！",
-      success: function(res) {
-        console.log("success:" + JSON.stringify(res));
-      },
-      fail: function(err) {
-        console.log("fail:" + JSON.stringify(err));
-      }
-    });
   },
   data() {
     return {
-      src: "",
       isShowCamera: false,
       ctx: null,
       screenHeight: 0,
@@ -43,6 +18,9 @@ const _sfc_main = {
     this.handleGetSysInfo();
   },
   methods: {
+    handleReturn() {
+      common_vendor.index.navigateBack();
+    },
     handleCamera() {
       this.isShowCamera = !this.isShowCamera;
       this.handleGetSysInfo();
@@ -86,7 +64,10 @@ const _sfc_main = {
     // 在canvas组件的touchstart回调中调用
     touchstart(e) {
       const centerX = 10;
-      const centerY = this.screenHeight / 2;
+      let centerY = this.screenHeight / 2;
+      if (this.screenHeight / 2 > this.screenWidth) {
+        centerY = this.screenWidth;
+      }
       this.calculatePointerAngle(e, centerX, centerY);
       this.drawPointerLine(this.ctx, e, centerX, centerY);
       this.ctx.translate(centerX + 20, centerY - 20);
@@ -151,12 +132,13 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: common_vendor.t(!$data.isShowCamera ? "打开相机" : "关闭相机"),
     b: common_vendor.o((...args) => $options.handleCamera && $options.handleCamera(...args)),
-    c: $data.isShowCamera
+    c: common_vendor.o((...args) => $options.handleReturn && $options.handleReturn(...args)),
+    d: $data.isShowCamera
   }, $data.isShowCamera ? {
-    d: common_vendor.o((...args) => _ctx.error && _ctx.error(...args))
+    e: common_vendor.o((...args) => _ctx.error && _ctx.error(...args))
   } : {}, {
-    e: common_vendor.o((...args) => $options.touchstart && $options.touchstart(...args)),
-    f: common_vendor.o((...args) => $options.touchstart && $options.touchstart(...args))
+    f: common_vendor.o((...args) => $options.touchstart && $options.touchstart(...args)),
+    g: common_vendor.o((...args) => $options.touchstart && $options.touchstart(...args))
   });
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Data/Code/Project/mine/frontEnd/uni-app-ruler/ruler/pages/protractorPage/protractorPage.vue"]]);

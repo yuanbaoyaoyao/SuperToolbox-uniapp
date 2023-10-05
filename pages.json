@@ -1,5 +1,12 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "超级工具箱"
+			}
+		},
 		{
 			"path": "pages/protractorPage/protractorPage",
 			"style": {
@@ -12,16 +19,10 @@
 
 		},
 		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "超级工具箱"
-			}
-		}, {
 			"path": "pages/rulerPage/rulerPage",
 			"style": {
 				"navigationBarTitleText": "尺子",
 				"enablePullDownRefresh": false,
-				"orientation": "landscape",
 				"mp-weixin": {
 					"pageOrientation": "landscape",
 					"navigationStyle": "custom"

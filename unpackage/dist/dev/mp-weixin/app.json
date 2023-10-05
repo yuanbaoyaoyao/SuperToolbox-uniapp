@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/protractorPage/protractorPage",
     "pages/index/index",
+    "pages/protractorPage/protractorPage",
     "pages/rulerPage/rulerPage",
     "pages/gradienterPage/gradienterPage",
     "pages/compassPage/compassPage",

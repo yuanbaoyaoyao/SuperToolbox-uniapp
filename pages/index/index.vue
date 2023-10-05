@@ -1,7 +1,5 @@
 <template>
 	<view class="content">
-		<view class="content-title">超级工具箱</view>
-		<view class="content-description">您的超级助手</view>
 		<view class="content-details">
 			<view v-for="(item,index) in routers" :key="index" class="content-detail" @click="handleClickRouter(index)">
 				{{item.name}}
@@ -25,13 +23,14 @@
 						name: "量角器"
 					},
 					{
-						url: "/pages/gradienterPage/gradienterPage",
-						name: "水平仪"
-					},
-					{
 						url: "/pages/compassPage/compassPage",
 						name: "指南针"
 					},
+					{
+						url: "/pages/gradienterPage/gradienterPage",
+						name: "水平仪"
+					},
+
 					{
 						url: "/pages/decibelMeterPage/decibelMeterPage",
 						name: "分贝仪"
@@ -49,9 +48,9 @@
 		methods: {
 			handleClickRouter(index) {
 				uni.navigateTo({
-					url:this.routers[index].url,
+					url: this.routers[index].url,
 				})
-				
+
 			}
 		}
 	}
