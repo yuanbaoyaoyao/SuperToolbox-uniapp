@@ -7,14 +7,23 @@ const _sfc_main = {
   },
   data() {
     return {
-      ctx: null,
       screenHeight: 0,
       screenWidth: 0,
-      degree: 0
+      centerX: 0,
+      centerY: 0,
+      degree: 0,
+      myCanvas1: null,
+      myCanvas2: null,
+      compassValue: 30
     };
   },
   onReady() {
     this.handleGetSysInfo();
+    let that = this;
+    common_vendor.index.onCompassChange((res) => {
+      that.compassValue = parseInt(res.direction);
+      that.drawPointer(res.direction);
+    });
   },
   methods: {
     countDigits(num) {
@@ -31,76 +40,87 @@ const _sfc_main = {
       let that = this;
       common_vendor.index.getSystemInfo({
         success: function(res) {
-          const ctx = common_vendor.index.createCanvasContext("myCanvas");
-          const ctx2 = common_vendor.index.createCanvasContext("myCanvas2");
-          that.ctx = ctx2;
+          that.myCanvas2 = common_vendor.index.createCanvasContext("myCanvas2");
+          that.myCanvas1 = common_vendor.index.createCanvasContext("myCanvas");
           that.screenHeight = res.screenHeight;
           that.screenWidth = res.screenWidth;
-          that.drawRoundImage(res.screenHeight, ctx);
+          that.drawRoundImage();
         }
       });
     },
-    // 计算指针角度的函数  
-    calculatePointerAngle(e, centerX, centerY) {
-      const x = e.touches[0].x - centerX;
-      const y = e.touches[0].y - centerY;
-      const angle = Math.atan2(y, x);
-      this.degree = (angle * 180 / Math.PI + 90).toFixed(2);
-    },
-    // 绘制指针的函数
-    drawPointerLine(ctx, e, centerX, centerY) {
-      const dx = e.touches[0].x - centerX;
-      const dy = e.touches[0].y - centerY;
-      const direction = Math.atan2(dy, dx);
-      this.screenWidth;
-      const length = this.screenWidth;
-      const endX = centerX + Math.cos(direction) * length;
-      const endY = centerY + Math.sin(direction) * length;
-      ctx.beginPath();
-      ctx.moveTo(centerX, centerY);
-      ctx.lineTo(endX, endY);
-      ctx.setStrokeStyle("#333333");
-      ctx.stroke();
-      ctx.draw();
-    },
-    // 在canvas组件的touchstart回调中调用
-    touchstart(e) {
-      const centerX = 10;
-      const centerY = this.screenHeight / 2;
-      this.calculatePointerAngle(e, centerX, centerY);
-      this.drawPointerLine(this.ctx, e, centerX, centerY);
-      this.ctx.translate(centerX + 20, centerY - 20);
-      this.ctx.rotate(Math.PI / 2);
-      this.ctx.setFontSize(20);
-      this.ctx.fillText(this.degree + "°", 0, 0);
-      this.ctx.setTransform(1, 0, 0, 1, 0, 0);
-    },
-    drawRoundImage(height, ctx) {
+    drawPointer(degree) {
+      let angle;
+      let ctx = this.myCanvas2;
+      ctx.clearRect(0, 0, this.screenHeight, this.screenWidth);
+      let height = this.screenHeight;
       if (height / 2 > this.screenWidth) {
         height = this.screenWidth * 2;
       }
+      const centerX = this.screenWidth / 2;
+      const centerY = height / 2;
+      const diamondSide = centerX * 0.9;
+      const diamondX = centerX - diamondSide / 2;
+      const diamondY = centerY - diamondSide / 2;
+      if (degree != void 0) {
+        angle = degree * Math.PI / 180;
+        ctx.save();
+        ctx.translate(centerX, centerY);
+        ctx.rotate(angle);
+        ctx.translate(-centerX, -centerY);
+      }
       ctx.beginPath();
-      ctx.arc(10, height / 2, height / 2 - 50, 90 * Math.PI / 180, 270 * Math.PI / 180, true);
-      ctx.lineTo(10, height - 50);
-      ctx.setStrokeStyle("#333333");
-      ctx.stroke();
+      ctx.moveTo(diamondX + diamondSide * 0.43, centerY);
+      ctx.lineTo(centerX, diamondY);
+      ctx.lineTo(diamondX + diamondSide * 0.57, centerY);
+      ctx.lineTo(diamondX + diamondSide * 0.43, centerY);
+      ctx.fillStyle = "#ff0000";
+      ctx.fill();
       ctx.closePath();
+      ctx.beginPath();
+      ctx.moveTo(diamondX + diamondSide * 0.43, centerY);
+      ctx.lineTo(centerX, diamondY + diamondSide);
+      ctx.lineTo(diamondX + diamondSide * 0.57, centerY);
+      ctx.lineTo(diamondX + diamondSide * 0.43, centerY);
+      ctx.fillStyle = "#333333";
+      ctx.fill();
+      ctx.closePath();
+      ctx.draw();
+    },
+    drawRoundImage(e) {
+      let pageX, pageY, angle;
+      if (e != null) {
+        pageX = e.touches[0].pageX;
+        pageY = e.touches[0].pageY;
+      }
+      let height = this.screenHeight;
+      let ctx = this.myCanvas1;
+      if (height / 2 > this.screenWidth) {
+        height = this.screenWidth * 2;
+      }
       const degrees = 360;
-      const tickSpacing = degrees / 360;
+      const tickSpacing = degrees / 180;
       const centerX = this.screenWidth / 2;
       const centerY = height / 2;
       const radius = this.screenWidth / 2 - 50;
-      const textRadius = this.screenWidth / 2 - 25;
+      const textRadius = this.screenWidth / 2 - 30;
+      const directionRadius = this.screenWidth / 2 - 80;
+      if (e != null) {
+        angle = Math.atan2(pageY - centerY, pageX - centerX);
+        ctx.save();
+        ctx.translate(centerX, centerY);
+        ctx.rotate(angle);
+        ctx.translate(-centerX, -centerY);
+      }
       for (let i = 0; i <= degrees; i += tickSpacing) {
         let tickLength = 10;
-        if (i % 15 == 0 || i == 0) {
-          tickLength = 20;
+        if (i % 30 == 0 || i == 0) {
+          tickLength = 15;
         }
-        const angle = i * Math.PI / 180 - Math.PI / 2;
-        const startX = centerX + Math.cos(angle) * (radius + tickLength);
-        const startY = centerY + Math.sin(angle) * (radius + tickLength);
-        const endX = centerX + Math.cos(angle) * radius;
-        const endY = centerY + Math.sin(angle) * radius;
+        const angle2 = i * Math.PI / 180 - Math.PI / 2;
+        const startX = centerX + Math.cos(angle2) * (radius + tickLength);
+        const startY = centerY + Math.sin(angle2) * (radius + tickLength);
+        const endX = centerX + Math.cos(angle2) * radius;
+        const endY = centerY + Math.sin(angle2) * radius;
         if ((i % 30 == 0 || i == 0) && i != 360) {
           const textAngle = i * Math.PI / 180 - Math.PI / 2;
           const textEndX = centerX + Math.cos(textAngle) * textRadius;
@@ -108,11 +128,11 @@ const _sfc_main = {
           ctx.setFontSize(12);
           let extraRotate;
           if (this.countDigits(i) == 1) {
-            extraRotate = -1.5 * Math.PI / 180;
+            extraRotate = -1.2 * Math.PI / 180;
           } else if (this.countDigits(i) == 2) {
-            extraRotate = -3.5 * Math.PI / 180;
+            extraRotate = -2.5 * Math.PI / 180;
           } else if (this.countDigits(i) == 3) {
-            extraRotate = -4.8 * Math.PI / 180;
+            extraRotate = -3.7 * Math.PI / 180;
           }
           ctx.save();
           ctx.translate(centerX, centerY);
@@ -121,6 +141,34 @@ const _sfc_main = {
           ctx.translate(textEndX, textEndY);
           ctx.rotate(i * Math.PI / 180);
           ctx.fillText(i, 0, 0);
+          ctx.restore();
+        }
+        if ((i % 45 == 0 || i == 0) && i != 360) {
+          const directionAngle = i * Math.PI / 180 - Math.PI / 2;
+          const directionEndX = centerX + Math.cos(directionAngle) * directionRadius;
+          const directionEndY = centerY + Math.sin(directionAngle) * directionRadius;
+          ctx.setFontSize(20);
+          let extraRotate = -5 * Math.PI / 180;
+          ctx.save();
+          ctx.translate(centerX, centerY);
+          ctx.rotate(extraRotate);
+          ctx.translate(-centerX, -centerY);
+          ctx.translate(directionEndX, directionEndY);
+          ctx.rotate(i * Math.PI / 180 + 0.08);
+          switch (i) {
+            case 0:
+              ctx.fillText("北", 0, 0);
+              break;
+            case 90:
+              ctx.fillText("东", 0, 0);
+              break;
+            case 180:
+              ctx.fillText("南", 0, 0);
+              break;
+            case 270:
+              ctx.fillText("西", 0, 0);
+              break;
+          }
           ctx.restore();
         }
         ctx.beginPath();
@@ -137,8 +185,8 @@ const _sfc_main = {
 };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
-    a: common_vendor.o((...args) => $options.touchstart && $options.touchstart(...args)),
-    b: common_vendor.o((...args) => $options.touchstart && $options.touchstart(...args))
+    a: common_vendor.t($data.compassValue),
+    b: common_vendor.o((...args) => $options.drawPointer && $options.drawPointer(...args))
   };
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Data/Code/Project/mine/frontEnd/uni-app-ruler/ruler/pages/compassPage/compassPage.vue"]]);
