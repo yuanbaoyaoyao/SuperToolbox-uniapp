@@ -11,16 +11,15 @@
     "minified": false,
     "newFeature": true,
     "bigPackageSizeSupport": true,
-    "condition": false,
-    "ignoreUploadUnusedFiles": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
-    }
+    },
+    "condition": false
   },
   "compileType": "miniprogram",
-  "libVersion": "3.0.2",
+  "libVersion": "3.1.2",
   "appid": "wxc20bacbaa3d592f5",
   "projectname": "ruler",
   "condition": {},

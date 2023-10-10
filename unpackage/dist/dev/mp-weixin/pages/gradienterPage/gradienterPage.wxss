@@ -1,0 +1,31 @@
+
+.gyroscope-value {
+		position: absolute;
+		left: 38%;
+		top: 10%;
+}
+.gyroscope {
+		width: 400rpx;
+		height: 400rpx;
+		border-radius: 200rpx;
+		border: 1rpx solid #000000;
+		position: absolute;
+		top: 30%;
+		left: 20%;
+		background: #d1cfcf;
+}
+.region {
+		width: 50rpx;
+		height: 50rpx;
+		border-radius: 26rpx;
+		border: 1rpx solid #000000;
+		position: absolute;
+		left: 170rpx;
+		top: 170rpx;
+}
+.core {
+		width: 30rpx;
+		height: 30rpx;
+		border-radius: 15rpx;
+		position: absolute;
+}
