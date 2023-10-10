@@ -14,5 +14,19 @@
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
+  "requiredPrivateInfos": [
+    "getLocation",
+    "onLocationChange",
+    "chooseLocation",
+    "chooseAddress",
+    "choosePoi",
+    "startLocationUpdate",
+    "startLocationUpdateBackground"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于获取经纬度信息"
+    }
+  },
   "usingComponents": {}
 }

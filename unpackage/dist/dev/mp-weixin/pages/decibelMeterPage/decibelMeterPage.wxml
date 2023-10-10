@@ -1,1 +1,1 @@
-<view><view>这是分贝计</view></view>
+<view><view>这是分贝计{{a}}</view></view>

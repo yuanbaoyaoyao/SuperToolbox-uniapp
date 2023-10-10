@@ -1,1 +1,1 @@
-<view> 这是海拔高度 </view>
+<view class="altitude-info"><view class="altitude-info-item">当前经度：{{a}}</view><view class="altitude-info-item">当前纬度：{{b}}</view></view>

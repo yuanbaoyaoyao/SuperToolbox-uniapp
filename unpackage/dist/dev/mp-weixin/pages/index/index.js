@@ -21,10 +21,10 @@ const _sfc_main = {
           url: "/pages/gradienterPage/gradienterPage",
           name: "水平仪"
         },
-        {
-          url: "/pages/decibelMeterPage/decibelMeterPage",
-          name: "分贝仪"
-        },
+        // {
+        // 	url: "/pages/decibelMeterPage/decibelMeterPage",
+        // 	name: "分贝仪"
+        // },
         {
           url: "/pages/altitudePage/altitudePage",
           name: "海拔仪"

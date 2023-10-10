@@ -1,0 +1,9 @@
+
+.altitude-info {
+		width: 100%;
+		height: 100%;
+		margin-left: 35%;
+}
+.altitude-info-item {
+		padding: 20rpx
+}

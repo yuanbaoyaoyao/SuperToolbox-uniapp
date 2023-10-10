@@ -31,10 +31,10 @@
 						name: "水平仪"
 					},
 
-					{
-						url: "/pages/decibelMeterPage/decibelMeterPage",
-						name: "分贝仪"
-					},
+					// {
+					// 	url: "/pages/decibelMeterPage/decibelMeterPage",
+					// 	name: "分贝仪"
+					// },
 					{
 						url: "/pages/altitudePage/altitudePage",
 						name: "海拔仪"
