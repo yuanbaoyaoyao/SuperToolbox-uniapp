@@ -5,7 +5,6 @@
 		align-items: flex-start;
 		padding: 10rpx;
 }
-.content-title {}
 .content-details {
 		display: grid;
 		grid-template-columns: 1fr 1fr;

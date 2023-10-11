@@ -54,7 +54,6 @@
 		},
 		methods: {
 			async handleGetAccurateInfo() {
-				console.log("触发了")
 				const location = await this.getLocationInfo();
 				this.accuratePosition = location.address
 			},
@@ -80,8 +79,6 @@
 							const qqmapsdk = new QQMapWX({
 								key: '4QRBZ-ZCL6I-UKAG4-UNBE3-6YDKT-GTFBU' //这里填写自己申请的key
 							});
-							console.log("location:", location)
-							console.log("qqmapsdk:", qqmapsdk)
 							qqmapsdk.reverseGeocoder({
 								location,
 								success(response) {

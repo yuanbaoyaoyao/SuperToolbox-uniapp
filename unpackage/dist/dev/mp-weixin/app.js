@@ -9,6 +9,7 @@ if (!Math) {
   "./pages/compassPage/compassPage.js";
   "./pages/decibelMeterPage/decibelMeterPage.js";
   "./pages/altitudePage/altitudePage.js";
+  "./pages/drawingBoardPage/drawingBoardPage.js";
 }
 const _sfc_main = {
   onLaunch: function() {

@@ -1,9 +1,9 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const store_index = require("../../store/index.js");
 const _sfc_main = {
   data() {
     return {
-      title: "Hello",
       routers: [
         // {
         // 	url: "/pages/rulerPage/rulerPage",
@@ -27,12 +27,27 @@ const _sfc_main = {
         // },
         {
           url: "/pages/altitudePage/altitudePage",
-          name: "海拔仪"
+          name: "经纬度/位置"
+        },
+        {
+          url: "/pages/drawingBoardPage/drawingBoardPage",
+          name: "画板"
         }
       ]
     };
   },
   onLoad() {
+  },
+  onReady() {
+    common_vendor.index.getSystemInfo({
+      success: function(res) {
+        const platform = res.platform.toLowerCase();
+        store_index.store.commit("setPlatform", platform);
+      },
+      fail: function(error) {
+        console.log("error:", error);
+      }
+    });
   },
   methods: {
     handleClickRouter(index) {

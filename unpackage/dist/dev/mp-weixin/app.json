@@ -6,7 +6,8 @@
     "pages/gradienterPage/gradienterPage",
     "pages/compassPage/compassPage",
     "pages/decibelMeterPage/decibelMeterPage",
-    "pages/altitudePage/altitudePage"
+    "pages/altitudePage/altitudePage",
+    "pages/drawingBoardPage/drawingBoardPage"
   ],
   "window": {
     "navigationBarTextStyle": "black",

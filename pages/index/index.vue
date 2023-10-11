@@ -9,10 +9,10 @@
 </template>
 
 <script>
+	import store from '@/store/index.js'
 	export default {
 		data() {
 			return {
-				title: 'Hello',
 				routers: [
 					// {
 					// 	url: "/pages/rulerPage/rulerPage",
@@ -37,7 +37,11 @@
 					// },
 					{
 						url: "/pages/altitudePage/altitudePage",
-						name: "海拔仪"
+						name: "经纬度/位置"
+					},
+					{
+						url: "/pages/drawingBoardPage/drawingBoardPage",
+						name: "画板"
 					},
 				]
 			}
@@ -45,12 +49,22 @@
 		onLoad() {
 
 		},
+		onReady() {
+			uni.getSystemInfo({
+				success: function(res) {
+					const platform = res.platform.toLowerCase()
+					store.commit('setPlatform', platform)
+				},
+				fail: function(error) {
+					console.log("error:", error)
+				}
+			})
+		},
 		methods: {
 			handleClickRouter(index) {
 				uni.navigateTo({
 					url: this.routers[index].url,
 				})
-
 			}
 		}
 	}
@@ -63,8 +77,6 @@
 		align-items: flex-start;
 		padding: 10rpx;
 	}
-
-	.content-title {}
 
 	.content-details {
 		display: grid;
