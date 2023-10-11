@@ -7,10 +7,7 @@
 	</view>
 	<button @tap="handleGetAccurateInfo">观看激励视频广告获取高精度地理信息</button>
 	<view class="altitude-info">
-		<view class="altitude-info-item">当前经度：{{longitude}}</view>
-		<view class="altitude-info-item">当前纬度：{{latitude}}</view>
-		<view class="altitude-info-item">当前高度：{{altitude}}</view>
-		<!-- <view>当前速度：{{speed}}</view> -->
+		<view class="altitude-info-item">当前位置：{{accuratePosition}}</view>
 	</view>
 	<!-- 观看激励视频广告获取高精度地理信息 -->
 	<!-- 借助腾讯地图能力 -->
@@ -27,8 +24,6 @@
 			return {
 				latitude: undefined,
 				longitude: undefined,
-				accurateLatitude: undefined,
-				accurateLongitude: undefined,
 				speed: undefined,
 				altitude: undefined,
 				platform: '',
@@ -37,7 +32,7 @@
 			}
 		},
 		onReady() {
-			this.platform = this.$store.state.platform
+			this.platform = store.state.platform
 		},
 		onShow: function() {
 			let that = this
@@ -45,9 +40,7 @@
 				success: res => {
 					uni.onLocationChange(function(res2) {
 						that.latitude = (res2.latitude).toFixed(2)
-						that.accurateLatitude = res2.latitude
 						that.longitude = (res2.longitude).toFixed(2)
-						that.accurateLongitude = res2.longitude
 						that.altitude = (res2.altitude).toFixed(2)
 						that.speed = (res2.speed).toFixed(2)
 					});
@@ -61,9 +54,9 @@
 		},
 		methods: {
 			async handleGetAccurateInfo() {
-				console.log("QQMapWX:", QQMapWX)
+				console.log("触发了")
 				const location = await this.getLocationInfo();
-				this.position = location.address
+				this.accuratePosition = location.address
 			},
 			//获取位置信息
 			async getLocationInfo() {
@@ -87,6 +80,8 @@
 							const qqmapsdk = new QQMapWX({
 								key: '4QRBZ-ZCL6I-UKAG4-UNBE3-6YDKT-GTFBU' //这里填写自己申请的key
 							});
+							console.log("location:", location)
+							console.log("qqmapsdk:", qqmapsdk)
 							qqmapsdk.reverseGeocoder({
 								location,
 								success(response) {
@@ -99,6 +94,12 @@
 									location.address = info.address;
 									resolve(location);
 								},
+								fail: function(error) {
+									console.error(error, '解析fail');
+								},
+								complete: function(res) {
+									console.log(res, 'complete');
+								}
 							});
 						},
 						fail(err) {
