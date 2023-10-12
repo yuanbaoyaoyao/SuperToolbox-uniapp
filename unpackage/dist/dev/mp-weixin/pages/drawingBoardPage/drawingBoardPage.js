@@ -1,218 +1,292 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const thColor = () => "./th-color.js";
+const thLine = () => "./th-line.js";
 const _sfc_main = {
-  onShareAppMessage() {
-  },
-  onShareTimeline() {
+  props: {
+    //canvasId
+    canvasId: {
+      type: String,
+      default: `th-${Date.now()}`
+    },
+    //配置栏
+    actionBar: {
+      type: Array,
+      default: () => {
+        return [
+          "pencli",
+          "color",
+          "back",
+          "clear"
+        ];
+      }
+    },
+    //是否下载签名
+    isDownload: {
+      type: Boolean,
+      default: true
+    },
+    //是否横屏
+    horizontalScreen: {
+      type: Boolean,
+      default: false
+    },
+    //文件名称
+    fileName: {
+      type: String,
+      default: "签名"
+    },
+    //线颜色
+    delineColor: {
+      type: String,
+      default: "#000"
+    },
+    //线宽度
+    delineWidth: {
+      type: Number,
+      default: 4
+    }
   },
   data() {
     return {
-      screenHeight: 0,
-      screenWidth: 0,
-      centerX: 0,
-      centerY: 0,
-      degree: 0,
-      myCanvas1: null,
-      myCanvas2: null,
-      compassValue: 30
+      context: "",
+      actionShow: true,
+      history: [],
+      lineColor: "#000",
+      lineWidth: 4,
+      canvasShow: true,
+      bottomHeight: 0
     };
   },
-  onReady() {
-    this.handleGetSysInfo();
-    let that = this;
-    common_vendor.index.onCompassChange((res) => {
-      that.compassValue = parseInt(res.direction);
-      that.drawPointer(res.direction);
-    });
+  components: {
+    thColor,
+    thLine
+  },
+  mounted() {
+    this.getIphoneBottom();
+    this.lineColor = this.delineColor;
+    this.lineWidth = this.delineWidth;
+    const ctx = common_vendor.index.createCanvasContext(this.canvasId, this);
+    this.context = ctx;
   },
   methods: {
-    handleSaveToAlbum() {
-      let _this = this;
-      common_vendor.index.canvasToTempFilePath({
-        canvasId: "myCanvas",
-        destWidth: _this.screenWidth,
-        destHeight: _this.screenHeight,
-        quality: 1,
-        fileType: "jpg",
-        success: (res) => {
-          common_vendor.index.saveImageToPhotosAlbum({
-            filePath: res.tempFilePath,
-            success: function() {
-              common_vendor.index.showToast({
-                icon: "none",
-                position: "bottom",
-                title: "图片已下载至相册"
-                // res.tempFilePath
-              });
-            }
-          });
-        }
-      }, _this);
-    },
-    countDigits(num) {
-      if (num === 0)
-        return 1;
-      let digits = 0;
-      while (num > 0) {
-        digits++;
-        num = Math.floor(num / 10);
-      }
-      return digits;
-    },
-    handleGetSysInfo() {
-      let that = this;
+    getIphoneBottom() {
       common_vendor.index.getSystemInfo({
-        success: function(res) {
-          that.myCanvas2 = common_vendor.index.createCanvasContext("myCanvas2");
-          that.myCanvas1 = common_vendor.index.createCanvasContext("myCanvas");
-          that.screenHeight = res.screenHeight;
-          that.screenWidth = res.screenWidth;
-          that.drawRoundImage();
+        success: (res) => {
+          const bottom = res.screenHeight - res.safeArea.bottom;
+          this.bottomHeight = bottom > 0 ? bottom - 10 : bottom;
         }
       });
     },
-    drawPointer(degree) {
-      let angle;
-      let ctx = this.myCanvas2;
-      ctx.clearRect(0, 0, this.screenHeight, this.screenWidth);
-      let height = this.screenHeight;
-      if (height / 2 > this.screenWidth) {
-        height = this.screenWidth * 2;
+    //操作栏显示控制
+    judge(key) {
+      if (this.actionBar.includes(key)) {
+        return true;
+      } else {
+        return false;
       }
-      const centerX = this.screenWidth / 2;
-      const centerY = height / 2;
-      const diamondSide = centerX * 0.9;
-      const diamondX = centerX - diamondSide / 2;
-      const diamondY = centerY - diamondSide / 2;
-      if (degree != void 0) {
-        angle = degree * Math.PI / 180;
-        ctx.save();
-        ctx.translate(centerX, centerY);
-        ctx.rotate(angle);
-        ctx.translate(-centerX, -centerY);
-      }
-      ctx.beginPath();
-      ctx.moveTo(diamondX + diamondSide * 0.43, centerY);
-      ctx.lineTo(centerX, diamondY);
-      ctx.lineTo(diamondX + diamondSide * 0.57, centerY);
-      ctx.lineTo(diamondX + diamondSide * 0.43, centerY);
-      ctx.fillStyle = "#ff0000";
-      ctx.fill();
-      ctx.closePath();
-      ctx.beginPath();
-      ctx.moveTo(diamondX + diamondSide * 0.43, centerY);
-      ctx.lineTo(centerX, diamondY + diamondSide);
-      ctx.lineTo(diamondX + diamondSide * 0.57, centerY);
-      ctx.lineTo(diamondX + diamondSide * 0.43, centerY);
-      ctx.fillStyle = "#333333";
-      ctx.fill();
-      ctx.closePath();
-      ctx.draw();
     },
-    drawRoundImage(e) {
-      let pageX, pageY, angle;
-      if (e != null) {
-        pageX = e.touches[0].pageX;
-        pageY = e.touches[0].pageY;
+    //打开选择器
+    openAction(ref) {
+      this.canvasShow = false;
+      this.$refs[ref].checkModel();
+    },
+    //设置颜色
+    setColor(color) {
+      this.lineColor = color;
+    },
+    //设置线条
+    setLine(width) {
+      this.lineWidth = width;
+    },
+    //切换控制栏
+    checkAction() {
+      this.actionShow = !this.actionShow;
+    },
+    //保存
+    async saveCanvas() {
+      const tempFilePath = await this.canvasToFilPath();
+      if (!this.isDownload) {
+        this.$emit("submit", tempFilePath);
+        return false;
       }
-      let height = this.screenHeight;
-      let ctx = this.myCanvas1;
-      if (height / 2 > this.screenWidth) {
-        height = this.screenWidth * 2;
-      }
-      const degrees = 360;
-      const tickSpacing = degrees / 180;
-      const centerX = this.screenWidth / 2;
-      const centerY = height / 2;
-      const radius = this.screenWidth / 2 - 50;
-      const textRadius = this.screenWidth / 2 - 30;
-      const directionRadius = this.screenWidth / 2 - 80;
-      if (e != null) {
-        angle = Math.atan2(pageY - centerY, pageX - centerX);
-        ctx.save();
-        ctx.translate(centerX, centerY);
-        ctx.rotate(angle);
-        ctx.translate(-centerX, -centerY);
-      }
-      for (let i = 0; i <= degrees; i += tickSpacing) {
-        let tickLength = 10;
-        if (i % 30 == 0 || i == 0) {
-          tickLength = 15;
-        }
-        const angle2 = i * Math.PI / 180 - Math.PI / 2;
-        const startX = centerX + Math.cos(angle2) * (radius + tickLength);
-        const startY = centerY + Math.sin(angle2) * (radius + tickLength);
-        const endX = centerX + Math.cos(angle2) * radius;
-        const endY = centerY + Math.sin(angle2) * radius;
-        if ((i % 30 == 0 || i == 0) && i != 360) {
-          const textAngle = i * Math.PI / 180 - Math.PI / 2;
-          const textEndX = centerX + Math.cos(textAngle) * textRadius;
-          const textEndY = centerY + Math.sin(textAngle) * textRadius;
-          ctx.setFontSize(12);
-          let extraRotate;
-          if (this.countDigits(i) == 1) {
-            extraRotate = -1.2 * Math.PI / 180;
-          } else if (this.countDigits(i) == 2) {
-            extraRotate = -2.5 * Math.PI / 180;
-          } else if (this.countDigits(i) == 3) {
-            extraRotate = -3.7 * Math.PI / 180;
+      return new Promise((resolve, reject) => {
+        common_vendor.index.saveImageToPhotosAlbum({
+          filePath: tempFilePath,
+          success(resObj) {
+            this.$emit("submit", tempFilePath);
+            resolve(resObj);
+          },
+          fail(err) {
+            this.$emit("dowmloadErr", err);
+            reject(err);
           }
-          ctx.save();
-          ctx.translate(centerX, centerY);
-          ctx.rotate(extraRotate);
-          ctx.translate(-centerX, -centerY);
-          ctx.translate(textEndX, textEndY);
-          ctx.rotate(i * Math.PI / 180);
-          ctx.fillText(i, 0, 0);
-          ctx.restore();
-        }
-        if ((i % 45 == 0 || i == 0) && i != 360) {
-          const directionAngle = i * Math.PI / 180 - Math.PI / 2;
-          const directionEndX = centerX + Math.cos(directionAngle) * directionRadius;
-          const directionEndY = centerY + Math.sin(directionAngle) * directionRadius;
-          ctx.setFontSize(20);
-          let extraRotate = -5 * Math.PI / 180;
-          ctx.save();
-          ctx.translate(centerX, centerY);
-          ctx.rotate(extraRotate);
-          ctx.translate(-centerX, -centerY);
-          ctx.translate(directionEndX, directionEndY);
-          ctx.rotate(i * Math.PI / 180 + 0.08);
-          switch (i) {
-            case 0:
-              ctx.fillText("北", 0, 0);
-              break;
-            case 90:
-              ctx.fillText("东", 0, 0);
-              break;
-            case 180:
-              ctx.fillText("南", 0, 0);
-              break;
-            case 270:
-              ctx.fillText("西", 0, 0);
-              break;
+        });
+      });
+    },
+    // 保存临时路径
+    canvasToFilPath(conf = {}) {
+      return new Promise((resolve, reject) => {
+        common_vendor.index.canvasToTempFilePath({
+          canvasId: this.canvasId,
+          success: (res) => {
+            resolve(res.tempFilePath);
+          },
+          fail: (err) => {
+            reject(err);
           }
-          ctx.restore();
+        }, this);
+      });
+    },
+    //撤回
+    goBack() {
+      this.context.draw();
+      this.history.pop();
+      this.history.forEach((item, index) => {
+        let {
+          color,
+          width
+        } = item.style;
+        this.context.beginPath();
+        this.context.setLineCap("round");
+        this.context.setStrokeStyle(color);
+        this.context.setLineWidth(width);
+        if (item.coordinates.length >= 2) {
+          item.coordinates.forEach((it) => {
+            if (it.type == "touchstart") {
+              this.context.moveTo(it.x, it.y);
+            } else {
+              this.context.lineTo(it.x, it.y);
+            }
+          });
+        } else {
+          const point = item.coordinates[0];
+          this.context.moveTo(point.x, point.y);
+          this.context.lineTo(point.x + 1, point.y);
         }
-        ctx.beginPath();
-        ctx.moveTo(startX, startY);
-        ctx.lineTo(endX, endY);
-        ctx.setStrokeStyle("#333333");
-        ctx.stroke();
-        ctx.closePath();
+        this.context.stroke();
+      });
+      this.context.draw(true);
+    },
+    //清空画布
+    clear() {
+      this.history = [];
+      this.context.draw();
+    },
+    canvasStart(event) {
+      let {
+        x,
+        y
+      } = event.touches[0];
+      this.history.push({
+        style: {
+          color: this.lineColor,
+          width: this.lineWidth
+        },
+        coordinates: [{
+          type: event.type,
+          x,
+          y
+        }]
+      });
+      this.drawGraphics();
+    },
+    canvasMove(e) {
+      let {
+        x,
+        y
+      } = e.touches[0];
+      this.history[this.history.length - 1].coordinates.push({
+        type: e.type,
+        x,
+        y
+      });
+      this.drawGraphics();
+    },
+    //绘制
+    drawGraphics() {
+      let historyLen = this.history.length;
+      if (!historyLen)
+        return;
+      let currentData = this.history[historyLen - 1];
+      let coordinates = currentData.coordinates;
+      if (!coordinates.length)
+        return;
+      let startPoint, endPoint;
+      if (coordinates.length < 2) {
+        startPoint = coordinates[coordinates.length - 1];
+        endPoint = {
+          x: startPoint.x + 1,
+          y: startPoint.y
+        };
+      } else {
+        startPoint = coordinates[coordinates.length - 2];
+        endPoint = coordinates[coordinates.length - 1];
       }
-      ctx.restore();
-      ctx.draw();
+      let style = currentData.style;
+      this.context.beginPath();
+      this.context.setLineCap("round");
+      this.context.setStrokeStyle(style.color);
+      this.context.setLineWidth(style.width);
+      this.context.moveTo(startPoint.x, startPoint.y);
+      this.context.lineTo(endPoint.x, endPoint.y);
+      this.context.stroke();
+      this.context.draw(true);
     }
   }
 };
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return {
-    a: common_vendor.o((...args) => $options.handleSaveToAlbum && $options.handleSaveToAlbum(...args)),
-    b: common_vendor.t($data.compassValue),
-    c: common_vendor.o((...args) => $options.drawPointer && $options.drawPointer(...args))
-  };
+if (!Array) {
+  const _component_th_color = common_vendor.resolveComponent("th-color");
+  const _component_th_line = common_vendor.resolveComponent("th-line");
+  (_component_th_color + _component_th_line)();
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Data/Code/Project/mine/frontEnd/uni-app-ruler/ruler/pages/drawingBoardPage/drawingBoardPage.vue"]]);
-_sfc_main.__runtimeHooks = 6;
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  return common_vendor.e({
+    a: $data.history.length == 0
+  }, $data.history.length == 0 ? {
+    b: common_vendor.n($props.horizontalScreen ? "rote-text" : "")
+  } : {}, {
+    c: $data.canvasShow,
+    d: !$data.canvasShow ? 1 : "",
+    e: $props.canvasId,
+    f: $props.canvasId,
+    g: common_vendor.o(($event) => $options.canvasStart($event)),
+    h: common_vendor.o(($event) => $options.canvasMove($event)),
+    i: !$data.canvasShow,
+    j: $data.canvasShow ? 1 : "",
+    k: $props.horizontalScreen ? 1 : "",
+    l: $options.judge("pencli")
+  }, $options.judge("pencli") ? {
+    m: common_vendor.o(($event) => $options.openAction("thLine"))
+  } : {}, {
+    n: $options.judge("color")
+  }, $options.judge("color") ? {
+    o: common_vendor.o(($event) => $options.openAction("thColor"))
+  } : {}, {
+    p: $options.judge("back")
+  }, $options.judge("back") ? {
+    q: common_vendor.o((...args) => $options.goBack && $options.goBack(...args))
+  } : {}, {
+    r: $options.judge("clear")
+  }, $options.judge("clear") ? {
+    s: common_vendor.o((...args) => $options.clear && $options.clear(...args))
+  } : {}, {
+    t: common_vendor.n($data.actionShow ? "action-open" : "action-close"),
+    v: $props.actionBar.length != 0
+  }, $props.actionBar.length != 0 ? {
+    w: common_vendor.o((...args) => $options.checkAction && $options.checkAction(...args)),
+    x: common_vendor.n($data.actionShow ? "roteRight" : "roteLeft")
+  } : {}, {
+    y: common_vendor.o((...args) => $options.saveCanvas && $options.saveCanvas(...args)),
+    z: common_vendor.n($props.horizontalScreen ? "rote-action" : ""),
+    A: common_vendor.sr("thColor", "2aca10ff-0"),
+    B: common_vendor.o($options.setColor),
+    C: common_vendor.o(($event) => $data.canvasShow = true),
+    D: common_vendor.sr("thLine", "2aca10ff-1"),
+    E: common_vendor.o($options.setLine),
+    F: common_vendor.o(($event) => $data.canvasShow = true),
+    G: $data.bottomHeight + "px"
+  });
+}
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-2aca10ff"], ["__file", "E:/Data/Code/Project/mine/frontEnd/uni-app-ruler/ruler/pages/drawingBoardPage/drawingBoardPage.vue"]]);
 wx.createPage(MiniProgramPage);

@@ -2,10 +2,8 @@
 	<view style="position: absolute;left: 45%;top: 15%;
 	font-size: x-large;">{{compassValue}}°</view>
 	<view>
-		<canvas canvas-id="myCanvas" id="myCanvas" :style="{ width: '100vw', height: '100vh',position:'fixed' }">
-		</canvas>
-		<canvas canvas-id="myCanvas2" id="myCanvas2" :style="{ width: '100vw', height: '100vh',position:'fixed' }"
-			@touchmove="drawPointer" />
+		<canvas canvas-id="myCanvas" id="myCanvas" :style="{ width: '100vw', height: '100vh',position:'fixed' }" />
+		<canvas canvas-id="myCanvas2" id="myCanvas2" :style="{ width: '100vw', height: '100vh',position:'fixed' }" />
 	</view>
 </template>
 
@@ -22,7 +20,7 @@
 				degree: 0,
 				myCanvas1: null,
 				myCanvas2: null,
-				compassValue: 30
+				compassValue: 0
 			}
 		},
 		onReady() {

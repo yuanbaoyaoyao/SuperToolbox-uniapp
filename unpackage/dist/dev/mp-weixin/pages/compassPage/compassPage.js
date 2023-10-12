@@ -14,7 +14,7 @@ const _sfc_main = {
       degree: 0,
       myCanvas1: null,
       myCanvas2: null,
-      compassValue: 30
+      compassValue: 0
     };
   },
   onReady() {
@@ -185,8 +185,7 @@ const _sfc_main = {
 };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
-    a: common_vendor.t($data.compassValue),
-    b: common_vendor.o((...args) => $options.drawPointer && $options.drawPointer(...args))
+    a: common_vendor.t($data.compassValue)
   };
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Data/Code/Project/mine/frontEnd/uni-app-ruler/ruler/pages/compassPage/compassPage.vue"]]);

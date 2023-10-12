@@ -1,299 +1,500 @@
 <template>
-	<button @tap="handleSaveToAlbum">保存图片到相册</button>
-	<view style="position: absolute;left: 45%;top: 15%;
-	font-size: x-large;">{{compassValue}}°</view>
-	<view>
-		<canvas canvas-id="myCanvas" id="myCanvas" :style="{ width: '100vw', height: '100vh',position:'fixed' }">
+	<view class="autograph-box" :style="{ 'padding-bottom': bottomHeight + 'px' }">
+		<canvas class="autograph" v-show="canvasShow" :class="{ 'hidden': !canvasShow }" :canvas-id="canvasId"
+			:id="canvasId" @touchstart="canvasStart($event)" @touchmove="canvasMove($event)">
+			<view v-if="history.length == 0" :class="['default-text', horizontalScreen ? 'rote-text' : '']">绘制区域</view>
 		</canvas>
-		<canvas canvas-id="myCanvas2" id="myCanvas2" :style="{ width: '100vw', height: '100vh',position:'fixed' }"
-			@touchmove="drawPointer" />
+		<view v-show="!canvasShow" class="autograph" :class="{ 'hidden': canvasShow, 'rote-text': horizontalScreen }">
+			配置中
+		</view>
+		<view :class="['action-box', horizontalScreen ? 'rote-action' : '']">
+			<view class="action-bar">
+				<view :class="[actionShow ? 'action-open' : 'action-close']">
+					<image src="../../static/pencli.svg" @click="openAction('thLine')" v-if="judge('pencli')"></image>
+					<image src="../../static/color.svg" @click="openAction('thColor')" v-if="judge('color')"></image>
+					<image src="../../static/back.svg" @click="goBack" v-if="judge('back')"></image>
+					<image src="../../static/clear.svg" @click="clear" v-if="judge('clear')"></image>
+				</view>
+				<image src="../../static/checkRow.png" @click="checkAction" v-if="actionBar.length != 0"
+					:class="[actionShow ? 'roteRight' : 'roteLeft']"></image>
+			</view>
+			<view class="th-submit" @click="saveCanvas" hover-class="hover-class">确定</view>
+		</view>
+		<th-color ref="thColor" @setColor="setColor" @closePop="canvasShow = true"></th-color>
+		<th-line ref="thLine" @setLine="setLine" @closePop="canvasShow = true"></th-line>
 	</view>
 </template>
 
 <script>
+	/**
+	 * @property {Array} actionBar 操作按钮配置 pencli(线条)  color(颜色)  back(返回)  clear(清空)
+	 * @property {String} canvasId CanvasId
+	 * @property {Boolean} isDownload 是否下载签名
+	 * @property {Boolean} horizontalScreen 是否横屏
+	 * @property {String} fileName 文件名称
+	 * @property {String} delineColor 线颜色
+	 * @property {Number} delineWidth 线宽度
+	 **/
+	import thColor from "./th-color.vue"
+	import thLine from "./th-line.vue"
 	export default {
-		onShareAppMessage() {},
-		onShareTimeline() {},
-		data() {
-			return {
-				screenHeight: 0,
-				screenWidth: 0,
-				centerX: 0,
-				centerY: 0,
-				degree: 0,
-				myCanvas1: null,
-				myCanvas2: null,
-				compassValue: 30
+		props: {
+			//canvasId
+			canvasId: {
+				type: String,
+				default: `th-${Date.now()}`
+			},
+			//配置栏
+			actionBar: {
+				type: Array,
+				default: () => {
+					return [
+						'pencli',
+						'color',
+						'back',
+						'clear'
+					]
+				}
+			},
+			//是否下载签名
+			isDownload: {
+				type: Boolean,
+				default: true
+			},
+			//是否横屏
+			horizontalScreen: {
+				type: Boolean,
+				default: false
+			},
+			//文件名称
+			fileName: {
+				type: String,
+				default: '签名'
+			},
+			//线颜色
+			delineColor: {
+				type: String,
+				default: '#000'
+			},
+			//线宽度
+			delineWidth: {
+				type: Number,
+				default: 4
 			}
 		},
-		onReady() {
-			this.handleGetSysInfo()
-			let that = this
-			uni.onCompassChange((res) => {
-				that.compassValue = parseInt(res.direction)
-				// that.drawPointer(parseInt(res.direction))
-				that.drawPointer(res.direction)
-			});
+		data() {
+			return {
+				context: "",
+				actionShow: true,
+				history: [],
+				lineColor: "#000",
+				lineWidth: 4,
+				canvasShow: true,
+				bottomHeight: 0
+			}
+		},
+		components: {
+			thColor,
+			thLine
+		},
+		mounted() {
+			// #ifdef MP-WEIXIN
+			this.getIphoneBottom()
+			// #endif
+			this.lineColor = this.delineColor
+			this.lineWidth = this.delineWidth
+			const ctx = uni.createCanvasContext(this.canvasId, this)
+			this.context = ctx;
 		},
 		methods: {
-			handleSaveToAlbum() {
-				let _this = this
-				uni.canvasToTempFilePath({
-					canvasId: 'myCanvas',
-					destWidth: _this.screenWidth,
-					destHeight: _this.screenHeight,
-					quality: 1,
-					fileType: 'jpg',
-					success: (res) => {
-						uni.saveImageToPhotosAlbum({
-							filePath: res.tempFilePath,
-							success: function() {
-								uni.showToast({
-									icon: 'none',
-									position: 'bottom',
-									title: "图片已下载至相册", // res.tempFilePath
-								});
-							}
-						});
-					},
-				}, _this);
-			},
-			countDigits(num) {
-				if (num === 0) return 1;
-				let digits = 0;
-				while (num > 0) {
-					digits++;
-					num = Math.floor(num / 10);
-				}
-				return digits;
-			},
-			handleGetSysInfo() {
-				let that = this
+			getIphoneBottom() {
 				uni.getSystemInfo({
-					success: function(res) {
-						that.myCanvas2 = uni.createCanvasContext('myCanvas2')
-						that.myCanvas1 = uni.createCanvasContext('myCanvas')
-						that.screenHeight = res.screenHeight
-						that.screenWidth = res.screenWidth
-						that.drawRoundImage();
-						// that.drawPointer();
+					success: res => {
+						const bottom = res.screenHeight - res.safeArea.bottom;
+						this.bottomHeight = bottom > 0 ? bottom - 10 : bottom
 					}
-				});
+				})
 			},
-			drawPointer(degree) {
-				let pageX, pageY, angle
-				// if (e != undefined) {
-				// 	pageX = e.touches[0].x;
-				// 	pageY = e.touches[0].y;
-				// }
-				let ctx = this.myCanvas2
-				ctx.clearRect(0, 0, this.screenHeight, this.screenWidth);
-				let height = this.screenHeight
-				if (height / 2 > this.screenWidth) {
-					height = this.screenWidth * 2
+			//操作栏显示控制
+			judge(key) {
+				if (this.actionBar.includes(key)) {
+					return true
+				} else {
+					return false;
 				}
-
-				const centerX = this.screenWidth / 2; // 圆心的X坐标
-				const centerY = height / 2; // 圆心的Y坐标
-
-				// 菱形边长
-				const diamondSide = centerX * 0.9;
-
-				// 菱形坐标
-				const diamondX = centerX - diamondSide / 2;
-				const diamondY = centerY - diamondSide / 2;
-
-				if (degree != undefined) {
-					angle = degree * Math.PI / 180;
-					// 保存当前坐标系统
-					ctx.save();
-
-					// 移动坐标原点到圆心
-					ctx.translate(centerX, centerY);
-
-					// 旋转坐标系
-					ctx.rotate(angle);
-					// 移动坐标原点回默认位置
-					ctx.translate(-centerX, -centerY);
-				}
-
-				// 开始路径
-				ctx.beginPath();
-
-				// 绘制菱形
-				ctx.moveTo(diamondX + diamondSide * 0.43, centerY);
-				ctx.lineTo(centerX, diamondY);
-				ctx.lineTo(diamondX + diamondSide * 0.57, centerY);
-				ctx.lineTo(diamondX + diamondSide * 0.43, centerY);
-
-				// 填充颜色  
-				ctx.fillStyle = '#ff0000';
-				ctx.fill();
-
-				// 关闭路径
-				ctx.closePath();
-				//
-				// 开始路径
-				ctx.beginPath();
-
-				// 绘制菱形
-				ctx.moveTo(diamondX + diamondSide * 0.43, centerY);
-				ctx.lineTo(centerX, diamondY + diamondSide);
-				ctx.lineTo(diamondX + diamondSide * 0.57, centerY);
-				ctx.lineTo(diamondX + diamondSide * 0.43, centerY);
-
-				// 填充颜色  
-				ctx.fillStyle = '#333333';
-				ctx.fill();
-
-				// 关闭路径
-				ctx.closePath();
-				ctx.draw()
 			},
-			drawRoundImage(e) {
-				let pageX, pageY, angle
-				if (e != null) {
-					pageX = e.touches[0].pageX;
-					pageY = e.touches[0].pageY;
+			//打开选择器
+			openAction(ref) {
+				this.canvasShow = false
+				this.$refs[ref].checkModel()
+			},
+			//设置颜色
+			setColor(color) {
+				this.lineColor = color;
+			},
+			//设置线条
+			setLine(width) {
+				this.lineWidth = width;
+			},
+			//切换控制栏
+			checkAction() {
+				this.actionShow = !this.actionShow
+			},
+			//保存
+			async saveCanvas() {
+				const tempFilePath = await this.canvasToFilPath()
+				if (!this.isDownload) {
+					this.$emit('submit', tempFilePath)
+					return false;
 				}
-
-				let height = this.screenHeight
-				let ctx = this.myCanvas1
-				if (height / 2 > this.screenWidth) {
-					height = this.screenWidth * 2
-				}
-
-				// 修改部分开始
-				const degrees = 360; // 总共的角度
-				const tickSpacing = degrees / 180; // 每度之间的刻度线间隔
-				const centerX = this.screenWidth / 2; // 圆心的X坐标
-				const centerY = height / 2; // 圆心的Y坐标
-
-				const radius = this.screenWidth / 2 - 50
-				const textRadius = this.screenWidth / 2 - 30
-				const directionRadius = this.screenWidth / 2 - 80
-
-				if (e != null) {
-					angle = Math.atan2(pageY - centerY, pageX - centerX);
-					// 保存当前坐标系统
-					ctx.save();
-
-					// 移动坐标原点到圆心
-					ctx.translate(centerX, centerY);
-
-					// 旋转坐标系
-					ctx.rotate(angle);
-					// 移动坐标原点回默认位置
-					ctx.translate(-centerX, -centerY);
-				}
-
-				for (let i = 0; i <= degrees; i += tickSpacing) {
-					let tickLength = 10; // 刻度线的长度
-					if (i % 30 == 0 || i == 0) {
-						tickLength = 15
+				return new Promise((resolve, reject) => {
+					// #ifdef H5
+					try {
+						const a = document.createElement('a')
+						a.href = tempFilePath
+						a.download = this.fileName
+						document.body.appendChild(a)
+						a.click()
+						a.remove()
+						resolve()
+					} catch (e) {
+						reject(e)
 					}
-					const angle = (i * Math.PI) / 180 - Math.PI / 2;
-					const startX = centerX + Math.cos(angle) * (radius + tickLength);
-					const startY = centerY + Math.sin(angle) * (radius + tickLength);
-					const endX = centerX + Math.cos(angle) * radius;
-					const endY = centerY + Math.sin(angle) * radius;
-
-					if ((i % 30 == 0 || i == 0) && i != 360) {
-						// 绘制文本
-						const textAngle = (i * Math.PI) / 180 - Math.PI / 2;
-						const textEndX = centerX + Math.cos(textAngle) * textRadius;
-						const textEndY = centerY + Math.sin(textAngle) * textRadius;
-						ctx.setFontSize(12);
-
-						//再逆时针旋转部分角度
-						let extraRotate
-						if (this.countDigits(i) == 1) {
-							extraRotate = -1.2 * Math.PI / 180;
-						} else if (this.countDigits(i) == 2) {
-							extraRotate = -2.5 * Math.PI / 180;
-						} else if (this.countDigits(i) == 3) {
-							extraRotate = -3.7 * Math.PI / 180;
+					// #endif
+					// #ifndef H5
+					uni.saveImageToPhotosAlbum({
+						filePath: tempFilePath,
+						success(resObj) {
+							this.$emit('submit', tempFilePath)
+							resolve(resObj)
+						},
+						fail(err) {
+							this.$emit('dowmloadErr', err)
+							reject(err)
 						}
-						// 保存当前坐标系统
-						ctx.save();
-
-						// 将坐标原点移动到圆心
-						ctx.translate(centerX, centerY);
-
-						// 围绕圆心旋转10度  
-						ctx.rotate(extraRotate);
-
-						// 恢复坐标原点
-						ctx.translate(-centerX, -centerY);
-
-						// 绘制文本
-						ctx.translate(textEndX, textEndY);
-						ctx.rotate(i * Math.PI / 180);
-						ctx.fillText(i, 0, 0);
-
-						// 恢复坐标系统  
-						ctx.restore();
-					}
-
-					//绘制东南西北
-					if ((i % 45 == 0 || i == 0) && i != 360) {
-						// 绘制文本
-						const directionAngle = (i * Math.PI) / 180 - Math.PI / 2;
-						const directionEndX = centerX + Math.cos(directionAngle) * directionRadius;
-						const directionEndY = centerY + Math.sin(directionAngle) * directionRadius;
-						ctx.setFontSize(20);
-
-						//再逆时针旋转部分角度
-						let extraRotate = -5 * Math.PI / 180;
-
-						// 保存当前坐标系统
-						ctx.save();
-
-						// 将坐标原点移动到圆心
-						ctx.translate(centerX, centerY);
-
-						// 围绕圆心旋转10度  
-						ctx.rotate(extraRotate);
-
-						// 恢复坐标原点
-						ctx.translate(-centerX, -centerY);
-
-						// 绘制文本
-						ctx.translate(directionEndX, directionEndY);
-						//这里稍微调节了一下
-						ctx.rotate(i * Math.PI / 180 + 0.08);
-						switch (i) {
-							case 0:
-								ctx.fillText("北", 0, 0);
-								break;
-							case 90:
-								ctx.fillText("东", 0, 0);
-								break;
-							case 180:
-								ctx.fillText("南", 0, 0);
-								break;
-							case 270:
-								ctx.fillText("西", 0, 0);
-								break;
-						}
-						// 恢复坐标系统  
-						ctx.restore();
-					}
-
-					ctx.beginPath();
-					ctx.moveTo(startX, startY);
-					ctx.lineTo(endX, endY);
-					ctx.setStrokeStyle('#333333');
-					ctx.stroke();
-					ctx.closePath();
-				}
-				// 修改部分结束
-
-				ctx.restore(); // 恢复之前保存的绘图上下文状态
-				ctx.draw();
+					})
+					// #endif
+				})
 			},
-		},
-	};
+			// 保存临时路径
+			canvasToFilPath(conf = {}) {
+				return new Promise((resolve, reject) => {
+					uni.canvasToTempFilePath({
+						canvasId: this.canvasId,
+						success: res => {
+							resolve(res.tempFilePath)
+						},
+						fail: err => {
+							reject(err)
+						}
+					}, this)
+				})
+			},
+			//撤回
+			goBack() {
+				this.context.draw()
+				this.history.pop();
+				this.history.forEach((item, index) => {
+					let {
+						color,
+						width
+					} = item.style
+					this.context.beginPath()
+					this.context.setLineCap('round')
+					this.context.setStrokeStyle(color)
+					this.context.setLineWidth(width)
+					if (item.coordinates.length >= 2) {
+						item.coordinates.forEach(it => {
+							if (it.type == 'touchstart') {
+								this.context.moveTo(it.x, it.y)
+							} else {
+								this.context.lineTo(it.x, it.y)
+							}
+						})
+					} else {
+						const point = item.coordinates[0]
+						this.context.moveTo(point.x, point.y)
+						this.context.lineTo(point.x + 1, point.y)
+					}
+					this.context.stroke()
+				})
+				this.context.draw(true)
+			},
+			//清空画布
+			clear() {
+				this.history = [];
+				this.context.draw()
+			},
+			canvasStart(event) {
+				let {
+					x,
+					y
+				} = event.touches[0]
+				this.history.push({
+					style: {
+						color: this.lineColor,
+						width: this.lineWidth
+					},
+					coordinates: [{
+						type: event.type,
+						x: x,
+						y: y
+					}]
+				})
+				this.drawGraphics()
+			},
+			canvasMove(e) {
+				// e.preventDefault()
+				let {
+					x,
+					y
+				} = e.touches[0]
+				this.history[this.history.length - 1].coordinates.push({
+					type: e.type,
+					x: x,
+					y: y
+				})
+				this.drawGraphics()
+			},
+			//绘制
+			drawGraphics() {
+				let historyLen = this.history.length
+				if (!historyLen) return
+				let currentData = this.history[historyLen - 1]
+				let coordinates = currentData.coordinates
+				if (!coordinates.length) return
+				let startPoint, endPoint;
+				if (coordinates.length < 2) {
+					startPoint = coordinates[coordinates.length - 1]
+					endPoint = {
+						x: startPoint.x + 1,
+						y: startPoint.y
+					}
+				} else {
+					startPoint = coordinates[coordinates.length - 2]
+					endPoint = coordinates[coordinates.length - 1]
+				}
+				let style = currentData.style
+				this.context.beginPath()
+				this.context.setLineCap('round')
+				this.context.setStrokeStyle(style.color)
+				this.context.setLineWidth(style.width)
+				this.context.moveTo(startPoint.x, startPoint.y)
+				this.context.lineTo(endPoint.x, endPoint.y)
+				this.context.stroke()
+				this.context.draw(true)
+			}
+		}
+	}
 </script>
-<style lang="scss">
+
+<style lang="scss" scoped>
+	.hidden {
+		height: 0 !important;
+		overflow: hidden;
+		border: 0 !important;
+	}
+
+	.autograph {
+		width: 100%;
+		height: 92%;
+		box-sizing: border-box;
+		border: 1px dashed #ccc;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 38upx;
+		color: #C0C0C0;
+	}
+
+	.config {
+		width: 100%;
+		height: 92%;
+		background-color: red;
+	}
+
+	.horizontalScreen {
+		left: -150upx !important;
+		bottom: 0 !important;
+		right: auto !important;
+		transform: rotate(90deg);
+		transform-origin: bottom right;
+	}
+
+	.rote-text {
+		transform: rotate(90deg);
+	}
+
+	.rote-action {
+		transform: rotate(180deg);
+		padding-top: 0 !important;
+
+		.th-submit {
+			transform: rotate(-90deg);
+			width: 120upx !important;
+			height: 100% !important;
+		}
+	}
+
+	.action-box {
+		height: 8%;
+		z-index: 50;
+		display: flex;
+		flex-direction: row;
+		align-items: flex-end;
+		justify-content: flex-end;
+		box-sizing: border-box;
+		padding-top: 20upx;
+	}
+
+	.th-submit {
+		width: 150upx;
+		height: 100%;
+		background-color: #5667F5;
+		border-radius: 50upx 0 0 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #FFFFFF;
+		font-size: 30upx;
+		transition: all 0.3s;
+	}
+
+	.action-bar {
+		margin-right: 35upx;
+		align-items: center;
+		display: flex;
+		height: 100%;
+		align-items: center;
+
+		image {
+			width: 35upx;
+			height: 35upx;
+		}
+
+		>image {
+			transition: all 0.3s;
+		}
+
+		>view {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+
+			image {
+				width: 40upx;
+				height: 40upx;
+				margin-right: 60upx;
+			}
+		}
+	}
+
+	.autograph-box {
+		width: 100vw;
+		height: 100vh;
+		position: relative;
+		box-sizing: border-box;
+
+		.default-text {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: flex;
+			align-items: center;
+			z-index: -1;
+			justify-content: center;
+			font-size: 38upx;
+			color: #C0C0C0;
+			letter-spacing: 5upx;
+		}
+	}
+
+	.roteRight {
+		transform: rotate(136deg);
+	}
+
+	.roteLeft {
+		transform: rotate(0deg);
+	}
+
+	.action-open {
+		animation: bounceIn 1s;
+	}
+
+	.action-close {
+		animation: bounceOut 0.5s forwards;
+	}
+
+	@keyframes bounceIn {
+
+		0%,
+		20%,
+		40%,
+		60%,
+		80%,
+		to {
+			-webkit-animation-timing-function: cubic-bezier(.215, .61, .355, 1);
+			animation-timing-function: cubic-bezier(.215, .61, .355, 1)
+		}
+
+		0% {
+			opacity: 0;
+			-webkit-transform: scale3d(.3, .3, .3);
+			transform: scale3d(.3, .3, .3)
+		}
+
+		20% {
+			-webkit-transform: scale3d(1.1, 1.1, 1.1);
+			transform: scale3d(1.1, 1.1, 1.1)
+		}
+
+		40% {
+			-webkit-transform: scale3d(.9, .9, .9);
+			transform: scale3d(.9, .9, .9)
+		}
+
+		60% {
+			opacity: 1;
+			-webkit-transform: scale3d(1.03, 1.03, 1.03);
+			transform: scale3d(1.03, 1.03, 1.03)
+		}
+
+		80% {
+			-webkit-transform: scale3d(.97, .97, .97);
+			transform: scale3d(.97, .97, .97)
+		}
+
+		to {
+			opacity: 1;
+			-webkit-transform: scaleX(1);
+			transform: scaleX(1)
+		}
+	}
+
+	@keyframes bounceOut {
+		20% {
+			-webkit-transform: scale3d(.9, .9, .9);
+			transform: scale3d(.9, .9, .9)
+		}
+
+		50%,
+		55% {
+			opacity: 1;
+			-webkit-transform: scale3d(1.1, 1.1, 1.1);
+			transform: scale3d(1.1, 1.1, 1.1)
+		}
+
+		to {
+			opacity: 0;
+			-webkit-transform: scale3d(.3, .3, .3);
+			transform: scale3d(.3, .3, .3);
+			display: none;
+		}
+	}
+
+	.hover-class {
+		opacity: 0.6;
+	}
 </style>
