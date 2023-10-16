@@ -43,13 +43,19 @@
 					// },
 					{
 						url: "/pages/altitudePage/altitudePage",
-						name: "经纬度/位置",
+						// name: "经纬度/位置",
+						name: "经纬度",
 						icon: "/static/index/position.svg"
 					},
 					{
 						url: "/pages/drawingBoardPage/drawingBoardPage",
 						name: "画板",
 						icon: "/static/index/drawingBoard.svg"
+					},
+					{
+						url: "/pages/qrCodeGenPage/qrCodeGenPage",
+						name: "二维码生成器",
+						icon: "/static/index/qrCodeGen.svg"
 					},
 				]
 			}

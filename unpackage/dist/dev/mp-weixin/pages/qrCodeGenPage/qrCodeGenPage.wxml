@@ -1,0 +1,1 @@
+<view><view class="operation"><input focus placeholder="请输入信息" bindinput="{{a}}" value="{{b}}"/><view class="operation-buttons"><button bindtap="{{c}}">清空</button><button type="primary" bindtap="{{d}}">确认</button></view></view><view wx:if="{{e}}" class="qr-box"><canvas canvas-id="qrcode" hidden="{{!f}}"/><button hidden="{{!g}}" bindtap="{{h}}">保存二维码</button></view></view>

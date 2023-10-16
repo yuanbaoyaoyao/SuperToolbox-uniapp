@@ -70,7 +70,16 @@
 			}
 
 		}
-	],
+	    ,{
+            "path" : "pages/qrCodeGenPage/qrCodeGenPage",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "二维码生成器",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "小匠工具箱",

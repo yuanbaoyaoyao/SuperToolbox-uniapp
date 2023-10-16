@@ -8,7 +8,8 @@
     "pages/decibelMeterPage/decibelMeterPage",
     "pages/altitudePage/altitudePage",
     "pages/drawingBoardPage/drawingBoardPage",
-    "pages/moreAppPage/moreAppPage"
+    "pages/moreAppPage/moreAppPage",
+    "pages/qrCodeGenPage/qrCodeGenPage"
   ],
   "window": {
     "navigationBarTextStyle": "black",

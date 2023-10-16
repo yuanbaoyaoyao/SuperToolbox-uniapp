@@ -11,6 +11,7 @@ if (!Math) {
   "./pages/altitudePage/altitudePage.js";
   "./pages/drawingBoardPage/drawingBoardPage.js";
   "./pages/moreAppPage/moreAppPage.js";
+  "./pages/qrCodeGenPage/qrCodeGenPage.js";
 }
 const _sfc_main = {
   onLaunch: function() {

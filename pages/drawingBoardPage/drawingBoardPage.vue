@@ -16,7 +16,7 @@
 					<image src="../../static/drawingBoard/clear.svg" @click="clear" v-if="judge('clear')"></image>
 				</view>
 			</view>
-			<button size="mini" class="th-submit" @click="saveCanvas" hover-class="hover-class">保存</button>
+			<button type="primary" size="mini" class="th-submit" @click="saveCanvas" hover-class="hover-class">保存</button>
 		</view>
 		<th-color ref="thColor" @setColor="setColor" @closePop="canvasShow = true"></th-color>
 		<th-line ref="thLine" @setLine="setLine" @closePop="canvasShow = true"></th-line>
