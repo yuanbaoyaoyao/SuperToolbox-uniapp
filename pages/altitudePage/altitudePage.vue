@@ -5,10 +5,10 @@
 		<view class="altitude-info-item" v-if="platform=='ios'">当前高度：{{altitude}}</view>
 		<!-- <view>当前速度：{{speed}}</view> -->
 	</view>
-	<button @tap="handleGetAccurateInfo">观看激励视频广告获取高精度地理信息</button>
+<!-- 	<button @tap="handleGetAccurateInfo">观看激励视频广告获取高精度地理信息</button>
 	<view class="altitude-info">
 		<view class="altitude-info-item">当前位置：{{accuratePosition}}</view>
-	</view>
+	</view> -->
 	<!-- 观看激励视频广告获取高精度地理信息 -->
 	<!-- 借助腾讯地图能力 -->
 </template>
@@ -114,10 +114,14 @@
 	.altitude-info {
 		width: 100%;
 		height: 100%;
-		margin-left: 20%;
+		margin-top: 20%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 
 	.altitude-info-item {
-		padding: 20rpx
+		padding: 20rpx;
+		width: fit-content;
 	}
 </style>

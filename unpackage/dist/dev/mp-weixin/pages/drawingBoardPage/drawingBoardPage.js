@@ -271,21 +271,15 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   }, $options.judge("clear") ? {
     s: common_vendor.o((...args) => $options.clear && $options.clear(...args))
   } : {}, {
-    t: common_vendor.n($data.actionShow ? "action-open" : "action-close"),
-    v: $props.actionBar.length != 0
-  }, $props.actionBar.length != 0 ? {
-    w: common_vendor.o((...args) => $options.checkAction && $options.checkAction(...args)),
-    x: common_vendor.n($data.actionShow ? "roteRight" : "roteLeft")
-  } : {}, {
-    y: common_vendor.o((...args) => $options.saveCanvas && $options.saveCanvas(...args)),
-    z: common_vendor.n($props.horizontalScreen ? "rote-action" : ""),
-    A: common_vendor.sr("thColor", "2aca10ff-0"),
-    B: common_vendor.o($options.setColor),
-    C: common_vendor.o(($event) => $data.canvasShow = true),
-    D: common_vendor.sr("thLine", "2aca10ff-1"),
-    E: common_vendor.o($options.setLine),
-    F: common_vendor.o(($event) => $data.canvasShow = true),
-    G: $data.bottomHeight + "px"
+    t: common_vendor.o((...args) => $options.saveCanvas && $options.saveCanvas(...args)),
+    v: common_vendor.n($props.horizontalScreen ? "rote-action" : ""),
+    w: common_vendor.sr("thColor", "2aca10ff-0"),
+    x: common_vendor.o($options.setColor),
+    y: common_vendor.o(($event) => $data.canvasShow = true),
+    z: common_vendor.sr("thLine", "2aca10ff-1"),
+    A: common_vendor.o($options.setLine),
+    B: common_vendor.o(($event) => $data.canvasShow = true),
+    C: $data.bottomHeight + "px"
   });
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-2aca10ff"], ["__file", "E:/Data/Code/Project/mine/frontEnd/uni-app-ruler/ruler/pages/drawingBoardPage/drawingBoardPage.vue"]]);

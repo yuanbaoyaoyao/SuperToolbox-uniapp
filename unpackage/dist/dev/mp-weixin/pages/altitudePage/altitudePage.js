@@ -98,10 +98,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     c: $data.platform == "ios"
   }, $data.platform == "ios" ? {
     d: common_vendor.t($data.altitude)
-  } : {}, {
-    e: common_vendor.o((...args) => $options.handleGetAccurateInfo && $options.handleGetAccurateInfo(...args)),
-    f: common_vendor.t($data.accuratePosition)
-  });
+  } : {});
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Data/Code/Project/mine/frontEnd/uni-app-ruler/ruler/pages/altitudePage/altitudePage.vue"]]);
 wx.createPage(MiniProgramPage);

@@ -14,7 +14,9 @@ const _sfc_main = {
       degree: 0,
       myCanvas1: null,
       myCanvas2: null,
-      compassValue: 0
+      compassValue: 0,
+      direction: "北",
+      isWorking: false
     };
   },
   onReady() {
@@ -22,7 +24,25 @@ const _sfc_main = {
     let that = this;
     common_vendor.index.onCompassChange((res) => {
       that.compassValue = parseInt(res.direction);
+      if (that.compassValue > 345 && that.compassValue < 15) {
+        that.direction = "北";
+      } else if (that.compassValue >= 15 && that.compassValue <= 75) {
+        that.direction = "东北";
+      } else if (that.compassValue > 75 && that.compassValue < 105) {
+        that.direction = "东";
+      } else if (that.compassValue >= 105 && that.compassValue <= 165) {
+        that.direction = "东南";
+      } else if (that.compassValue > 165 && that.compassValue < 195) {
+        that.direction = "南";
+      } else if (that.compassValue >= 195 && that.compassValue <= 255) {
+        that.direction = "西南";
+      } else if (that.compassValue > 255 && that.compassValue < 285) {
+        that.direction = "西";
+      } else if (that.compassValue >= 285 && that.compassValue <= 345) {
+        that.direction = "西北";
+      }
       that.drawPointer(res.direction);
+      this.isWorking = true;
     });
   },
   methods: {
@@ -184,9 +204,12 @@ const _sfc_main = {
   }
 };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return {
-    a: common_vendor.t($data.compassValue)
-  };
+  return common_vendor.e({
+    a: $data.isWorking
+  }, $data.isWorking ? {
+    b: common_vendor.t($data.direction),
+    c: common_vendor.t($data.compassValue)
+  } : {});
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Data/Code/Project/mine/frontEnd/uni-app-ruler/ruler/pages/compassPage/compassPage.vue"]]);
 _sfc_main.__runtimeHooks = 6;

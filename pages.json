@@ -1,6 +1,5 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-
 		{
 			"path": "pages/index/index",
 			"style": {
@@ -56,22 +55,46 @@
 				"enablePullDownRefresh": false
 			}
 
+		}, {
+			"path": "pages/drawingBoardPage/drawingBoardPage",
+			"style": {
+				"navigationBarTitleText": "画板",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/moreAppPage/moreAppPage",
+			"style": {
+				"navigationBarTitleText": "更多应用",
+				"enablePullDownRefresh": false
+			}
+
 		}
-	    ,{
-            "path" : "pages/drawingBoardPage/drawingBoardPage",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "超级工具箱",
+		"navigationBarTitleText": "小匠工具箱",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	},
-	"uniIdRouter": {}
+	"uniIdRouter": {},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#000000",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/home_unchecked.png",
+				"selectedIconPath": "static/home.png",
+				"text": "主页"
+			},
+			{
+				"pagePath": "pages/moreAppPage/moreAppPage",
+				"iconPath": "static/more_app_unchecked.png",
+				"selectedIconPath": "static/more_app.png",
+				"text": "更多"
+			}
+		]
+	}
 }

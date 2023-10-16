@@ -1,7 +1,8 @@
 <template>
-	<view style="position: absolute;left: 45%;top: 15%;
-	font-size: x-large;">{{compassValue}}°</view>
-	<view>
+	<view style="position: fixed;padding-top: 20%;display: flex;justify-content: center;width: 100%;" v-if="isWorking">
+		<text style="width: fit-content;font-size: x-large;">{{direction}} {{compassValue}}°</text>
+	</view>
+	<view style="position: fixed;width: 100vw;height: 100vh">
 		<canvas canvas-id="myCanvas" id="myCanvas" :style="{ width: '100vw', height: '100vh',position:'fixed' }" />
 		<canvas canvas-id="myCanvas2" id="myCanvas2" :style="{ width: '100vw', height: '100vh',position:'fixed' }" />
 	</view>
@@ -20,7 +21,9 @@
 				degree: 0,
 				myCanvas1: null,
 				myCanvas2: null,
-				compassValue: 0
+				compassValue: 0,
+				direction: '北',
+				isWorking: false
 			}
 		},
 		onReady() {
@@ -28,8 +31,25 @@
 			let that = this
 			uni.onCompassChange((res) => {
 				that.compassValue = parseInt(res.direction)
-				// that.drawPointer(parseInt(res.direction))
+				if (that.compassValue > 345 && that.compassValue < 15) {
+					that.direction = '北'
+				} else if (that.compassValue >= 15 && that.compassValue <= 75) {
+					that.direction = '东北'
+				} else if (that.compassValue > 75 && that.compassValue < 105) {
+					that.direction = '东'
+				} else if (that.compassValue >= 105 && that.compassValue <= 165) {
+					that.direction = '东南'
+				} else if (that.compassValue > 165 && that.compassValue < 195) {
+					that.direction = '南'
+				} else if (that.compassValue >= 195 && that.compassValue <= 255) {
+					that.direction = '西南'
+				} else if (that.compassValue > 255 && that.compassValue < 285) {
+					that.direction = '西'
+				} else if (that.compassValue >= 285 && that.compassValue <= 345) {
+					that.direction = '西北'
+				}
 				that.drawPointer(res.direction)
+				this.isWorking = true
 			});
 		},
 		methods: {

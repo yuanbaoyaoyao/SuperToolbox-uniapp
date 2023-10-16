@@ -11,7 +11,8 @@ const _sfc_main = {
       x: 0,
       y: 0,
       z: 0,
-      alpha: 0
+      alpha: 0,
+      beta: 0
     };
   },
   // 使用示例
@@ -29,9 +30,11 @@ const _sfc_main = {
           let z = (res.z * 180).toFixed(2);
           let top = 180 + Number(y);
           let left = 180 + Number(x);
+          let xg = x / 9.8;
           let yg = y / 9.8;
           let zg = z / 9.8;
-          this.alpha = Math.atan2(yg, zg) * 180 / Math.PI;
+          that.alpha = (180 - Math.abs(Math.atan2(yg, zg) * 180 / Math.PI)).toFixed(2);
+          that.beta = Math.abs(Math.atan2(xg, Math.sqrt(yg * yg + zg * zg)) * 180 / Math.PI).toFixed(2);
           that.top = top;
           that.left = left;
           that.x = x;
@@ -55,8 +58,9 @@ const _sfc_main = {
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_vendor.t($data.alpha),
-    b: common_vendor.s("background:" + $data.regionBG),
-    c: common_vendor.s("background:" + $data.backgroundColor + ";top:" + $data.top + "rpx;left:" + $data.left + "rpx;")
+    b: common_vendor.t($data.beta),
+    c: common_vendor.s("background:" + $data.regionBG),
+    d: common_vendor.s("background:" + $data.backgroundColor + ";top:" + $data.top + "rpx;left:" + $data.left + "rpx;")
   };
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Data/Code/Project/mine/frontEnd/uni-app-ruler/ruler/pages/gradienterPage/gradienterPage.vue"]]);

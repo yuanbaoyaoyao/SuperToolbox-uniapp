@@ -11,15 +11,18 @@ const _sfc_main = {
         // },
         {
           url: "/pages/protractorPage/protractorPage",
-          name: "量角器"
+          name: "量角器",
+          icon: "/static/index/protractor.svg"
         },
         {
           url: "/pages/compassPage/compassPage",
-          name: "指南针"
+          name: "指南针",
+          icon: "/static/index/compass.svg"
         },
         {
           url: "/pages/gradienterPage/gradienterPage",
-          name: "水平仪"
+          name: "水平仪",
+          icon: "/static/index/gradienter.svg"
         },
         // {
         // 	url: "/pages/decibelMeterPage/decibelMeterPage",
@@ -27,11 +30,13 @@ const _sfc_main = {
         // },
         {
           url: "/pages/altitudePage/altitudePage",
-          name: "经纬度/位置"
+          name: "经纬度/位置",
+          icon: "/static/index/position.svg"
         },
         {
           url: "/pages/drawingBoardPage/drawingBoardPage",
-          name: "画板"
+          name: "画板",
+          icon: "/static/index/drawingBoard.svg"
         }
       ]
     };
@@ -61,9 +66,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_vendor.f($data.routers, (item, index, i0) => {
       return {
-        a: common_vendor.t(item.name),
-        b: index,
-        c: common_vendor.o(($event) => $options.handleClickRouter(index), index)
+        a: item.icon,
+        b: common_vendor.t(item.name),
+        c: index,
+        d: common_vendor.o(($event) => $options.handleClickRouter(index), index)
       };
     })
   };

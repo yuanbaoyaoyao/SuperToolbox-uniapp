@@ -9,16 +9,14 @@
 		</view>
 		<view :class="['action-box', horizontalScreen ? 'rote-action' : '']">
 			<view class="action-bar">
-				<view :class="[actionShow ? 'action-open' : 'action-close']">
-					<image src="../../static/pencli.svg" @click="openAction('thLine')" v-if="judge('pencli')"></image>
-					<image src="../../static/color.svg" @click="openAction('thColor')" v-if="judge('color')"></image>
-					<image src="../../static/back.svg" @click="goBack" v-if="judge('back')"></image>
-					<image src="../../static/clear.svg" @click="clear" v-if="judge('clear')"></image>
+				<view>
+					<image src="../../static/drawingBoard/pencli.svg" @click="openAction('thLine')" v-if="judge('pencli')"></image>
+					<image src="../../static/drawingBoard/color.svg" @click="openAction('thColor')" v-if="judge('color')"></image>
+					<image src="../../static/drawingBoard/back.svg" @click="goBack" v-if="judge('back')"></image>
+					<image src="../../static/drawingBoard/clear.svg" @click="clear" v-if="judge('clear')"></image>
 				</view>
-				<image src="../../static/checkRow.png" @click="checkAction" v-if="actionBar.length != 0"
-					:class="[actionShow ? 'roteRight' : 'roteLeft']"></image>
 			</view>
-			<view class="th-submit" @click="saveCanvas" hover-class="hover-class">确定</view>
+			<button size="mini" class="th-submit" @click="saveCanvas" hover-class="hover-class">保存</button>
 		</view>
 		<th-color ref="thColor" @setColor="setColor" @closePop="canvasShow = true"></th-color>
 		<th-line ref="thLine" @setLine="setLine" @closePop="canvasShow = true"></th-line>
@@ -299,7 +297,6 @@
 		width: 100%;
 		height: 92%;
 		box-sizing: border-box;
-		border: 1px dashed #ccc;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -333,40 +330,33 @@
 			transform: rotate(-90deg);
 			width: 120upx !important;
 			height: 100% !important;
+
 		}
 	}
 
 	.action-box {
 		height: 8%;
+		position: absolute;
+		bottom: 0;
+		width: 100%;
 		z-index: 50;
 		display: flex;
-		flex-direction: row;
-		align-items: flex-end;
+		align-items: center;
 		justify-content: flex-end;
-		box-sizing: border-box;
-		padding-top: 20upx;
+		border-top: 1px dashed gray;
+		button{
+			margin: 0;
+			margin-right: 10upx;
+		}
 	}
 
 	.th-submit {
-		width: 150upx;
-		height: 100%;
-		background-color: #5667F5;
-		border-radius: 50upx 0 0 0;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		background-color: #55aaff;
 		color: #FFFFFF;
-		font-size: 30upx;
 		transition: all 0.3s;
 	}
 
 	.action-bar {
-		margin-right: 35upx;
-		align-items: center;
-		display: flex;
-		height: 100%;
-		align-items: center;
-
 		image {
 			width: 35upx;
 			height: 35upx;
@@ -417,81 +407,6 @@
 
 	.roteLeft {
 		transform: rotate(0deg);
-	}
-
-	.action-open {
-		animation: bounceIn 1s;
-	}
-
-	.action-close {
-		animation: bounceOut 0.5s forwards;
-	}
-
-	@keyframes bounceIn {
-
-		0%,
-		20%,
-		40%,
-		60%,
-		80%,
-		to {
-			-webkit-animation-timing-function: cubic-bezier(.215, .61, .355, 1);
-			animation-timing-function: cubic-bezier(.215, .61, .355, 1)
-		}
-
-		0% {
-			opacity: 0;
-			-webkit-transform: scale3d(.3, .3, .3);
-			transform: scale3d(.3, .3, .3)
-		}
-
-		20% {
-			-webkit-transform: scale3d(1.1, 1.1, 1.1);
-			transform: scale3d(1.1, 1.1, 1.1)
-		}
-
-		40% {
-			-webkit-transform: scale3d(.9, .9, .9);
-			transform: scale3d(.9, .9, .9)
-		}
-
-		60% {
-			opacity: 1;
-			-webkit-transform: scale3d(1.03, 1.03, 1.03);
-			transform: scale3d(1.03, 1.03, 1.03)
-		}
-
-		80% {
-			-webkit-transform: scale3d(.97, .97, .97);
-			transform: scale3d(.97, .97, .97)
-		}
-
-		to {
-			opacity: 1;
-			-webkit-transform: scaleX(1);
-			transform: scaleX(1)
-		}
-	}
-
-	@keyframes bounceOut {
-		20% {
-			-webkit-transform: scale3d(.9, .9, .9);
-			transform: scale3d(.9, .9, .9)
-		}
-
-		50%,
-		55% {
-			opacity: 1;
-			-webkit-transform: scale3d(1.1, 1.1, 1.1);
-			transform: scale3d(1.1, 1.1, 1.1)
-		}
-
-		to {
-			opacity: 0;
-			-webkit-transform: scale3d(.3, .3, .3);
-			transform: scale3d(.3, .3, .3);
-			display: none;
-		}
 	}
 
 	.hover-class {

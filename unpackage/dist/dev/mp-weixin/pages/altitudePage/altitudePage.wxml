@@ -1,1 +1,1 @@
-<view class="altitude-info"><view class="altitude-info-item">当前经度：{{a}}</view><view class="altitude-info-item">当前纬度：{{b}}</view><view wx:if="{{c}}" class="altitude-info-item">当前高度：{{d}}</view></view><button bindtap="{{e}}">观看激励视频广告获取高精度地理信息</button><view class="altitude-info"><view class="altitude-info-item">当前位置：{{f}}</view></view>
+<view class="altitude-info"><view class="altitude-info-item">当前经度：{{a}}</view><view class="altitude-info-item">当前纬度：{{b}}</view><view wx:if="{{c}}" class="altitude-info-item">当前高度：{{d}}</view></view>

@@ -2,7 +2,10 @@
 	<view class="content">
 		<view class="content-details">
 			<view v-for="(item,index) in routers" :key="index" class="content-detail" @click="handleClickRouter(index)">
-				{{item.name}}
+				<image :src="item.icon" />
+				<text>
+					{{item.name}}
+				</text>
 			</view>
 		</view>
 	</view>
@@ -20,15 +23,18 @@
 					// },
 					{
 						url: "/pages/protractorPage/protractorPage",
-						name: "量角器"
+						name: "量角器",
+						icon: "/static/index/protractor.svg"
 					},
 					{
 						url: "/pages/compassPage/compassPage",
-						name: "指南针"
+						name: "指南针",
+						icon: "/static/index/compass.svg"
 					},
 					{
 						url: "/pages/gradienterPage/gradienterPage",
-						name: "水平仪"
+						name: "水平仪",
+						icon: "/static/index/gradienter.svg"
 					},
 
 					// {
@@ -37,11 +43,13 @@
 					// },
 					{
 						url: "/pages/altitudePage/altitudePage",
-						name: "经纬度/位置"
+						name: "经纬度/位置",
+						icon: "/static/index/position.svg"
 					},
 					{
 						url: "/pages/drawingBoardPage/drawingBoardPage",
-						name: "画板"
+						name: "画板",
+						icon: "/static/index/drawingBoard.svg"
 					},
 				]
 			}
@@ -70,7 +78,7 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 	.content {
 		display: flex;
 		flex-direction: column;
@@ -80,17 +88,32 @@
 
 	.content-details {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		/* grid-template-columns: 1fr 1fr; */
+		grid-template-columns: 1fr;
 		width: 100%;
 		justify-items: center;
 	}
 
 	.content-detail {
 		padding: 30rpx;
-		background-color: aquamarine;
-		text-align: center;
+		// background-color: #aaffff;
 		border-radius: 10rpx;
 		margin: 10rpx;
-		width: 70%;
+		width: 60%;
+		box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+		display: grid;
+		grid-template-columns: 1fr 2fr;
+		justify-items: center;
+		align-items: center;
+
+		image {
+			width: 60upx;
+			height: 60upx;
+		}
+
+		text {
+			justify-self: start;
+			font-size: large;
+		}
 	}
 </style>

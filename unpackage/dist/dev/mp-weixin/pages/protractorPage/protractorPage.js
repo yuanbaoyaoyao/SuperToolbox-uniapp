@@ -8,10 +8,12 @@ const _sfc_main = {
   data() {
     return {
       isShowCamera: false,
+      ctx1: null,
       ctx: null,
       screenHeight: 0,
       screenWidth: 0,
-      degree: 0
+      degree: 0,
+      isReverseDirection: false
     };
   },
   onReady() {
@@ -25,12 +27,20 @@ const _sfc_main = {
       this.isShowCamera = !this.isShowCamera;
       this.handleGetSysInfo();
     },
+    handleReverseDirection() {
+      this.isReverseDirection = !this.isReverseDirection;
+      this.ctx1.draw(false);
+      this.ctx.draw(false);
+      this.ctx.draw(false);
+      this.drawRoundImage(this.screenHeight, this.ctx1);
+    },
     handleGetSysInfo() {
       let that = this;
       common_vendor.index.getSystemInfo({
         success: function(res) {
           const ctx = common_vendor.index.createCanvasContext("myCanvas");
           const ctx2 = common_vendor.index.createCanvasContext("myCanvas2");
+          that.ctx1 = ctx;
           that.ctx = ctx2;
           that.screenHeight = res.screenHeight;
           that.screenWidth = res.screenWidth;
@@ -73,7 +83,12 @@ const _sfc_main = {
       this.ctx.translate(centerX + 20, centerY - 20);
       this.ctx.rotate(Math.PI / 2);
       this.ctx.setFontSize(20);
-      this.ctx.fillText(this.degree + "°", 0, 0);
+      if (this.isReverseDirection) {
+        let reverseDegree = (180 - this.degree).toFixed(2);
+        this.ctx.fillText(reverseDegree + "°", 0, 0);
+      } else {
+        this.ctx.fillText(this.degree + "°", 0, 0);
+      }
       this.ctx.setTransform(1, 0, 0, 1, 0, 0);
     },
     drawRoundImage(height, ctx) {
@@ -113,7 +128,11 @@ const _sfc_main = {
           ctx.setFontSize(12);
           ctx.translate(textEndX, textEndY);
           ctx.rotate(Math.PI / 2);
-          ctx.fillText(i, 0, 0);
+          if (this.isReverseDirection) {
+            ctx.fillText(180 - i, 0, 0);
+          } else {
+            ctx.fillText(i, 0, 0);
+          }
           ctx.setTransform(1, 0, 0, 1, 0, 0);
         }
         ctx.beginPath();
@@ -132,13 +151,14 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: common_vendor.t(!$data.isShowCamera ? "打开相机" : "关闭相机"),
     b: common_vendor.o((...args) => $options.handleCamera && $options.handleCamera(...args)),
-    c: common_vendor.o((...args) => $options.handleReturn && $options.handleReturn(...args)),
-    d: $data.isShowCamera
+    c: common_vendor.o((...args) => $options.handleReverseDirection && $options.handleReverseDirection(...args)),
+    d: common_vendor.o((...args) => $options.handleReturn && $options.handleReturn(...args)),
+    e: $data.isShowCamera
   }, $data.isShowCamera ? {
-    e: common_vendor.o((...args) => _ctx.error && _ctx.error(...args))
+    f: common_vendor.o((...args) => _ctx.error && _ctx.error(...args))
   } : {}, {
-    f: common_vendor.o((...args) => $options.touchstart && $options.touchstart(...args)),
-    g: common_vendor.o((...args) => $options.touchstart && $options.touchstart(...args))
+    g: common_vendor.o((...args) => $options.touchstart && $options.touchstart(...args)),
+    h: common_vendor.o((...args) => $options.touchstart && $options.touchstart(...args))
   });
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Data/Code/Project/mine/frontEnd/uni-app-ruler/ruler/pages/protractorPage/protractorPage.vue"]]);

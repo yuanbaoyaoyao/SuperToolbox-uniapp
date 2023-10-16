@@ -1,1 +1,1 @@
-<view class="content"><view class="content-details"><view wx:for="{{a}}" wx:for-item="item" wx:key="b" class="content-detail" bindtap="{{item.c}}">{{item.a}}</view></view></view>
+<view class="content"><view class="content-details"><view wx:for="{{a}}" wx:for-item="item" wx:key="c" class="content-detail" bindtap="{{item.d}}"><image src="{{item.a}}"/><text>{{item.b}}</text></view></view></view>

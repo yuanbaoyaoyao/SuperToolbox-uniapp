@@ -1,8 +1,9 @@
 <template>
 	<!-- todo:添加切换方向功能 -->
 	<view class="action-buttons">
-		<button plain @click="handleCamera">{{!isShowCamera?'打开相机':'关闭相机'}}</button>
-		<button plain @click="handleReturn">返回主页</button>
+		<button size="mini" plain @click="handleCamera">{{!isShowCamera?'打开相机':'关闭相机'}}</button>
+		<button size="mini" plain @click="handleReverseDirection">切换方向</button>
+		<button size="mini" plain @click="handleReturn">返回主页</button>
 	</view>
 	<view>
 		<camera device-position="back" flash="off" @error="error"
@@ -21,10 +22,12 @@
 		data() {
 			return {
 				isShowCamera: false,
+				ctx1: null,
 				ctx: null,
 				screenHeight: 0,
 				screenWidth: 0,
-				degree: 0
+				degree: 0,
+				isReverseDirection: false
 			}
 		},
 		onReady() {
@@ -38,12 +41,20 @@
 				this.isShowCamera = !this.isShowCamera
 				this.handleGetSysInfo()
 			},
+			handleReverseDirection() {
+				this.isReverseDirection = !this.isReverseDirection
+				this.ctx1.draw(false);
+				this.ctx.draw(false);
+				this.ctx.draw(false);
+				this.drawRoundImage(this.screenHeight, this.ctx1)
+			},
 			handleGetSysInfo() {
 				let that = this
 				uni.getSystemInfo({
 					success: function(res) {
 						const ctx = uni.createCanvasContext('myCanvas');
 						const ctx2 = uni.createCanvasContext('myCanvas2');
+						that.ctx1 = ctx
 						that.ctx = ctx2
 						that.screenHeight = res.screenHeight
 						that.screenWidth = res.screenWidth
@@ -92,7 +103,12 @@
 				this.ctx.translate(centerX + 20, centerY - 20);
 				this.ctx.rotate(Math.PI / 2);
 				this.ctx.setFontSize(20);
-				this.ctx.fillText(this.degree + '°', 0, 0);
+				if (this.isReverseDirection) {
+					let reverseDegree = (180 - this.degree).toFixed(2)
+					this.ctx.fillText(reverseDegree + '°', 0, 0);
+				} else {
+					this.ctx.fillText(this.degree + '°', 0, 0);
+				}
 
 				this.ctx.setTransform(1, 0, 0, 1, 0, 0);
 			},
@@ -107,9 +123,7 @@
 				ctx.setStrokeStyle('#333333');
 				ctx.stroke();
 				ctx.closePath();
-				// ctx.clip();
 
-				// 修改部分开始
 				const degrees = 180; // 总共的角度
 				const tickSpacing = degrees / 180; // 每度之间的刻度线间隔
 				const centerX = 10; // 圆心的X坐标
@@ -138,15 +152,17 @@
 					const textEndY = centerTextY + Math.sin(angle) * textRadius;
 
 					if (i % 10 == 0 || i == 0) {
-						// 绘制文本
-						// ctx.fillText(i, centerX + Math.cos(angle) * (radius - 40),
-						// 	centerY + Math.sin(angle) * (radius - 40));
 						ctx.setFontSize(12);
 
 						ctx.translate(textEndX, textEndY);
 						ctx.rotate(Math.PI / 2);
 
-						ctx.fillText(i, 0, 0);
+						//切换方向
+						if (this.isReverseDirection) {
+							ctx.fillText(180 - i, 0, 0);
+						} else {
+							ctx.fillText(i, 0, 0);
+						}
 
 						ctx.setTransform(1, 0, 0, 1, 0, 0);
 
@@ -159,7 +175,6 @@
 					ctx.stroke();
 					ctx.closePath();
 				}
-				// 修改部分结束
 
 				ctx.restore(); // 恢复之前保存的绘图上下文状态
 				ctx.draw();
@@ -173,12 +188,16 @@
 		width: fit-content;
 		font-size: 35rpx;
 		position: absolute;
-		right: 0;
+		right: 60rpx;
 		bottom: 0;
-		margin-bottom: 60rpx;
-		margin-right: 20rpx;
 		transform: rotate(90deg);
 		z-index: 1000;
+		display: flex;
+		flex-direction: column;
+
+		button {
+			margin-top: 10rpx;
+		}
 	}
 
 	#myCanvas {

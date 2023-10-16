@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "",
+  "navigationBarTitleText": "画板",
   "enablePullDownRefresh": false,
   "usingComponents": {
     "th-color": "./th-color",

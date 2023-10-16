@@ -2,8 +2,13 @@
 .altitude-info {
 		width: 100%;
 		height: 100%;
-		margin-left: 20%;
+		margin-top: 20%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 }
 .altitude-info-item {
-		padding: 20rpx
+		padding: 20rpx;
+		width: -webkit-fit-content;
+		width: fit-content;
 }

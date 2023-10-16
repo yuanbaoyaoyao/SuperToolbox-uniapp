@@ -10,6 +10,7 @@ if (!Math) {
   "./pages/decibelMeterPage/decibelMeterPage.js";
   "./pages/altitudePage/altitudePage.js";
   "./pages/drawingBoardPage/drawingBoardPage.js";
+  "./pages/moreAppPage/moreAppPage.js";
 }
 const _sfc_main = {
   onLaunch: function() {

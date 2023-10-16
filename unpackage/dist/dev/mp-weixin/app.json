@@ -7,13 +7,34 @@
     "pages/compassPage/compassPage",
     "pages/decibelMeterPage/decibelMeterPage",
     "pages/altitudePage/altitudePage",
-    "pages/drawingBoardPage/drawingBoardPage"
+    "pages/drawingBoardPage/drawingBoardPage",
+    "pages/moreAppPage/moreAppPage"
   ],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "超级工具箱",
+    "navigationBarTitleText": "小匠工具箱",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#000000",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/home_unchecked.png",
+        "selectedIconPath": "static/home.png",
+        "text": "主页"
+      },
+      {
+        "pagePath": "pages/moreAppPage/moreAppPage",
+        "iconPath": "static/more_app_unchecked.png",
+        "selectedIconPath": "static/more_app.png",
+        "text": "更多"
+      }
+    ]
   },
   "requiredPrivateInfos": [
     "getLocation",

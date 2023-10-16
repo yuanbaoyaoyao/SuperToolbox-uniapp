@@ -1,6 +1,7 @@
 <template>
 	<view class="gyroscope-value">
-		<view>水平方向:{{alpha}}°</view>
+		<text>水平角度:{{alpha}}°</text>
+		<text>垂直角度:{{beta}}°</text>
 	</view>
 	<view class="gyroscope">
 		<view class="region" :style="'background:' + regionBG"></view>
@@ -21,7 +22,8 @@
 				x: 0,
 				y: 0,
 				z: 0,
-				alpha: 0
+				alpha: 0,
+				beta: 0
 			};
 		},
 		// 使用示例
@@ -31,7 +33,6 @@
 				interval: "normal",
 				success() {
 					uni.onAccelerometerChange(function(res) {
-
 						if (!that.isOnAccelerometerChange) {
 							return;
 						}
@@ -44,9 +45,9 @@
 						let yg = y / 9.8;
 						let zg = z / 9.8;
 
-						this.alpha = Math.atan2(yg, zg) * 180 / Math.PI;
-						let beta = Math.atan2(xg, Math.sqrt(yg * yg + zg * zg)) * 180 / Math.PI;
-
+						that.alpha = (180 - Math.abs(Math.atan2(yg, zg) * 180 / Math.PI)).toFixed(2);
+						that.beta = (Math.abs(Math.atan2(xg, Math.sqrt(yg * yg + zg * zg)) * 180 /
+							Math.PI)).toFixed(2);
 						that.top = top;
 						that.left = left;
 						that.x = x;
@@ -69,11 +70,17 @@
 	};
 </script>
 
-<style>
+<style lang="scss">
 	.gyroscope-value {
-		position: absolute;
-		left: 38%;
-		top: 10%;
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		align-items: center;
+		margin-top: 20%;
+
+		text {
+			width: fit-content;
+		}
 	}
 
 	.gyroscope {
