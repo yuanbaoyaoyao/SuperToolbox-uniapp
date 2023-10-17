@@ -67,6 +67,8 @@
 		display: flex;
 		justify-content: center;
 		width: 100%;
+		margin-top: 20upx;
+		margin-bottom: 10upx;
 
 		&-line {
 			background-color: #bfc5cc;
