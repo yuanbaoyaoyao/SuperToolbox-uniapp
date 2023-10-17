@@ -1,1 +1,0 @@
-<view><view class="qrcode"><canvas style="{{'width:' + a + ';' + ('height:' + b) + ';' + ('background:' + c)}}" canvas-id="couponQrcode"></canvas></view></view>

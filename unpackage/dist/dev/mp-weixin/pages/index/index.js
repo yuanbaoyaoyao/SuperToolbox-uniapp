@@ -43,6 +43,11 @@ const _sfc_main = {
           url: "/pages/qrCodeGenPage/qrCodeGenPage",
           name: "二维码生成器",
           icon: "/static/index/qrCodeGen.svg"
+        },
+        {
+          url: "/pages/qrCodeIdPage/qrCodeIdPage",
+          name: "二维码扫描器",
+          icon: "/static/index/qrCodeId.svg"
         }
       ]
     };

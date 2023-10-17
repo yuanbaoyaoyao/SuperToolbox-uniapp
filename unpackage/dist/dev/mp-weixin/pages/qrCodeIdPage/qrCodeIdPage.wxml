@@ -1,0 +1,1 @@
+<view class="qr-code-id"><view wx:if="{{a}}"><view class="qr-code-id-info">条码类型：{{b}}</view><view class="qr-code-id-info">条码内容：{{c}}</view></view><view><view class="qr-code-id-info"></view></view><button size="mini" bindtap="{{d}}">点击扫描二维码</button></view>

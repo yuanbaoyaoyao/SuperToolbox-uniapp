@@ -23,56 +23,16 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.more-app-header {
+.qr-code-id {
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-.more-app-header text {
-  font-size: large;
-  margin: 30rpx;
-}
-.more-app-divider {
-  display: flex;
   justify-content: center;
-  width: 100%;
-}
-.more-app-divider-line {
-  background-color: #bfc5cc;
-  width: calc(100vw - 40rpx);
-  height: 2rpx;
-}
-.more-app-item {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
   align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+.qr-code-id-info {
   margin: 20rpx;
-}
-.more-app-item-info {
-  display: flex;
-  flex-direction: column;
-}
-.more-app-item-info-desc {
-  font-size: 25rpx;
-  color: gray;
-}
-.more-app-item image {
-  width: 120rpx;
-  height: 120rpx;
-}
-.more-app {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-}
-.more-app-popup {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #afafaf;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: -webkit-fit-content;
+  width: fit-content;
 }

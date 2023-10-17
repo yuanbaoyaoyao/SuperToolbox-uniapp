@@ -1,6 +1,6 @@
 <!-- TODO 二维码关注公众号,增加公众号头像 -->
 <template>
-	<view>
+	<view class="more-app">
 		<view class="more-app-header">
 			<text>魁地奇探索队</text>
 			<button size="mini" @click="handleToFollow">
@@ -19,6 +19,8 @@
 				</view>
 			</view>
 		</view>
+<!-- 		<view class="more-app-popup">
+		</view> -->
 	</view>
 </template>
 
@@ -54,7 +56,6 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		margin: 40upx;
 
 		text {
 			font-size: large;
@@ -68,7 +69,7 @@
 		width: 100%;
 
 		&-line {
-			background-color: #7A7E83;
+			background-color: #bfc5cc;
 			width: calc(100vw - 40upx);
 			height: 2upx;
 		}
@@ -94,6 +95,24 @@
 		image {
 			width: 120upx;
 			height: 120upx;
+		}
+	}
+
+	.more-app {
+		width: 100vw;
+		height: 100vh;
+		position: relative;
+
+		&-popup {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100vw;
+			height: 100vh;
+			background-color: #afafaf;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 	}
 </style>

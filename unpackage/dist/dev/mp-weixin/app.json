@@ -9,7 +9,8 @@
     "pages/altitudePage/altitudePage",
     "pages/drawingBoardPage/drawingBoardPage",
     "pages/moreAppPage/moreAppPage",
-    "pages/qrCodeGenPage/qrCodeGenPage"
+    "pages/qrCodeGenPage/qrCodeGenPage",
+    "pages/qrCodeIdPage/qrCodeIdPage"
   ],
   "window": {
     "navigationBarTextStyle": "black",

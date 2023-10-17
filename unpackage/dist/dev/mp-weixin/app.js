@@ -12,6 +12,7 @@ if (!Math) {
   "./pages/drawingBoardPage/drawingBoardPage.js";
   "./pages/moreAppPage/moreAppPage.js";
   "./pages/qrCodeGenPage/qrCodeGenPage.js";
+  "./pages/qrCodeIdPage/qrCodeIdPage.js";
 }
 const _sfc_main = {
   onLaunch: function() {
