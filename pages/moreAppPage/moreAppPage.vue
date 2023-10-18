@@ -19,8 +19,6 @@
 				</view>
 			</view>
 		</view>
-<!-- 		<view class="more-app-popup">
-		</view> -->
 	</view>
 </template>
 
@@ -32,12 +30,16 @@
 					appIcon: "/static/moreApp/holiday_balance.png",
 					appName: "我的假日",
 					appDesc: '下一个假日，假期余额。为大家提供简洁美观的使用体验。'
-				}]
+				}],
+				isShowPopup: false
 			}
 		},
 		methods: {
+			handleQuite() {
+				this.isShowPopup = false
+			},
 			handleToFollow() {
-
+				this.isShowPopup = true
 			},
 			handleToMiniProgram(miniInfo) {
 				uni.navigateToMiniProgram({
@@ -97,24 +99,6 @@
 		image {
 			width: 120upx;
 			height: 120upx;
-		}
-	}
-
-	.more-app {
-		width: 100vw;
-		height: 100vh;
-		position: relative;
-
-		&-popup {
-			position: absolute;
-			left: 0;
-			top: 0;
-			width: 100vw;
-			height: 100vh;
-			background-color: #afafaf;
-			display: flex;
-			justify-content: center;
-			align-items: center;
 		}
 	}
 </style>

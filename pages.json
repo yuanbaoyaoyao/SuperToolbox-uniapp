@@ -83,7 +83,16 @@
             "path" : "pages/qrCodeIdPage/qrCodeIdPage",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "二维码扫描器",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/amountCapitalPage/amountCapitalPage",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "金额转大写",
                 "enablePullDownRefresh": false
             }
             

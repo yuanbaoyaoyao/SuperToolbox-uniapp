@@ -23,42 +23,32 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.more-app-header {
+.amount {
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-.more-app-header text {
-  font-size: large;
-  margin: 30rpx;
-}
-.more-app-divider {
-  display: flex;
   justify-content: center;
-  width: 100%;
-  margin-top: 20rpx;
-  margin-bottom: 10rpx;
-}
-.more-app-divider-line {
-  background-color: #bfc5cc;
-  width: calc(100vw - 40rpx);
-  height: 2rpx;
-}
-.more-app-item {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
   align-items: center;
-  margin: 20rpx;
 }
-.more-app-item-info {
+.amount-input {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #c8c8c8;
+  height: 80rpx;
+  padding: 20rpx;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+  width: 80%;
 }
-.more-app-item-info-desc {
-  font-size: 25rpx;
-  color: gray;
+.amount-input image {
+  width: 50rpx;
+  height: 50rpx;
 }
-.more-app-item image {
-  width: 120rpx;
-  height: 120rpx;
+.amount-value-container {
+  height: 300rpx;
+  width: 80%;
 }

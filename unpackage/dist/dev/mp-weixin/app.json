@@ -10,7 +10,8 @@
     "pages/drawingBoardPage/drawingBoardPage",
     "pages/moreAppPage/moreAppPage",
     "pages/qrCodeGenPage/qrCodeGenPage",
-    "pages/qrCodeIdPage/qrCodeIdPage"
+    "pages/qrCodeIdPage/qrCodeIdPage",
+    "pages/amountCapitalPage/amountCapitalPage"
   ],
   "window": {
     "navigationBarTextStyle": "black",

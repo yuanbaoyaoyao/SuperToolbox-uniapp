@@ -48,6 +48,11 @@ const _sfc_main = {
           url: "/pages/qrCodeIdPage/qrCodeIdPage",
           name: "二维码扫描器",
           icon: "/static/index/qrCodeId.svg"
+        },
+        {
+          url: "/pages/amountCapitalPage/amountCapitalPage",
+          name: "金额转大写",
+          icon: "/static/index/amountCapital.svg"
         }
       ]
     };

@@ -7,11 +7,16 @@ const _sfc_main = {
         appIcon: "/static/moreApp/holiday_balance.png",
         appName: "我的假日",
         appDesc: "下一个假日，假期余额。为大家提供简洁美观的使用体验。"
-      }]
+      }],
+      isShowPopup: false
     };
   },
   methods: {
+    handleQuite() {
+      this.isShowPopup = false;
+    },
     handleToFollow() {
+      this.isShowPopup = true;
     },
     handleToMiniProgram(miniInfo) {
       common_vendor.index.navigateToMiniProgram({
