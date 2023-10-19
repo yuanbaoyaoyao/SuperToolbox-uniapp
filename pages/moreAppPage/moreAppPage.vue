@@ -3,7 +3,7 @@
 	<view class="more-app">
 		<view class="more-app-header">
 			<text>魁地奇探索队</text>
-			<button size="mini" @click="handleToFollow">
+			<button size="mini" @tap="handleShowPopup">
 				点击关注
 			</button>
 		</view>
@@ -16,6 +16,23 @@
 				<view class="more-app-item-info">
 					<text class="more-app-item-info-name">{{item.appName}}</text>
 					<text class="more-app-item-info-desc">{{item.appDesc}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view v-if="isShowPopup">
+		<view class="more-app-popup-bg" @tap="handleClosePopup"></view>
+		<view class="more-app-popup">
+			<view class="more-app-popup-container">
+				<view class="more-app-popup-header" @tap="handleClosePopup">
+					<image src="/static/moreApp/close.svg"></image>
+				</view>
+				<view class="more-app-popup-content">
+					<text>在稍后弹出的客服界面中输入"关注",即可获取公众号链接地址~</text>
+				</view>
+				<view class="more-app-popup-button">
+					<button type="primary" open-type="contact" bindcontact="handleContact"
+						session-from="sessionFrom">确定</button>
 				</view>
 			</view>
 		</view>
@@ -35,11 +52,11 @@
 			}
 		},
 		methods: {
-			handleQuite() {
-				this.isShowPopup = false
-			},
-			handleToFollow() {
+			handleShowPopup() {
 				this.isShowPopup = true
+			},
+			handleClosePopup() {
+				this.isShowPopup = false
 			},
 			handleToMiniProgram(miniInfo) {
 				uni.navigateToMiniProgram({
@@ -99,6 +116,76 @@
 		image {
 			width: 120upx;
 			height: 120upx;
+		}
+	}
+
+	.more-app-popup-bg {
+		background-color: #bfc5cc;
+		width: 100vw;
+		height: 100vh;
+		opacity: 0.5;
+		position: fixed;
+		top: 0;
+		animation: half-opacity 0.5s ease-in-out;
+	}
+
+	.more-app-popup {
+		position: fixed;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		top: 30%;
+		animation: opacity 0.5s ease-in-out;
+		z-index: 10000;
+
+		&-container {
+			width: 80%;
+			background-color: white;
+			padding: 40upx;
+			border-radius: 20upx;
+		}
+
+		&-button {
+			margin-top: 20upx;
+		}
+
+		&-header {
+			display: flex;
+			justify-content: flex-end;
+			margin-bottom: 20upx;
+		}
+
+		button {
+			height: 90upx;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		image {
+			width: 40upx;
+			height: 40upx;
+		}
+	}
+
+	@keyframes half-opacity {
+		0% {
+			opacity: 0;
+		}
+
+		100% {
+			opacity: 0.5;
+		}
+	}
+
+	@keyframes opacity {
+		0% {
+			opacity: 0;
+		}
+
+		100% {
+			opacity: 1;
 		}
 	}
 </style>

@@ -53,6 +53,11 @@ const _sfc_main = {
           url: "/pages/amountCapitalPage/amountCapitalPage",
           name: "金额转大写",
           icon: "/static/index/amountCapital.svg"
+        },
+        {
+          url: "/pages/handheldBarragePage/handheldBarragePage",
+          name: "手持弹幕",
+          icon: "/static/index/handheldBarrage.svg"
         }
       ]
     };

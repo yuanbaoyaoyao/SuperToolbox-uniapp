@@ -11,7 +11,8 @@
     "pages/moreAppPage/moreAppPage",
     "pages/qrCodeGenPage/qrCodeGenPage",
     "pages/qrCodeIdPage/qrCodeIdPage",
-    "pages/amountCapitalPage/amountCapitalPage"
+    "pages/amountCapitalPage/amountCapitalPage",
+    "pages/handheldBarragePage/handheldBarragePage"
   ],
   "window": {
     "navigationBarTextStyle": "black",

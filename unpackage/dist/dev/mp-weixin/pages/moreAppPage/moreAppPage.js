@@ -12,11 +12,11 @@ const _sfc_main = {
     };
   },
   methods: {
-    handleQuite() {
-      this.isShowPopup = false;
-    },
-    handleToFollow() {
+    handleShowPopup() {
       this.isShowPopup = true;
+    },
+    handleClosePopup() {
+      this.isShowPopup = false;
     },
     handleToMiniProgram(miniInfo) {
       common_vendor.index.navigateToMiniProgram({
@@ -31,8 +31,8 @@ const _sfc_main = {
   }
 };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return {
-    a: common_vendor.o((...args) => $options.handleToFollow && $options.handleToFollow(...args)),
+  return common_vendor.e({
+    a: common_vendor.o((...args) => $options.handleShowPopup && $options.handleShowPopup(...args)),
     b: common_vendor.f($data.appList, (item, index, i0) => {
       return {
         a: item.appIcon,
@@ -40,8 +40,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         c: common_vendor.t(item.appDesc),
         d: common_vendor.o(($event) => $options.handleToMiniProgram(item))
       };
-    })
-  };
+    }),
+    c: $data.isShowPopup
+  }, $data.isShowPopup ? {
+    d: common_vendor.o((...args) => $options.handleClosePopup && $options.handleClosePopup(...args)),
+    e: common_vendor.o((...args) => $options.handleClosePopup && $options.handleClosePopup(...args))
+  } : {});
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Data/Code/Project/mine/frontEnd/uni-app-ruler/ruler/pages/moreAppPage/moreAppPage.vue"]]);
 wx.createPage(MiniProgramPage);

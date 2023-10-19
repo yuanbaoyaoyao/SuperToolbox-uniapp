@@ -14,6 +14,7 @@ if (!Math) {
   "./pages/qrCodeGenPage/qrCodeGenPage.js";
   "./pages/qrCodeIdPage/qrCodeIdPage.js";
   "./pages/amountCapitalPage/amountCapitalPage.js";
+  "./pages/handheldBarragePage/handheldBarragePage.js";
 }
 const _sfc_main = {
   onLaunch: function() {

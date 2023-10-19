@@ -69,35 +69,40 @@
 				"enablePullDownRefresh": false
 			}
 
+		}, {
+			"path": "pages/qrCodeGenPage/qrCodeGenPage",
+			"style": {
+				"navigationBarTitleText": "二维码生成器",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/qrCodeIdPage/qrCodeIdPage",
+			"style": {
+				"navigationBarTitleText": "二维码扫描器",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/amountCapitalPage/amountCapitalPage",
+			"style": {
+				"navigationBarTitleText": "金额转大写",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/handheldBarragePage/handheldBarragePage",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"mp-weixin": {
+					"navigationStyle": "custom"
+				}
+			}
+
+
 		}
-	    ,{
-            "path" : "pages/qrCodeGenPage/qrCodeGenPage",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "二维码生成器",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/qrCodeIdPage/qrCodeIdPage",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "二维码扫描器",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/amountCapitalPage/amountCapitalPage",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "金额转大写",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "小匠工具箱",
