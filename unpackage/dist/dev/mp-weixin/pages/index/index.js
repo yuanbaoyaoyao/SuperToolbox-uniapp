@@ -68,6 +68,11 @@ const _sfc_main = {
           url: "/pages/gridDiagram/gridDiagram",
           name: "九宫格切图",
           icon: "/static/index/gridDiagram.svg"
+        },
+        {
+          url: "/pages/fullScreenClockPage/fullScreenClockPage",
+          name: "全屏时钟",
+          icon: "/static/index/gridDiagram.svg"
         }
       ]
     };

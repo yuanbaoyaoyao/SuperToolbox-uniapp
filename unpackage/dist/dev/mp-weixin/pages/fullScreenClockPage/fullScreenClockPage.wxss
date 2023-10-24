@@ -1,0 +1,230 @@
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.canvas-container.data-v-f82682c3 {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: animate-show-f82682c3 0.5s linear;
+}
+.content.data-v-f82682c3 {
+  transform: rotate(90deg);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: animate-show-f82682c3 0.5s linear;
+}
+.flip-container.data-v-f82682c3 {
+  display: flex;
+  justify-content: center;
+  padding: 0 20rpx;
+  position: relative;
+}
+.flip-container .flip-items.data-v-f82682c3 {
+  position: relative;
+  width: 170rpx;
+  height: 255rpx;
+  font-size: 221rpx;
+  font-weight: bold;
+  border-radius: 17rpx;
+  box-shadow: 0 2rpx 18rpx rgba(0, 0, 0, 0.7);
+}
+.flip-container .flip-items.data-v-f82682c3:nth-of-type(2n+1) {
+  margin-right: 34rpx;
+}
+.flip-container .flip-items.data-v-f82682c3:nth-of-type(2), .flip-container .flip-items.data-v-f82682c3:nth-of-type(4) {
+  margin-right: 102rpx;
+}
+.flip-container .flip-items.data-v-f82682c3:nth-of-type(2)::after, .flip-container .flip-items.data-v-f82682c3:nth-of-type(2)::before, .flip-container .flip-items.data-v-f82682c3:nth-of-type(4)::after, .flip-container .flip-items.data-v-f82682c3:nth-of-type(4)::before {
+  position: absolute;
+  right: -51rpx;
+  content: "";
+  transform: translateX(50%);
+  width: 22.6666666667rpx;
+  height: 22.6666666667rpx;
+  border-radius: 50%;
+  background-color: #333;
+}
+.flip-container .flip-items.data-v-f82682c3:nth-of-type(2)::before, .flip-container .flip-items.data-v-f82682c3:nth-of-type(4)::before {
+  top: 25%;
+}
+.flip-container .flip-items.data-v-f82682c3:nth-of-type(2)::after, .flip-container .flip-items.data-v-f82682c3:nth-of-type(4)::after {
+  bottom: 25%;
+}
+.flip-container .flip-items .item.data-v-f82682c3 {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  perspective: 850rpx;
+}
+.flip-container .flip-items .item.data-v-f82682c3:before {
+  content: "";
+  position: absolute;
+  top: 126.0833333333rpx;
+  left: 0;
+  z-index: 9;
+  width: 100%;
+  height: 2.8333333333rpx;
+  min-height: 2px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.flip-container .flip-items .item .up.data-v-f82682c3,
+.flip-container .flip-items .item .down.data-v-f82682c3 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50%;
+  overflow: hidden;
+}
+.flip-container .flip-items .item .up.data-v-f82682c3 {
+  transform-origin: 50% 100%;
+  top: 0;
+}
+.flip-container .flip-items .item .down.data-v-f82682c3 {
+  transform-origin: 50% 0%;
+  bottom: 0;
+}
+.flip-container .flip-items .item .inner.data-v-f82682c3 {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 255rpx;
+  line-height: 255rpx;
+  color: #ccc;
+  text-shadow: 0 2rpx 4rpx #000;
+  text-align: center;
+  background-color: #333;
+  border-radius: 17rpx;
+}
+.flip-container .flip-items .item .up .inner.data-v-f82682c3 {
+  top: 0;
+}
+.flip-container .flip-items .item .down .inner.data-v-f82682c3 {
+  bottom: 0;
+}
+.flip-container .flip-items .item .up .shadow.data-v-f82682c3 {
+  border-top-left-radius: 17rpx;
+  border-top-right-radius: 17rpx;
+}
+.flip-container .flip-items .item .down .shadow.data-v-f82682c3 {
+  border-bottom-left-radius: 17rpx;
+  border-bottom-right-radius: 17rpx;
+}
+.flip-container .flip-items .item.past.data-v-f82682c3 {
+  z-index: 3;
+}
+.flip-container .flip-items .item.current.data-v-f82682c3 {
+  animation: highter-level-f82682c3 0.5s 0.5s linear forwards;
+  z-index: 2;
+}
+.flip-container .flip-items .item.past .up.data-v-f82682c3 {
+  animation: flip-past-up-f82682c3 0.5s linear both;
+}
+.flip-container .flip-items .item.current .down.data-v-f82682c3 {
+  animation: flip-current-down-f82682c3 0.5s 0.5s linear both;
+}
+@keyframes flip-current-down-f82682c3 {
+from {
+    transform: rotateX(90deg);
+}
+to {
+    transform: rotateX(0deg);
+}
+}
+@keyframes flip-past-up-f82682c3 {
+from {
+    transform: rotateX(0deg);
+}
+to {
+    transform: rotateX(-90deg);
+}
+}
+@keyframes highter-level-f82682c3 {
+from {
+    z-index: 4;
+}
+to {
+    z-index: 4;
+}
+}
+.flip-container .flip-items .item .shadow.data-v-f82682c3 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.flip-container .flip-items .item.past .up .shadow.data-v-f82682c3 {
+  background: linear-gradient(rgba(0, 0, 0, 0.1) 0%, black 100%);
+  animation: show-f82682c3 0.5s linear both;
+}
+.flip-container .flip-items .item.past .down .shadow.data-v-f82682c3 {
+  background: linear-gradient(black 0%, rgba(0, 0, 0, 0.1) 100%);
+  animation: show-f82682c3 0.5s linear both;
+}
+.flip-container .flip-items .item.current .up .shadow.data-v-f82682c3 {
+  background: linear-gradient(rgba(0, 0, 0, 0.1) 0%, black 100%);
+  animation: hide-f82682c3 0.5s 0.3s linear both;
+}
+.flip-container .flip-items .item.current .down .shadow.data-v-f82682c3 {
+  background: linear-gradient(black 0%, rgba(0, 0, 0, 0.1) 100%);
+  animation: hide-f82682c3 0.5s 0.3s linear both;
+}
+@keyframes show-f82682c3 {
+from {
+    opacity: 0;
+}
+to {
+    opacity: 1;
+}
+}
+@keyframes hide-f82682c3 {
+from {
+    opacity: 1;
+}
+to {
+    opacity: 0;
+}
+}
+.flip-container .other.data-v-f82682c3 {
+  position: absolute;
+  font-size: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 50rpx;
+}
+@keyframes animate-show-f82682c3 {
+from {
+    opacity: 0;
+}
+to {
+    opacity: 1;
+}
+}

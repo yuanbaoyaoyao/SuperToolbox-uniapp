@@ -82,6 +82,11 @@
 						name: "九宫格切图",
 						icon: "/static/index/gridDiagram.svg"
 					},
+					{
+						url: "/pages/fullScreenClockPage/fullScreenClockPage",
+						name: "全屏时钟",
+						icon: "/static/index/gridDiagram.svg"
+					},
 				]
 			}
 		},
@@ -93,7 +98,7 @@
 				success: function(res) {
 					const platform = res.platform.toLowerCase()
 					store.commit('setPlatform', platform)
-					store.commit('setScreenWidth',res.screenWidth)
+					store.commit('setScreenWidth', res.screenWidth)
 					store.commit('setScreenHeight', res.screenHeight)
 				},
 				fail: function(error) {

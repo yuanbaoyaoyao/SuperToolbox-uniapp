@@ -14,7 +14,8 @@
     "pages/amountCapitalPage/amountCapitalPage",
     "pages/handheldBarragePage/handheldBarragePage",
     "pages/randomShakerPage/randomShakerPage",
-    "pages/gridDiagram/gridDiagram"
+    "pages/gridDiagram/gridDiagram",
+    "pages/fullScreenClockPage/fullScreenClockPage"
   ],
   "window": {
     "navigationBarTextStyle": "black",

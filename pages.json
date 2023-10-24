@@ -120,6 +120,18 @@
             }
             
         }
+        ,{
+            "path" : "pages/fullScreenClockPage/fullScreenClockPage",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"mp-weixin": {
+					"navigationStyle": "custom"
+				}
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
