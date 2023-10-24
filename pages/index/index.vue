@@ -85,7 +85,7 @@
 					{
 						url: "/pages/fullScreenClockPage/fullScreenClockPage",
 						name: "全屏时钟",
-						icon: "/static/index/gridDiagram.svg"
+						icon: "/static/index/fullScreenClock.svg"
 					},
 				]
 			}
