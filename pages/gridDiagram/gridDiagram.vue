@@ -161,7 +161,7 @@
 						uni.saveImageToPhotosAlbum({
 							filePath: tempFilePath,
 							success(resObj) {
-								if (i == 9) {
+								if (i == 8) {
 									uni.showToast({
 										title: "成功保存切图到相册",
 										icon: 'success',

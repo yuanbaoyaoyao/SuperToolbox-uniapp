@@ -359,7 +359,7 @@
 	}
 
 	.th-submit {
-		background-color: #55aaff;
+		// background-color: #000;
 		color: #FFFFFF;
 		transition: all 0.3s;
 	}

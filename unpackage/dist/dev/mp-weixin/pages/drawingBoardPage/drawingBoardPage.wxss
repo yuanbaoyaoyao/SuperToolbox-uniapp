@@ -78,7 +78,6 @@
   margin-right: 10rpx;
 }
 .th-submit.data-v-2aca10ff {
-  background-color: #55aaff;
   color: #FFFFFF;
   transition: all 0.3s;
 }
