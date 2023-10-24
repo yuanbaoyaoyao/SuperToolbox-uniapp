@@ -1,9 +1,6 @@
 <template>
 	<view v-if="!isShowBarrage" class="barrage-container">
-		<view class="barrage-input">
-			<input placeholder="请输入弹幕" :value="inputClearValue" @input="clearInput" />
-			<image v-if="showClearIcon" @click="clearIcon" src="../../static/amountCapital/delete.svg" />
-		</view>
+		<defaultInput :placeholder="'请输入弹幕'" @changeInput="handleChangeTextValue" />
 		<view class="barrage-buttons">
 			<button @tap="handleReturn">返回主页</button>
 			<button type="primary" @tap="handleShowBarrage">确定</button>
@@ -26,19 +23,8 @@
 			}
 		},
 		methods: {
-			clearInput: function(event) {
-				this.inputClearValue = event.detail.value;
-				this.barrage = this.inputClearValue
-				if (event.detail.value.length > 0) {
-					this.showClearIcon = true;
-				} else {
-					this.showClearIcon = false;
-				}
-			},
-			clearIcon: function() {
-				this.inputClearValue = '';
-				this.showClearIcon = false;
-				this.barrage = null
+			handleChangeTextValue(e) {
+				this.barrage = e
 			},
 			handleShowBarrage() {
 				this.isShowBarrage = true

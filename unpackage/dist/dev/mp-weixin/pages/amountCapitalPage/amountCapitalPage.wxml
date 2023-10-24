@@ -1,1 +1,1 @@
-<view class="amount"><view class="amount-input"><input type="digit" placeholder="请输入数字金额" value="{{a}}" bindinput="{{b}}"/><image wx:if="{{c}}" bindtap="{{d}}" src="/static/amountCapital/delete.svg"/></view><view class="amount-value-container"><view class="amount-value" hidden="{{!f}}">大写：{{e}}</view></view></view>
+<view class="amount"><default-input wx:if="{{b}}" bindchangeInput="{{a}}" u-i="2675d4ae-0" bind:__l="__l" u-p="{{b}}"/><view class="amount-value-container"><view class="amount-value" hidden="{{!d}}">大写：{{c}}</view></view></view>

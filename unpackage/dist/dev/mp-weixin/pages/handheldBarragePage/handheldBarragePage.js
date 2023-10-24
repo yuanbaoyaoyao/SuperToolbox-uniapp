@@ -10,19 +10,8 @@ const _sfc_main = {
     };
   },
   methods: {
-    clearInput: function(event) {
-      this.inputClearValue = event.detail.value;
-      this.barrage = this.inputClearValue;
-      if (event.detail.value.length > 0) {
-        this.showClearIcon = true;
-      } else {
-        this.showClearIcon = false;
-      }
-    },
-    clearIcon: function() {
-      this.inputClearValue = "";
-      this.showClearIcon = false;
-      this.barrage = null;
+    handleChangeTextValue(e) {
+      this.barrage = e;
     },
     handleShowBarrage() {
       this.isShowBarrage = true;
@@ -35,21 +24,27 @@ const _sfc_main = {
     }
   }
 };
+if (!Array) {
+  const _easycom_defaultInput2 = common_vendor.resolveComponent("defaultInput");
+  _easycom_defaultInput2();
+}
+const _easycom_defaultInput = () => "../../components/defaultInput/defaultInput.js";
+if (!Math) {
+  _easycom_defaultInput();
+}
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: !$data.isShowBarrage
-  }, !$data.isShowBarrage ? common_vendor.e({
-    b: $data.inputClearValue,
-    c: common_vendor.o((...args) => $options.clearInput && $options.clearInput(...args)),
-    d: $data.showClearIcon
-  }, $data.showClearIcon ? {
-    e: common_vendor.o((...args) => $options.clearIcon && $options.clearIcon(...args))
-  } : {}, {
-    f: common_vendor.o((...args) => $options.handleReturn && $options.handleReturn(...args)),
-    g: common_vendor.o((...args) => $options.handleShowBarrage && $options.handleShowBarrage(...args))
-  }) : {
-    h: common_vendor.t($data.barrage),
-    i: common_vendor.o((...args) => $options.handleQuiteBarrage && $options.handleQuiteBarrage(...args))
+  }, !$data.isShowBarrage ? {
+    b: common_vendor.o($options.handleChangeTextValue),
+    c: common_vendor.p({
+      placeholder: "请输入弹幕"
+    }),
+    d: common_vendor.o((...args) => $options.handleReturn && $options.handleReturn(...args)),
+    e: common_vendor.o((...args) => $options.handleShowBarrage && $options.handleShowBarrage(...args))
+  } : {
+    f: common_vendor.t($data.barrage),
+    g: common_vendor.o((...args) => $options.handleQuiteBarrage && $options.handleQuiteBarrage(...args))
   });
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Data/Code/Project/mine/frontEnd/uni-app-ruler/ruler/pages/handheldBarragePage/handheldBarragePage.vue"]]);

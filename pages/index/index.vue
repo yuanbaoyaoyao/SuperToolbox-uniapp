@@ -72,6 +72,16 @@
 						name: "手持弹幕",
 						icon: "/static/index/handheldBarrage.svg"
 					},
+					{
+						url: "/pages/randomShakerPage/randomShakerPage",
+						name: "随机摇号器",
+						icon: "/static/index/randomShaker.svg"
+					},
+					{
+						url: "/pages/gridDiagram/gridDiagram",
+						name: "九宫格切图",
+						icon: "/static/index/gridDiagram.svg"
+					},
 				]
 			}
 		},
@@ -83,6 +93,8 @@
 				success: function(res) {
 					const platform = res.platform.toLowerCase()
 					store.commit('setPlatform', platform)
+					store.commit('setScreenWidth',res.screenWidth)
+					store.commit('setScreenHeight', res.screenHeight)
 				},
 				fail: function(error) {
 					console.log("error:", error)
@@ -110,17 +122,17 @@
 	.content-details {
 		display: grid;
 		/* grid-template-columns: 1fr 1fr; */
-		grid-template-columns: 1fr;
+		grid-template-columns: 1fr 1fr;
 		width: 100%;
 		justify-items: center;
 	}
 
 	.content-detail {
 		padding: 30rpx;
-		// background-color: #aaffff;
 		border-radius: 10rpx;
 		margin: 10rpx;
-		width: 60%;
+		width: 80%;
+		height: 80rpx;
 		box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
 		display: grid;
 		grid-template-columns: 1fr 2fr;
@@ -128,13 +140,13 @@
 		align-items: center;
 
 		image {
-			width: 60upx;
-			height: 60upx;
+			width: 50upx;
+			height: 50upx;
 		}
 
 		text {
 			justify-self: start;
-			font-size: large;
+			font-size: small;
 		}
 	}
 </style>

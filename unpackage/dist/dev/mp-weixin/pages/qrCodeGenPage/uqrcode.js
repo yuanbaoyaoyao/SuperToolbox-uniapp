@@ -924,7 +924,7 @@ let uQRCode = {};
   uQRCode = {
     errorCorrectLevel: QRErrorCorrectLevel,
     defaults: {
-      size: 354,
+      size: 400,
       margin: 0,
       backgroundColor: "#ffffff",
       foregroundColor: "#000000",
@@ -964,8 +964,10 @@ let uQRCode = {};
           var ctx = common_vendor.index.createCanvasContext(options.canvasId, options.componentInstance);
           ctx.setFillStyle(options.backgroundColor);
           ctx.fillRect(0, 0, options.size, options.size);
-          var tileW = (options.size - options.margin * 2) / qrcode.getModuleCount();
+          var tileW = options.size / 18;
           var tileH = tileW;
+          console.log("tileW:", tileW);
+          console.log("qrcode.getModuleCount():", qrcode.getModuleCount());
           for (var row = 0; row < qrcode.getModuleCount(); row++) {
             for (var col = 0; col < qrcode.getModuleCount(); col++) {
               var style = qrcode.isDark(row, col) ? options.foregroundColor : options.backgroundColor;

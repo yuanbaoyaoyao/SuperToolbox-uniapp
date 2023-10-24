@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "海拔仪",
+  "navigationBarTitleText": "经纬度",
   "enablePullDownRefresh": false,
   "usingComponents": {}
 }

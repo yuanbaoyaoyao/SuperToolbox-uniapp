@@ -51,7 +51,7 @@
 		}, {
 			"path": "pages/altitudePage/altitudePage",
 			"style": {
-				"navigationBarTitleText": "海拔仪",
+				"navigationBarTitleText": "经纬度",
 				"enablePullDownRefresh": false
 			}
 
@@ -102,7 +102,25 @@
 
 
 		}
-	],
+        ,{
+            "path" : "pages/randomShakerPage/randomShakerPage",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "随机摇号器",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/gridDiagram/gridDiagram",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "九宫格切图",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "小匠工具箱",

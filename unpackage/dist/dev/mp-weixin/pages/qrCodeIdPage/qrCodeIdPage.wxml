@@ -1,1 +1,1 @@
-<view class="qr-code-id"><view wx:if="{{a}}"><view class="qr-code-id-info">条码类型：{{b}}</view><view class="qr-code-id-info">条码内容：{{c}}</view></view><view><view class="qr-code-id-info"></view></view><button size="mini" bindtap="{{d}}">点击扫描二维码</button></view>
+<view class="qr-code-id"><view wx:if="{{a}}" class="qr-code-id-container" bindtap="{{d}}"><view class="qr-code-id-info">二维码类型：{{b}}</view><view class="qr-code-id-info">二维码内容：{{c}}</view></view><button bindtap="{{e}}">点击扫描二维码</button><view wx:if="{{f}}" class="tips">提示:点击上方信息可以复制二维码内容</view></view>

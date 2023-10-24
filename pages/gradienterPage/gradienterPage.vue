@@ -79,6 +79,7 @@
 		margin-top: 20%;
 
 		text {
+			font-size: x-large;
 			width: fit-content;
 		}
 	}

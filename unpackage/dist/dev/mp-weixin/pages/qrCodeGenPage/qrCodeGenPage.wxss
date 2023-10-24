@@ -23,6 +23,12 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.qr-code-gen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .qr-box {
   width: 400rpx;
   height: 400rpx;
@@ -39,14 +45,6 @@
   align-items: center;
   margin-bottom: 120rpx;
   margin-top: 60rpx;
-}
-.operation input {
-  height: 80rpx;
-  width: 60%;
-  border-radius: 20rpx;
-  padding: 20rpx;
-  margin-bottom: 20rpx;
-  background-color: #d3dbe2;
 }
 .operation button {
   display: flex;

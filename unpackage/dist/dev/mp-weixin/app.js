@@ -15,6 +15,8 @@ if (!Math) {
   "./pages/qrCodeIdPage/qrCodeIdPage.js";
   "./pages/amountCapitalPage/amountCapitalPage.js";
   "./pages/handheldBarragePage/handheldBarragePage.js";
+  "./pages/randomShakerPage/randomShakerPage.js";
+  "./pages/gridDiagram/gridDiagram.js";
 }
 const _sfc_main = {
   onLaunch: function() {

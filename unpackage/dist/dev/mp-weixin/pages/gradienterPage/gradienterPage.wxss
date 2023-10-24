@@ -31,6 +31,7 @@
   margin-top: 20%;
 }
 .gyroscope-value text {
+  font-size: x-large;
   width: -webkit-fit-content;
   width: fit-content;
 }

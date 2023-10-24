@@ -31,8 +31,14 @@
   width: 100vw;
   height: 100vh;
 }
-.qr-code-id-info {
-  margin: 20rpx;
-  width: -webkit-fit-content;
-  width: fit-content;
+.qr-code-id-container {
+  width: 90vw;
+  margin-bottom: 50rpx;
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+}
+.tips {
+  width: 80%;
+  color: #cccccc;
 }

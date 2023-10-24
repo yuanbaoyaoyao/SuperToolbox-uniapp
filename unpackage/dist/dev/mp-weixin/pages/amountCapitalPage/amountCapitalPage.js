@@ -9,19 +9,8 @@ const _sfc_main = {
     };
   },
   methods: {
-    clearInput: function(event) {
-      this.inputClearValue = event.detail.value;
-      this.capital = this.transform(this.inputClearValue);
-      if (event.detail.value.length > 0) {
-        this.showClearIcon = true;
-      } else {
-        this.showClearIcon = false;
-      }
-    },
-    clearIcon: function() {
-      this.inputClearValue = "";
-      this.showClearIcon = false;
-      this.capital = null;
+    handleChangeTextValue(e) {
+      this.capital = this.transform(e);
     },
     transform(tranvalue) {
       try {
@@ -85,23 +74,29 @@ const _sfc_main = {
         }
         str += "元" + strdig;
       } catch (e) {
-        return "超过限制";
+        return "超过限制或出现错误";
       }
       return str;
     }
   }
 };
+if (!Array) {
+  const _easycom_defaultInput2 = common_vendor.resolveComponent("defaultInput");
+  _easycom_defaultInput2();
+}
+const _easycom_defaultInput = () => "../../components/defaultInput/defaultInput.js";
+if (!Math) {
+  _easycom_defaultInput();
+}
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return common_vendor.e({
-    a: $data.inputClearValue,
-    b: common_vendor.o((...args) => $options.clearInput && $options.clearInput(...args)),
-    c: $data.showClearIcon
-  }, $data.showClearIcon ? {
-    d: common_vendor.o((...args) => $options.clearIcon && $options.clearIcon(...args))
-  } : {}, {
-    e: common_vendor.t($data.capital),
-    f: $data.capital != null && $data.capital != "元"
-  });
+  return {
+    a: common_vendor.o($options.handleChangeTextValue),
+    b: common_vendor.p({
+      placeholder: "请输入数字金额"
+    }),
+    c: common_vendor.t($data.capital),
+    d: $data.capital != null && $data.capital != "元"
+  };
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Data/Code/Project/mine/frontEnd/uni-app-ruler/ruler/pages/amountCapitalPage/amountCapitalPage.vue"]]);
 wx.createPage(MiniProgramPage);

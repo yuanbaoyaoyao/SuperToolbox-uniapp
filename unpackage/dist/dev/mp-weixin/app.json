@@ -12,7 +12,9 @@
     "pages/qrCodeGenPage/qrCodeGenPage",
     "pages/qrCodeIdPage/qrCodeIdPage",
     "pages/amountCapitalPage/amountCapitalPage",
-    "pages/handheldBarragePage/handheldBarragePage"
+    "pages/handheldBarragePage/handheldBarragePage",
+    "pages/randomShakerPage/randomShakerPage",
+    "pages/gridDiagram/gridDiagram"
   ],
   "window": {
     "navigationBarTextStyle": "black",

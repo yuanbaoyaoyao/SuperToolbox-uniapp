@@ -107,18 +107,24 @@ const _sfc_main = {
     async saveCanvas() {
       const tempFilePath = await this.canvasToFilPath();
       if (!this.isDownload) {
-        this.$emit("submit", tempFilePath);
         return false;
       }
       return new Promise((resolve, reject) => {
         common_vendor.index.saveImageToPhotosAlbum({
           filePath: tempFilePath,
           success(resObj) {
-            this.$emit("submit", tempFilePath);
+            common_vendor.index.showToast({
+              title: "成功保存画板到相册",
+              icon: "success",
+              success: function(res) {
+              },
+              fail: function(res) {
+              }
+            });
             resolve(resObj);
           },
           fail(err) {
-            this.$emit("dowmloadErr", err);
+            console.log("err:", err);
             reject(err);
           }
         });

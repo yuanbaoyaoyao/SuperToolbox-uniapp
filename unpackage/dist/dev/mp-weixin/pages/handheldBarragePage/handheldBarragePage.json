@@ -2,5 +2,7 @@
   "navigationBarTitleText": "",
   "enablePullDownRefresh": false,
   "navigationStyle": "custom",
-  "usingComponents": {}
+  "usingComponents": {
+    "default-input": "../../components/defaultInput/defaultInput"
+  }
 }

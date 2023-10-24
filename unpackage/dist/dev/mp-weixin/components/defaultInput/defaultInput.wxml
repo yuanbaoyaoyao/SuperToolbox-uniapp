@@ -1,0 +1,1 @@
+<view class="default-input"><input placeholder="{{a}}" value="{{b}}" bindinput="{{c}}"/><image wx:if="{{d}}" bindtap="{{e}}" src="/static/amountCapital/delete.svg"/></view>

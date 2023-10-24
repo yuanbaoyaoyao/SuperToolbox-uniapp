@@ -1,18 +1,14 @@
 <template>
-	<view>
+	<view class="qr-code-gen">
 		<view class="operation">
-			<input focus placeholder="请输入信息" v-model="info" @input="inputInfo" />
-			<view class="operation-buttons">
-				<button @tap="handleClear">清空</button>
-				<button type="primary" @tap="handleShowQRCode">确认</button>
-			</view>
+			<defaultInput :placeholder="'请输入信息'" @changeInput="handleChangeTextValue" />
+			<button type="primary" @tap="handleShowQRCode">确认</button>
 		</view>
 		<view class="qr-box" v-if="info!=null">
 			<canvas canvas-id="qrcode" v-show="qrShow" />
 			<button v-show="qrShow" @click="saveCanvas">保存二维码</button>
 		</view>
 	</view>
-
 </template>
 
 <script>
@@ -27,20 +23,20 @@
 			}
 		},
 		methods: {
+			handleChangeTextValue(e) {
+				this.info = e
+			},
 			inputInfo(e) {
 				this.info = String(e.detail.value)
 				if (e.detail.value.length == 0) {
 					this.qrShow = false
 				}
 			},
-			handleClear() {
-				this.info = null
-				this.qrShow = false
-			},
 			handleShowQRCode() {
-				if (this.info != null) {
+				if (this.info != null && this.info != '') {
 					this.qrFun(this.info)
 				} else {
+					this.qrShow = false
 					uni.showToast({
 						title: "请输入信息",
 						icon: 'error',
@@ -100,6 +96,12 @@
 					uni.canvasToTempFilePath({
 						canvasId: "qrcode",
 						success: res => {
+							uni.showToast({
+								title: "成功保存二维码到相册",
+								icon: 'success',
+								success: function(res) {},
+								fail: function(res) {},
+							})
 							resolve(res.tempFilePath)
 						},
 						fail: err => {
@@ -114,6 +116,13 @@
 </script>
 
 <style lang="scss">
+	.qr-code-gen {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
 	.qr-box {
 		width: 400upx;
 		height: 400upx;
@@ -132,15 +141,6 @@
 		align-items: center;
 		margin-bottom: 120upx;
 		margin-top: 60upx;
-
-		input {
-			height: 80upx;
-			width: 60%;
-			border-radius: 20upx;
-			padding: 20upx;
-			margin-bottom: 20upx;
-			background-color: #d3dbe2;
-		}
 
 		button {
 			display: flex;

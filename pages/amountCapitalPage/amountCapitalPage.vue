@@ -1,9 +1,6 @@
 <template>
 	<view class="amount">
-		<view class="amount-input">
-			<input type="digit" placeholder="请输入数字金额" :value="inputClearValue" @input="clearInput" />
-			<image v-if="showClearIcon" @click="clearIcon" src="../../static/amountCapital/delete.svg" />
-		</view>
+		<defaultInput :placeholder="'请输入数字金额'" @changeInput="handleChangeTextValue" />
 		<view class="amount-value-container">
 			<view class="amount-value" v-show="capital!=null&&capital!='元'">大写：{{capital}}</view>
 		</view>
@@ -20,19 +17,8 @@
 			}
 		},
 		methods: {
-			clearInput: function(event) {
-				this.inputClearValue = event.detail.value;
-				this.capital = this.transform(this.inputClearValue)
-				if (event.detail.value.length > 0) {
-					this.showClearIcon = true;
-				} else {
-					this.showClearIcon = false;
-				}
-			},
-			clearIcon: function() {
-				this.inputClearValue = '';
-				this.showClearIcon = false;
-				this.capital = null
+			handleChangeTextValue(e) {
+				this.capital = this.transform(e)
 			},
 			transform(tranvalue) {
 				try {
@@ -100,7 +86,7 @@
 					}
 					str += "元" + strdig;
 				} catch (e) {
-					return "超过限制";
+					return "超过限制或出现错误";
 				}
 				return str;
 			}

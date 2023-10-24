@@ -105,8 +105,9 @@ let uQRCode = {};
 		},
 
 		makeImpl: function(test, maskPattern) {
-
+			//大小,好像只有17能扫出来
 			this.moduleCount = this.typeNumber * 4 + 17;
+			// this.moduleCount = this.typeNumber * 4 + 20;
 			this.modules = new Array(this.moduleCount);
 
 			for (var row = 0; row < this.moduleCount; row++) {
@@ -1291,7 +1292,7 @@ let uQRCode = {};
 		errorCorrectLevel: QRErrorCorrectLevel,
 
 		defaults: {
-			size: 354,
+			size: 400,
 			margin: 0,
 			backgroundColor: '#ffffff',
 			foregroundColor: '#000000',
@@ -1334,8 +1335,11 @@ let uQRCode = {};
 					ctx.setFillStyle(options.backgroundColor);
 					ctx.fillRect(0, 0, options.size, options.size);
 
-					var tileW = (options.size - options.margin * 2) / qrcode.getModuleCount();
+					// var tileW = (options.size - options.margin * 2) / qrcode.getModuleCount();
+					var tileW = (options.size) / 18;
 					var tileH = tileW;
+					console.log("tileW:",tileW)
+					console.log("qrcode.getModuleCount():",qrcode.getModuleCount())
 
 					for (var row = 0; row < qrcode.getModuleCount(); row++) {
 						for (var col = 0; col < qrcode.getModuleCount(); col++) {

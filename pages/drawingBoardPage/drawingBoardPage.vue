@@ -10,13 +10,16 @@
 		<view :class="['action-box', horizontalScreen ? 'rote-action' : '']">
 			<view class="action-bar">
 				<view>
-					<image src="../../static/drawingBoard/pencli.svg" @click="openAction('thLine')" v-if="judge('pencli')"></image>
-					<image src="../../static/drawingBoard/color.svg" @click="openAction('thColor')" v-if="judge('color')"></image>
+					<image src="../../static/drawingBoard/pencli.svg" @click="openAction('thLine')"
+						v-if="judge('pencli')"></image>
+					<image src="../../static/drawingBoard/color.svg" @click="openAction('thColor')"
+						v-if="judge('color')"></image>
 					<image src="../../static/drawingBoard/back.svg" @click="goBack" v-if="judge('back')"></image>
 					<image src="../../static/drawingBoard/clear.svg" @click="clear" v-if="judge('clear')"></image>
 				</view>
 			</view>
-			<button type="primary" size="mini" class="th-submit" @click="saveCanvas" hover-class="hover-class">保存</button>
+			<button type="primary" size="mini" class="th-submit" @click="saveCanvas"
+				hover-class="hover-class">保存</button>
 		</view>
 		<th-color ref="thColor" @setColor="setColor" @closePop="canvasShow = true"></th-color>
 		<th-line ref="thLine" @setLine="setLine" @closePop="canvasShow = true"></th-line>
@@ -142,7 +145,6 @@
 			async saveCanvas() {
 				const tempFilePath = await this.canvasToFilPath()
 				if (!this.isDownload) {
-					this.$emit('submit', tempFilePath)
 					return false;
 				}
 				return new Promise((resolve, reject) => {
@@ -163,11 +165,16 @@
 					uni.saveImageToPhotosAlbum({
 						filePath: tempFilePath,
 						success(resObj) {
-							this.$emit('submit', tempFilePath)
+							uni.showToast({
+								title: "成功保存画板到相册",
+								icon: 'success',
+								success: function(res) {},
+								fail: function(res) {},
+							})
 							resolve(resObj)
 						},
 						fail(err) {
-							this.$emit('dowmloadErr', err)
+							console.log("err:", err)
 							reject(err)
 						}
 					})
@@ -344,7 +351,8 @@
 		align-items: center;
 		justify-content: flex-end;
 		border-top: 1px dashed gray;
-		button{
+
+		button {
 			margin: 0;
 			margin-right: 10upx;
 		}

@@ -58,6 +58,16 @@ const _sfc_main = {
           url: "/pages/handheldBarragePage/handheldBarragePage",
           name: "手持弹幕",
           icon: "/static/index/handheldBarrage.svg"
+        },
+        {
+          url: "/pages/randomShakerPage/randomShakerPage",
+          name: "随机摇号器",
+          icon: "/static/index/randomShaker.svg"
+        },
+        {
+          url: "/pages/gridDiagram/gridDiagram",
+          name: "九宫格切图",
+          icon: "/static/index/gridDiagram.svg"
         }
       ]
     };
@@ -69,6 +79,8 @@ const _sfc_main = {
       success: function(res) {
         const platform = res.platform.toLowerCase();
         store_index.store.commit("setPlatform", platform);
+        store_index.store.commit("setScreenWidth", res.screenWidth);
+        store_index.store.commit("setScreenHeight", res.screenHeight);
       },
       fail: function(error) {
         console.log("error:", error);

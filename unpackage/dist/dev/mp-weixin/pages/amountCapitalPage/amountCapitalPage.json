@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "金额转大写",
   "enablePullDownRefresh": false,
-  "usingComponents": {}
+  "usingComponents": {
+    "default-input": "../../components/defaultInput/defaultInput"
+  }
 }
