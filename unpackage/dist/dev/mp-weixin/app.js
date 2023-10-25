@@ -18,6 +18,7 @@ if (!Math) {
   "./pages/randomShakerPage/randomShakerPage.js";
   "./pages/gridDiagram/gridDiagram.js";
   "./pages/fullScreenClockPage/fullScreenClockPage.js";
+  "./pages/wonderfulFonts/wonderfulFonts.js";
 }
 const _sfc_main = {
   onLaunch: function() {

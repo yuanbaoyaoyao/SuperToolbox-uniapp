@@ -1,0 +1,1 @@
+<view class="container"><default-input wx:if="{{b}}" bindchangeInput="{{a}}" u-i="ee1a0cae-0" bind:__l="__l" u-p="{{b}}"/><view class="text-container"><block wx:if="{{c}}"><view wx:for="{{d}}" wx:for-item="n" wx:key="b" bindtap="{{n.c}}" class="{{[n.d && 'hover-text']}}">{{n.a}}</view></block></view><view class="tips">提示:目前仅支持英文的形态变化。</view></view>

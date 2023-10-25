@@ -73,6 +73,11 @@ const _sfc_main = {
           url: "/pages/fullScreenClockPage/fullScreenClockPage",
           name: "全屏时钟",
           icon: "/static/index/fullScreenClock.svg"
+        },
+        {
+          url: "/pages/wonderfulFonts/wonderfulFonts",
+          name: "奇妙字体",
+          icon: "/static/index/fullScreenClock.svg"
         }
       ]
     };

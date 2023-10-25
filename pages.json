@@ -132,6 +132,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/wonderfulFonts/wonderfulFonts",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "奇妙文字",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
