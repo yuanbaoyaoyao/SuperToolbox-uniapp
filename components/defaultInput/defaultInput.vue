@@ -8,11 +8,12 @@
 <script>
 	export default {
 		name: "defaultInput",
+
 		props: {
 			placeholder: {
 				type: String,
 				default: '请输入'
-			}
+			},
 		},
 		data() {
 			return {
@@ -20,6 +21,9 @@
 			}
 		},
 		methods: {
+			setInputValueFirst(e) {
+				this.inputValue = e
+			},
 			setInputValue(event) {
 				this.inputValue = event.detail.value
 				this.$emit('changeInput', this.inputValue)

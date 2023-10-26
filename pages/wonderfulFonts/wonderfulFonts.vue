@@ -86,7 +86,6 @@
 				for (var codePoint of e) {
 					codePoint = codePoint.charCodeAt(0);
 					// A - Z 转换
-					console.info("codePoint:", codePoint)
 					if (codePoint >= 65 && codePoint <= 90) {
 						codePoint += 119743;
 						newMessage += String.fromCodePoint(codePoint);

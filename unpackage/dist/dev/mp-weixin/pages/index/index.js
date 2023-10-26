@@ -77,7 +77,7 @@ const _sfc_main = {
         {
           url: "/pages/wonderfulFonts/wonderfulFonts",
           name: "奇妙字体",
-          icon: "/static/index/fullScreenClock.svg"
+          icon: "/static/index/wonderfulFonts.svg"
         }
       ]
     };

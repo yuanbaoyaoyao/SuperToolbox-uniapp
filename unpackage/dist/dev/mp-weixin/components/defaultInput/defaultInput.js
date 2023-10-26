@@ -14,6 +14,9 @@ const _sfc_main = {
     };
   },
   methods: {
+    setInputValueFirst(e) {
+      this.inputValue = e;
+    },
     setInputValue(event) {
       this.inputValue = event.detail.value;
       this.$emit("changeInput", this.inputValue);

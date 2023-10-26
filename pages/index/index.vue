@@ -90,7 +90,7 @@
 					{
 						url: "/pages/wonderfulFonts/wonderfulFonts",
 						name: "奇妙字体",
-						icon: "/static/index/fullScreenClock.svg"
+						icon: "/static/index/wonderfulFonts.svg"
 					},
 				]
 			}
@@ -142,7 +142,7 @@
 		border-radius: 10rpx;
 		margin: 10rpx;
 		width: 80%;
-		height: 80rpx;
+		height: 60upx;
 		box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
 		display: grid;
 		grid-template-columns: 1fr 2fr;

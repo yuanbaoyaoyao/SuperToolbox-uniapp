@@ -41,7 +41,7 @@
   border-radius: 10rpx;
   margin: 10rpx;
   width: 80%;
-  height: 80rpx;
+  height: 60rpx;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, #d1d5db 0px 0px 0px 1px inset;
   display: grid;
   grid-template-columns: 1fr 2fr;

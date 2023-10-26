@@ -68,7 +68,6 @@ const _sfc_main = {
       var newMessage = "";
       for (var codePoint of e) {
         codePoint = codePoint.charCodeAt(0);
-        console.info("codePoint:", codePoint);
         if (codePoint >= 65 && codePoint <= 90) {
           codePoint += 119743;
           newMessage += String.fromCodePoint(codePoint);
