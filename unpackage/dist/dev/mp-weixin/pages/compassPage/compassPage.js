@@ -1,5 +1,6 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const store_index = require("../../store/index.js");
 const _sfc_main = {
   onShareAppMessage() {
   },
@@ -20,6 +21,20 @@ const _sfc_main = {
     };
   },
   onReady() {
+    if (store_index.store.getters.platform != "android" && store_index.store.getters.platform != "ios") {
+      common_vendor.index.showModal({
+        title: "提示",
+        content: "此功能需要在手机端才能正常使用。",
+        showCancel: false,
+        success: function(res) {
+          if (res.confirm) {
+            console.log("用户点击确定");
+          } else if (res.cancel) {
+            console.log("用户点击取消");
+          }
+        }
+      });
+    }
     this.handleGetSysInfo();
     let that = this;
     common_vendor.index.onCompassChange((res) => {

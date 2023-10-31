@@ -1,0 +1,1 @@
+<view class="pdf-container"><view class="pdf-watermark-input"><default-input wx:if="{{b}}" bindchangeInput="{{a}}" u-i="4f9d582e-0" bind:__l="__l" u-p="{{b}}"/><button bindtap="{{c}}" type="primary">选择pdf</button></view><view class="tips">提示:点击上方信息可以单独删除，长按可全部删除</view></view>

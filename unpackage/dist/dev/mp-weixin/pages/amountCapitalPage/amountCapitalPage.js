@@ -9,6 +9,19 @@ const _sfc_main = {
     };
   },
   methods: {
+    handleCopy() {
+      if (this.capital != null && this.capital != "超过限制或出现错误") {
+        common_vendor.index.setClipboardData({
+          data: this.capital,
+          // 必须字符串
+          success: function() {
+            common_vendor.index.showToast({
+              title: "复制成功"
+            });
+          }
+        });
+      }
+    },
     handleChangeTextValue(e) {
       this.capital = this.transform(e);
     },
@@ -95,7 +108,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       placeholder: "请输入数字金额"
     }),
     c: common_vendor.t($data.capital),
-    d: $data.capital != null && $data.capital != "元"
+    d: $data.capital != null && $data.capital != "元",
+    e: common_vendor.o((...args) => $options.handleCopy && $options.handleCopy(...args))
   };
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Data/Code/Project/mine/frontEnd/uni-app-ruler/ruler/pages/amountCapitalPage/amountCapitalPage.vue"]]);

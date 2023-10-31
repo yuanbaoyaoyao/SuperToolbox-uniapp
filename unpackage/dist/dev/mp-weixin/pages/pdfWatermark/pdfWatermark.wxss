@@ -23,35 +23,22 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.amount {
-  width: 100vw;
+.pdf-container {
   height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.amount-input {
+.pdf-watermark-input {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  background-color: #c8c8c8;
-  height: 80rpx;
-  padding: 20rpx;
-  padding-left: 40rpx;
-  padding-right: 40rpx;
-  border-radius: 20rpx;
-  margin-bottom: 20rpx;
-  width: 80%;
-}
-.amount-input image {
-  width: 50rpx;
-  height: 50rpx;
-}
-.amount-value-container {
-  height: 300rpx;
-  width: 80%;
+  margin-bottom: 10rpx;
 }
 .tips {
+  width: 90%;
   color: #cccccc;
 }

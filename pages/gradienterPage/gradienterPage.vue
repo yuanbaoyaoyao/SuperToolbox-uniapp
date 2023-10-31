@@ -11,6 +11,7 @@
 </template>
 
 <script>
+	import store from '@/store/index.js'
 	export default {
 		data() {
 			return {
@@ -25,6 +26,22 @@
 				alpha: 0,
 				beta: 0
 			};
+		},
+		onReady() {
+			if (store.getters.platform != 'android' && store.getters.platform != 'ios') {
+				uni.showModal({
+					title: '提示',
+					content: '此功能需要在手机端才能正常使用。',
+					showCancel: false,
+					success: function(res) {
+						if (res.confirm) {
+							console.log('用户点击确定');
+						} else if (res.cancel) {
+							console.log('用户点击取消');
+						}
+					}
+				});
+			}
 		},
 		// 使用示例
 		onLoad(options) {

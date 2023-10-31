@@ -12,6 +12,7 @@
 </template>
 
 <script>
+	//TODO pdf功能处理，需要后端功能
 	import store from '@/store/index.js'
 	export default {
 		data() {
@@ -90,6 +91,11 @@
 					{
 						url: "/pages/wonderfulFonts/wonderfulFonts",
 						name: "奇妙字体",
+						icon: "/static/index/wonderfulFonts.svg"
+					},
+					{
+						url: "/pages/pdfWatermark/pdfWatermark",
+						name: "pdf添加水印",
 						icon: "/static/index/wonderfulFonts.svg"
 					},
 				]

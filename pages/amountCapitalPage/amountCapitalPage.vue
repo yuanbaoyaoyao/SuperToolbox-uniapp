@@ -2,8 +2,9 @@
 	<view class="amount">
 		<defaultInput :placeholder="'请输入数字金额'" @changeInput="handleChangeTextValue" />
 		<view class="amount-value-container">
-			<view class="amount-value" v-show="capital!=null&&capital!='元'">大写：{{capital}}</view>
+			<view class="amount-value" v-show="capital!=null&&capital!='元'" @tap="handleCopy">大写：{{capital}}</view>
 		</view>
+		<view class="tips">提示:点击大写金额即可复制信息。</view>
 	</view>
 </template>
 
@@ -17,6 +18,18 @@
 			}
 		},
 		methods: {
+			handleCopy() {
+				if (this.capital != null && this.capital != '超过限制或出现错误') {
+					uni.setClipboardData({
+						data: this.capital, // 必须字符串
+						success: function() {
+							uni.showToast({
+								title: "复制成功",
+							})
+						}
+					});
+				}
+			},
 			handleChangeTextValue(e) {
 				this.capital = this.transform(e)
 			},
@@ -126,5 +139,9 @@
 	.amount-value-container {
 		height: 300upx;
 		width: 80%;
+	}
+
+	.tips {
+		color: #cccccc;
 	}
 </style>

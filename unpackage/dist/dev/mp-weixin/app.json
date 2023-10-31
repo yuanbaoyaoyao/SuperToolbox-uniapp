@@ -16,7 +16,8 @@
     "pages/randomShakerPage/randomShakerPage",
     "pages/gridDiagram/gridDiagram",
     "pages/fullScreenClockPage/fullScreenClockPage",
-    "pages/wonderfulFonts/wonderfulFonts"
+    "pages/wonderfulFonts/wonderfulFonts",
+    "pages/pdfWatermark/pdfWatermark"
   ],
   "window": {
     "navigationBarTextStyle": "black",

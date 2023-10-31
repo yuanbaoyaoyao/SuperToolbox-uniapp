@@ -36,6 +36,7 @@
 		let timeStr = hour + minute + second
 		return timeStr
 	}
+	
 	export default {
 		data() {
 			return {

@@ -140,6 +140,14 @@
                 "enablePullDownRefresh": false
             }
             
+        },
+        {
+        	"path" : "pages/pdfWatermark/pdfWatermark",
+        	"style" : 
+        	{
+        		"navigationBarTitleText" : "pdf添加水印",
+        		"enablePullDownRefresh" : false
+        	}
         }
     ],
 	"globalStyle": {

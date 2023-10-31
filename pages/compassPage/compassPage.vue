@@ -9,6 +9,8 @@
 </template>
 
 <script>
+	import store from '@/store/index.js'
+
 	export default {
 		onShareAppMessage() {},
 		onShareTimeline() {},
@@ -27,6 +29,21 @@
 			}
 		},
 		onReady() {
+			if (store.getters.platform != 'android' && store.getters.platform != 'ios') {
+				uni.showModal({
+					title: '提示',
+					content: '此功能需要在手机端才能正常使用。',
+					showCancel: false,
+					success: function(res) {
+						if (res.confirm) {
+							console.log('用户点击确定');
+						} else if (res.cancel) {
+							console.log('用户点击取消');
+						}
+					}
+				});
+			}
+
 			this.handleGetSysInfo()
 			let that = this
 			uni.onCompassChange((res) => {

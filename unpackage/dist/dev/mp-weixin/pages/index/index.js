@@ -78,6 +78,11 @@ const _sfc_main = {
           url: "/pages/wonderfulFonts/wonderfulFonts",
           name: "奇妙字体",
           icon: "/static/index/wonderfulFonts.svg"
+        },
+        {
+          url: "/pages/pdfWatermark/pdfWatermark",
+          name: "pdf添加水印",
+          icon: "/static/index/wonderfulFonts.svg"
         }
       ]
     };

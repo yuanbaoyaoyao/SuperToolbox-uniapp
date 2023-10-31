@@ -19,6 +19,7 @@ if (!Math) {
   "./pages/gridDiagram/gridDiagram.js";
   "./pages/fullScreenClockPage/fullScreenClockPage.js";
   "./pages/wonderfulFonts/wonderfulFonts.js";
+  "./pages/pdfWatermark/pdfWatermark.js";
 }
 const _sfc_main = {
   onLaunch: function() {
