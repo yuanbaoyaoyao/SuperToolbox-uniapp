@@ -96,7 +96,7 @@
 					{
 						url: "/pages/pdfWatermark/pdfWatermark",
 						name: "pdf添加水印",
-						icon: "/static/index/wonderfulFonts.svg"
+						icon: "/static/index/pdfWatermark.svg"
 					},
 				]
 			}

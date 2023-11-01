@@ -160,7 +160,6 @@
 			},
 			confirm(e) {
 				this.rgba = e.rgba;
-				console.log("this.rgba:", this.rgba)
 				if (this.nowActiveItem == '字体颜色') {
 					this.fontColor = this.rgbaToHex(this.rgba.r, this.rgba.g, this.rgba.b, this.rgba.a)
 				} else if (this.nowActiveItem == '背景颜色') {
