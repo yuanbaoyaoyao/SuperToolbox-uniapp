@@ -190,6 +190,7 @@ const _sfc_main = {
       this.$nextTick(() => {
         setTimeout(() => {
           this.show = false;
+          this.$emit("close", true);
         }, 500);
       });
     },

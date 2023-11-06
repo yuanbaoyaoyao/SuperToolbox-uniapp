@@ -19,6 +19,7 @@ const _sfc_main = {
       touchNum: 0,
       nowBackgroundColor: "",
       isHideButton: true,
+      isHideCanvasTemp: false,
       rgba: {
         r: 100,
         g: 187,
@@ -81,6 +82,11 @@ const _sfc_main = {
     clearInterval(this.timeRunner);
   },
   methods: {
+    handleClosePicker(e) {
+      if (e) {
+        this.isHideCanvasTemp = false;
+      }
+    },
     handleHideButton() {
       this.isHideButton = !this.isHideButton;
     },
@@ -93,6 +99,7 @@ const _sfc_main = {
     },
     open(item) {
       this.$refs.colorPicker.open();
+      this.isHideCanvasTemp = true;
     },
     confirm(e) {
       this.rgba = e.rgba;
@@ -226,13 +233,14 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: $data.isShowCanvas
   }, $data.isShowCanvas ? {
-    b: $data.canvasWidth + "px",
+    b: !$data.isHideCanvasTemp,
     c: $data.canvasWidth + "px",
-    d: common_vendor.o((...args) => $options.maskTouchend && $options.maskTouchend(...args)),
-    e: common_vendor.o((...args) => $options.handleReturn && $options.handleReturn(...args)),
-    f: common_vendor.o((...args) => $options.handleHideButton && $options.handleHideButton(...args))
+    d: $data.canvasWidth + "px",
+    e: common_vendor.o((...args) => $options.maskTouchend && $options.maskTouchend(...args)),
+    f: common_vendor.o((...args) => $options.handleReturn && $options.handleReturn(...args)),
+    g: common_vendor.o((...args) => $options.handleHideButton && $options.handleHideButton(...args))
   } : {
-    g: common_vendor.f($options.timeArr, (unit, unitIndex, i0) => {
+    h: common_vendor.f($options.timeArr, (unit, unitIndex, i0) => {
       return {
         a: common_vendor.f(unit.max + 1, (item, index, i1) => {
           return {
@@ -246,19 +254,20 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         b: unitIndex
       };
     }),
-    h: common_vendor.o((...args) => $options.maskTouchend && $options.maskTouchend(...args)),
-    i: common_vendor.o((...args) => $options.handleReturn && $options.handleReturn(...args)),
-    j: common_vendor.o((...args) => $options.handleHideButton && $options.handleHideButton(...args))
+    i: common_vendor.o((...args) => $options.maskTouchend && $options.maskTouchend(...args)),
+    j: common_vendor.o((...args) => $options.handleReturn && $options.handleReturn(...args)),
+    k: common_vendor.o((...args) => $options.handleHideButton && $options.handleHideButton(...args))
   }, {
-    k: common_vendor.sr("colorPicker", "debaeacc-0"),
-    l: common_vendor.o($options.confirm),
-    m: common_vendor.p({
+    l: common_vendor.sr("colorPicker", "debaeacc-0"),
+    m: common_vendor.o($options.confirm),
+    n: common_vendor.o($options.handleClosePicker),
+    o: common_vendor.p({
       color: $data.color
     }),
-    n: $data.nowBackgroundColor,
-    o: common_vendor.o((...args) => $options.handleHideButton && $options.handleHideButton(...args)),
-    p: !$data.isHideButton,
-    q: common_vendor.o(($event) => $options.open("背景颜色"))
+    p: $data.nowBackgroundColor,
+    q: common_vendor.o((...args) => $options.handleHideButton && $options.handleHideButton(...args)),
+    r: !$data.isHideButton,
+    s: common_vendor.o(($event) => $options.open("背景颜色"))
   });
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-debaeacc"], ["__file", "E:/Data/Code/Project/mine/frontEnd/uni-app-ruler/ruler/subPackages/fullScreenClockPage/fullScreenClockPage.vue"]]);

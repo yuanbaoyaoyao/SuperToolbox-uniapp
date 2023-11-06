@@ -1,7 +1,7 @@
 <template>
-	<view v-if="isShowCanvas" class="canvas-container" @touchend="maskTouchend" @longpress="handleReturn"
-		@tap="handleHideButton">
-		<canvas canvas-id="clock" :style="{width: canvasWidth + 'px', height: canvasWidth + 'px'}"></canvas>
+	<view v-if="isShowCanvas"  class="canvas-container" @touchend="maskTouchend"
+		@longpress="handleReturn" @tap="handleHideButton">
+		<canvas v-show=" !isHideCanvasTemp" canvas-id="clock" :style="{width: canvasWidth + 'px', height: canvasWidth + 'px'}"></canvas>
 	</view>
 	<view class="content" v-else @touchend="maskTouchend" @longpress="handleReturn" @tap="handleHideButton">
 		<!-- #ifdef H5 -->
@@ -24,7 +24,8 @@
 			</view>
 		</view>
 	</view>
-	<t-color-picker ref="colorPicker" :color="color" @confirm="confirm"></t-color-picker>
+	<t-color-picker ref="colorPicker" :color="color" @confirm="confirm" @close="handleClosePicker"
+		style="z-index: 1001;"></t-color-picker>
 	<view class="background" :style="{backgroundColor:nowBackgroundColor}" @tap="handleHideButton"></view>
 	<button v-show="!isHideButton" class="button" size="mini" @tap="open('背景颜色')">背景颜色</button>
 </template>
@@ -51,6 +52,7 @@
 				touchNum: 0,
 				nowBackgroundColor: '',
 				isHideButton: true,
+				isHideCanvasTemp: false,
 				rgba: {
 					r: 100,
 					g: 187,
@@ -113,6 +115,11 @@
 			clearInterval(this.timeRunner)
 		},
 		methods: {
+			handleClosePicker(e) {
+				if (e) {
+					this.isHideCanvasTemp = false
+				}
+			},
 			handleHideButton() {
 				this.isHideButton = !this.isHideButton
 			},
@@ -125,6 +132,7 @@
 			},
 			open(item) {
 				this.$refs.colorPicker.open();
+				this.isHideCanvasTemp = true
 			},
 			confirm(e) {
 				this.rgba = e.rgba;
@@ -267,8 +275,6 @@
 				}
 				// 恢复状态
 				ctx.restore()
-
-
 			}
 		}
 	}

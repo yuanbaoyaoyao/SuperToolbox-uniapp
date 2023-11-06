@@ -265,13 +265,14 @@
 						}, 350)
 					}, 50)
 				})
-
 			},
 			close() {
 				this.active = false;
 				this.$nextTick(() => {
 					setTimeout(() => {
 						this.show = false;
+						//
+						this.$emit('close', true)
 					}, 500)
 				})
 			},
@@ -792,5 +793,4 @@
 		transition: all 0.3s;
 		transform: scale(1.1);
 	}
-
 </style>
