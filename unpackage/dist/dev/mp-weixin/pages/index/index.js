@@ -10,17 +10,17 @@ const _sfc_main = {
         // 	name: "尺子"
         // },
         {
-          url: "/pages/protractorPage/protractorPage",
+          url: "/subPackages/protractorPage/protractorPage",
           name: "量角器",
           icon: "/static/index/protractor.svg"
         },
         {
-          url: "/pages/compassPage/compassPage",
+          url: "/subPackages/compassPage/compassPage",
           name: "指南针",
           icon: "/static/index/compass.svg"
         },
         {
-          url: "/pages/gradienterPage/gradienterPage",
+          url: "/subPackages/gradienterPage/gradienterPage",
           name: "水平仪",
           icon: "/static/index/gradienter.svg"
         },
@@ -29,61 +29,66 @@ const _sfc_main = {
         // 	name: "分贝仪"
         // },
         {
-          url: "/pages/altitudePage/altitudePage",
+          url: "/subPackages/altitudePage/altitudePage",
           // name: "经纬度/位置",
           name: "经纬度",
           icon: "/static/index/position.svg"
         },
         {
-          url: "/pages/drawingBoardPage/drawingBoardPage",
+          url: "/subPackages/drawingBoardPage/drawingBoardPage",
           name: "画板",
           icon: "/static/index/drawingBoard.svg"
         },
         {
-          url: "/pages/qrCodeGenPage/qrCodeGenPage",
+          url: "/subPackages/qrCodeGenPage/qrCodeGenPage",
           name: "二维码生成器",
           icon: "/static/index/qrCodeGen.svg"
         },
         {
-          url: "/pages/qrCodeIdPage/qrCodeIdPage",
+          url: "/subPackages/qrCodeIdPage/qrCodeIdPage",
           name: "二维码扫描器",
           icon: "/static/index/qrCodeId.svg"
         },
         {
-          url: "/pages/amountCapitalPage/amountCapitalPage",
+          url: "/subPackages/amountCapitalPage/amountCapitalPage",
           name: "金额转大写",
           icon: "/static/index/amountCapital.svg"
         },
         {
-          url: "/pages/handheldBarragePage/handheldBarragePage",
+          url: "/subPackages/handheldBarragePage/handheldBarragePage",
           name: "手持弹幕",
           icon: "/static/index/handheldBarrage.svg"
         },
         {
-          url: "/pages/randomShakerPage/randomShakerPage",
+          url: "/subPackages/randomShakerPage/randomShakerPage",
           name: "随机摇号器",
           icon: "/static/index/randomShaker.svg"
         },
         {
-          url: "/pages/gridDiagram/gridDiagram",
+          url: "/subPackages/gridDiagram/gridDiagram",
           name: "九宫格切图",
           icon: "/static/index/gridDiagram.svg"
         },
         {
-          url: "/pages/fullScreenClockPage/fullScreenClockPage",
+          url: "/subPackages/fullScreenClockPage/fullScreenClockPage",
           name: "全屏时钟",
           icon: "/static/index/fullScreenClock.svg"
         },
         {
-          url: "/pages/wonderfulFonts/wonderfulFonts",
+          url: "/subPackages/wonderfulFonts/wonderfulFonts",
           name: "奇妙字体",
           icon: "/static/index/wonderfulFonts.svg"
         },
         {
-          url: "/pages/pdfWatermark/pdfWatermark",
+          url: "/subPackages/pdfWatermark/pdfWatermark",
           name: "pdf添加水印",
           icon: "/static/index/pdfWatermark.svg"
         }
+        // {
+        // 	url: "/pages/pictureSubtitlePage/pictureSubtitlePage",
+        // 	name: "图片字幕叠加",
+        // 	icon: "/static/index/pictureSubtitle.svg"
+        // },
       ]
     };
   },

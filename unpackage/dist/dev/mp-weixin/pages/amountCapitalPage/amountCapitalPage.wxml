@@ -1,1 +1,0 @@
-<view class="amount"><default-input wx:if="{{b}}" bindchangeInput="{{a}}" u-i="2675d4ae-0" bind:__l="__l" u-p="{{b}}"/><view class="amount-value-container"><view class="amount-value" hidden="{{!d}}" bindtap="{{e}}">大写：{{c}}</view></view><view class="tips">提示:点击大写金额即可复制信息。</view></view>

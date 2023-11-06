@@ -61,7 +61,7 @@
 			handleToMiniProgram(miniInfo) {
 				uni.navigateToMiniProgram({
 					appId: 'wx627c724a69f59702',
-					path: 'pages/legalHolidays/legalHolidays', // 不填默认首页
+					path: 'subPackages/legalHolidays/legalHolidays', // 不填默认首页
 					extraData: {},
 					success(res) {}
 				})

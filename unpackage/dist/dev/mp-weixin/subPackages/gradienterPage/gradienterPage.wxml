@@ -1,0 +1,1 @@
+<view class="gyroscope-value"><text>水平角度:{{a}}°</text><text>垂直角度:{{b}}°</text></view><view class="gyroscope"><view class="region" style="{{c}}"></view><view class="core" style="{{d}}"></view></view>

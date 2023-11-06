@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "随机摇号器",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "default-input": "../../components/defaultInput/defaultInput"
+  }
+}

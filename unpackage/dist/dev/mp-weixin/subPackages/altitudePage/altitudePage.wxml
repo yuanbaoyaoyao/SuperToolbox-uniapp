@@ -1,0 +1,1 @@
+<view class="altitude-info"><view class="altitude-info-item">当前经度：{{a}}</view><view class="altitude-info-item">当前纬度：{{b}}</view><view wx:if="{{c}}" class="altitude-info-item">当前高度：{{d}}</view></view>

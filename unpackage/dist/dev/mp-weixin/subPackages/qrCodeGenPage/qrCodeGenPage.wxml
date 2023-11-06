@@ -1,0 +1,1 @@
+<view class="qr-code-gen"><view class="operation"><default-input wx:if="{{b}}" bindchangeInput="{{a}}" u-i="8426d0d4-0" bind:__l="__l" u-p="{{b}}"/><button type="primary" bindtap="{{c}}">确认</button></view><view wx:if="{{d}}" class="qr-box"><canvas canvas-id="qrcode" hidden="{{!e}}"/><button hidden="{{!f}}" bindtap="{{g}}">保存二维码</button></view></view>

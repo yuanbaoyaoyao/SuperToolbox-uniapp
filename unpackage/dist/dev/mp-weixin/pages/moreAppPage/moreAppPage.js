@@ -21,7 +21,7 @@ const _sfc_main = {
     handleToMiniProgram(miniInfo) {
       common_vendor.index.navigateToMiniProgram({
         appId: "wx627c724a69f59702",
-        path: "pages/legalHolidays/legalHolidays",
+        path: "subPackages/legalHolidays/legalHolidays",
         // 不填默认首页
         extraData: {},
         success(res) {

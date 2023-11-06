@@ -1,1 +1,0 @@
-<view wx:if="{{a}}" class="th-line data-v-f2d64e03" bindtap="{{e}}"><view class="{{['data-v-f2d64e03', c]}}" catchtap="{{d}}"><view class="line-head data-v-f2d64e03">线条选择器</view><view class="line-box data-v-f2d64e03"><view wx:for="{{b}}" wx:for-item="item" wx:key="a" class="data-v-f2d64e03" bindtap="{{item.b}}" style="{{'height:' + item.c}}"></view></view></view></view>

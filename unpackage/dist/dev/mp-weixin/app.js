@@ -3,23 +3,21 @@ Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
 const common_vendor = require("./common/vendor.js");
 if (!Math) {
   "./pages/index/index.js";
-  "./pages/protractorPage/protractorPage.js";
-  "./pages/rulerPage/rulerPage.js";
-  "./pages/gradienterPage/gradienterPage.js";
-  "./pages/compassPage/compassPage.js";
-  "./pages/decibelMeterPage/decibelMeterPage.js";
-  "./pages/altitudePage/altitudePage.js";
-  "./pages/drawingBoardPage/drawingBoardPage.js";
   "./pages/moreAppPage/moreAppPage.js";
-  "./pages/qrCodeGenPage/qrCodeGenPage.js";
-  "./pages/qrCodeIdPage/qrCodeIdPage.js";
-  "./pages/amountCapitalPage/amountCapitalPage.js";
-  "./pages/handheldBarragePage/handheldBarragePage.js";
-  "./pages/randomShakerPage/randomShakerPage.js";
-  "./pages/gridDiagram/gridDiagram.js";
-  "./pages/fullScreenClockPage/fullScreenClockPage.js";
-  "./pages/wonderfulFonts/wonderfulFonts.js";
-  "./pages/pdfWatermark/pdfWatermark.js";
+  "./subPackages/protractorPage/protractorPage.js";
+  "./subPackages/gradienterPage/gradienterPage.js";
+  "./subPackages/compassPage/compassPage.js";
+  "./subPackages/altitudePage/altitudePage.js";
+  "./subPackages/drawingBoardPage/drawingBoardPage.js";
+  "./subPackages/qrCodeGenPage/qrCodeGenPage.js";
+  "./subPackages/qrCodeIdPage/qrCodeIdPage.js";
+  "./subPackages/amountCapitalPage/amountCapitalPage.js";
+  "./subPackages/handheldBarragePage/handheldBarragePage.js";
+  "./subPackages/randomShakerPage/randomShakerPage.js";
+  "./subPackages/gridDiagram/gridDiagram.js";
+  "./subPackages/fullScreenClockPage/fullScreenClockPage.js";
+  "./subPackages/wonderfulFonts/wonderfulFonts.js";
+  "./subPackages/pdfWatermark/pdfWatermark.js";
 }
 const _sfc_main = {
   onLaunch: function() {

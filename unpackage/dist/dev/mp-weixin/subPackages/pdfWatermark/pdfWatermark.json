@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "pdf添加水印",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "default-input": "../../components/defaultInput/defaultInput",
+    "t-color-picker": "../../components/t-color-picker/t-color-picker"
+  }
+}

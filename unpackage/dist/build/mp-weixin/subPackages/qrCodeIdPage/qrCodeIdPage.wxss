@@ -1,0 +1,1 @@
+.qr-code-id{display:flex;flex-direction:column;justify-content:center;align-items:center;width:100vw;height:100vh}.qr-code-id-container{width:90vw;margin-bottom:50rpx;display:flex;flex-direction:column;word-wrap:break-word}.tips{width:80%;color:#ccc}
