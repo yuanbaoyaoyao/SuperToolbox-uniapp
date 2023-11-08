@@ -280,6 +280,7 @@
 	}
 </script>
 <style lang="scss" scoped>
+	@use "sass:math";
 	$width: 170upx;
 	$backgroundColor: #333;
 	$color: #ccc;
@@ -287,10 +288,10 @@
 	$height: $width * 1.5;
 	$fontSize: $width * 1.3;
 	$lineWidth: (
-		$width / 60
+		math.div($width, 60)
 	);
 	$radius: (
-		$width / 10
+		math.div($width, 10)
 	);
 	$perspective: $width * 5;
 	$gap: $width * 0.2;
@@ -351,11 +352,11 @@
 				&::after,
 				&::before {
 					position: absolute;
-					right: -($margin-right / 2);
+					right: -(math.div($margin-right, 2));
 					content: '';
 					transform: translateX(50%);
-					width: ($gap / 1.5);
-					height: ($gap / 1.5);
+					width: (math.div($gap, 1.5));
+					height: (math.div($gap, 1.5));
 					border-radius: 50%;
 					background-color: $backgroundColor;
 				}
@@ -381,7 +382,7 @@
 				&:before {
 					content: '';
 					position: absolute;
-					top: (($height - $lineWidth) / 2);
+					top: (math.div($height - $lineWidth, 2));
 					left: 0;
 					z-index: 9;
 					width: 100%;
@@ -447,16 +448,16 @@
 				}
 
 				&.current {
-					animation: highter-level ($time/2) ($time/2) linear forwards;
+					animation: highter-level (math.div($time, 2)) (math.div($time, 2)) linear forwards;
 					z-index: 2;
 				}
 
 				&.past .up {
-					animation: flip-past-up ($time/2) linear both;
+					animation: flip-past-up (math.div($time, 2)) linear both;
 				}
 
 				&.current .down {
-					animation: flip-current-down ($time/2) ($time/2) linear both;
+					animation: flip-current-down (math.div($time, 2)) (math.div($time, 2)) linear both;
 				}
 
 				@keyframes flip-current-down {
@@ -500,22 +501,22 @@
 
 				&.past .up .shadow {
 					background: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 1) 100%);
-					animation: show ($time/2) linear both;
+					animation: show (math.div($time, 2)) linear both;
 				}
 
 				&.past .down .shadow {
 					background: linear-gradient(rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.1) 100%);
-					animation: show ($time/2) linear both;
+					animation: show (math.div($time, 2)) linear both;
 				}
 
 				&.current .up .shadow {
 					background: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 1) 100%);
-					animation: hide ($time/2) 0.3s linear both;
+					animation: hide (math.div($time, 2)) 0.3s linear both;
 				}
 
 				&.current .down .shadow {
 					background: linear-gradient(rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.1) 100%);
-					animation: hide ($time/2) 0.3s linear both;
+					animation: hide (math.div($time, 2)) 0.3s linear both;
 				}
 
 				@keyframes show {
