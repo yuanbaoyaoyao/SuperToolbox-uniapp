@@ -6,62 +6,6 @@
 				"navigationBarTitleText": "小匠工具箱"
 			}
 		},
-		// {
-		// 	"path": "pages/protractorPage/protractorPage",
-		// 	"style": {
-		// 		"navigationBarTitleText": "量角器",
-		// 		"enablePullDownRefresh": false,
-		// 		"mp-weixin": {
-		// 			"navigationStyle": "custom"
-		// 		}
-		// 	}
-		// },
-		// {
-		// 	"path": "pages/rulerPage/rulerPage",
-		// 	"style": {
-		// 		"navigationBarTitleText": "尺子",
-		// 		"enablePullDownRefresh": false,
-		// 		"mp-weixin": {
-		// 			"pageOrientation": "landscape",
-		// 			"navigationStyle": "custom"
-		// 		} //横屏
-		// 	}
-		// }, {
-		// 	"path": "pages/gradienterPage/gradienterPage",
-		// 	"style": {
-		// 		"navigationBarTitleText": "水平仪",
-		// 		"enablePullDownRefresh": false
-		// 	}
-
-		// }, {
-		// 	"path": "pages/compassPage/compassPage",
-		// 	"style": {
-		// 		"navigationBarTitleText": "指南针",
-		// 		"enablePullDownRefresh": false
-		// 	}
-
-		// }, {
-		// 	"path": "pages/decibelMeterPage/decibelMeterPage",
-		// 	"style": {
-		// 		"navigationBarTitleText": "分贝仪",
-		// 		"enablePullDownRefresh": false
-		// 	}
-
-		// }, {
-		// 	"path": "pages/altitudePage/altitudePage",
-		// 	"style": {
-		// 		"navigationBarTitleText": "经纬度",
-		// 		"enablePullDownRefresh": false
-		// 	}
-
-		// }, {
-		// 	"path": "pages/drawingBoardPage/drawingBoardPage",
-		// 	"style": {
-		// 		"navigationBarTitleText": "画板",
-		// 		"enablePullDownRefresh": false
-		// 	}
-
-		// }, 
 		{
 			"path": "pages/moreAppPage/moreAppPage",
 			"style": {
@@ -69,94 +13,19 @@
 				"enablePullDownRefresh": false
 			}
 		}
-		// {
-		// 	"path": "pages/qrCodeGenPage/qrCodeGenPage",
-		// 	"style": {
-		// 		"navigationBarTitleText": "二维码生成器",
-		// 		"enablePullDownRefresh": false
-		// 	}
-
-		// }, {
-		// 	"path": "pages/qrCodeIdPage/qrCodeIdPage",
-		// 	"style": {
-		// 		"navigationBarTitleText": "二维码扫描器",
-		// 		"enablePullDownRefresh": false
-		// 	}
-
-		// }, {
-		// 	"path": "pages/amountCapitalPage/amountCapitalPage",
-		// 	"style": {
-		// 		"navigationBarTitleText": "金额转大写",
-		// 		"enablePullDownRefresh": false
-		// 	}
-
-		// }, {
-		// 	"path": "pages/handheldBarragePage/handheldBarragePage",
-		// 	"style": {
-		// 		"navigationBarTitleText": "",
-		// 		"enablePullDownRefresh": false,
-		// 		"mp-weixin": {
-		// 			"navigationStyle": "custom"
-		// 		}
-		// 	}
-
-
-		// }, {
-		// 	"path": "pages/randomShakerPage/randomShakerPage",
-		// 	"style": {
-		// 		"navigationBarTitleText": "随机摇号器",
-		// 		"enablePullDownRefresh": false
-		// 	}
-
-		// }, {
-		// 	"path": "pages/gridDiagram/gridDiagram",
-		// 	"style": {
-		// 		"navigationBarTitleText": "九宫格切图",
-		// 		"enablePullDownRefresh": false
-		// 	}
-
-		// }, {
-		// 	"path": "pages/fullScreenClockPage/fullScreenClockPage",
-		// 	"style": {
-		// 		"navigationBarTitleText": "",
-		// 		"enablePullDownRefresh": false,
-		// 		"mp-weixin": {
-		// 			"navigationStyle": "custom"
-		// 		}
-		// 	}
-
-		// }, {
-		// 	"path": "pages/wonderfulFonts/wonderfulFonts",
-		// 	"style": {
-		// 		"navigationBarTitleText": "奇妙文字",
-		// 		"enablePullDownRefresh": false
-		// 	}
-
-		// },
-		// {
-		// 	"path": "pages/pdfWatermark/pdfWatermark",
-		// 	"style": {
-		// 		"navigationBarTitleText": "pdf添加水印",
-		// 		"enablePullDownRefresh": false
-		// 	}
-		// },
-		// {
-		// 	"path": "pages/pictureSubtitlePage/pictureSubtitlePage",
-		// 	"style": {
-		// 		"navigationBarTitleText": "图片字幕叠加",
-		// 		"enablePullDownRefresh": false
-		// 	}
-		// }
 	],
 	"subPackages": [{
 			"root": "subPackages/protractorPage",
 			"pages": [{
 				"path": "protractorPage",
 				"style": {
-					"navigationBarTitleText": "量角器",
+					// "navigationBarTitleText": "量角器",
 					"enablePullDownRefresh": false,
 					"mp-weixin": {
 						"navigationStyle": "custom"
+					},
+					"app-plus": {
+						"titleNView": false //禁用原生导航栏
 					}
 				}
 			}]
@@ -240,6 +109,9 @@
 					"enablePullDownRefresh": false,
 					"mp-weixin": {
 						"navigationStyle": "custom"
+					},
+					"app-plus": {
+						"titleNView": false //禁用原生导航栏
 					}
 				}
 			}]
@@ -274,6 +146,7 @@
 					"mp-weixin": {
 						"navigationStyle": "custom"
 					}
+
 				}
 			}]
 		},

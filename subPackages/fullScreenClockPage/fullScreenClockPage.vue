@@ -1,7 +1,8 @@
 <template>
-	<view v-if="isShowCanvas"  class="canvas-container" @touchend="maskTouchend"
-		@longpress="handleReturn" @tap="handleHideButton">
-		<canvas v-show=" !isHideCanvasTemp" canvas-id="clock" :style="{width: canvasWidth + 'px', height: canvasWidth + 'px'}"></canvas>
+	<view v-if="isShowCanvas" class="canvas-container" @touchend="maskTouchend" @longpress="handleReturn"
+		@tap="handleHideButton">
+		<canvas v-show=" !isHideCanvasTemp" canvas-id="clock"
+			:style="{width: canvasWidth + 'px', height: canvasWidth + 'px'}"></canvas>
 	</view>
 	<view class="content" v-else @touchend="maskTouchend" @longpress="handleReturn" @tap="handleHideButton">
 		<!-- #ifdef H5 -->
@@ -88,6 +89,9 @@
 			}
 		},
 		mounted() {
+			// #ifdef APP-PLUS
+			plus.navigator.setFullscreen(true);
+			// #endif
 			let nowTime = new Date().getHours()
 			if (nowTime >= 17 || nowTime <= 7) {
 				this.nowBackgroundColor = '#000'

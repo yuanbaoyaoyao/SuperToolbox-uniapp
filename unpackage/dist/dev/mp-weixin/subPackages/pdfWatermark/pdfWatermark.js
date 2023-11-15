@@ -2,8 +2,8 @@
 const common_vendor = require("../../common/vendor.js");
 require("../../common/utils/pdf-lib.min.js");
 require("../../common/utils/fontkit.umd.min.js");
-var PDFMANAGER = require("../../common/utils/pdf-lib.min.js");
-var fontkit = require("../../common/utils/fontkit.umd.min.js");
+let PDFMANAGER;
+let fontkit;
 const _sfc_main = {
   data() {
     return {
@@ -181,7 +181,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     c: common_vendor.o((...args) => $options.handleShowPopup && $options.handleShowPopup(...args)),
     d: common_vendor.o((...args) => $options.chooseFile && $options.chooseFile(...args)),
-    e: common_vendor.sr("colorPicker", "7007dff2-1"),
+    e: common_vendor.sr("colorPicker", "2f5adc78-1"),
     f: common_vendor.o($options.confirm),
     g: common_vendor.p({
       color: $data.color
@@ -201,5 +201,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     s: common_vendor.o((...args) => $options.handleClosePopup && $options.handleClosePopup(...args))
   } : {});
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Data/Code/Project/mine/frontEnd/uni-app-ruler/ruler/subPackages/pdfWatermark/pdfWatermark.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Data/Code/Project/mine/frontEnd/uniapp/uni-app-ruler/ruler/subPackages/pdfWatermark/pdfWatermark.vue"]]);
 wx.createPage(MiniProgramPage);

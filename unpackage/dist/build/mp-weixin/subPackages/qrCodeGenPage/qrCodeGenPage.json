@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "二维码生成器",
-  "enablePullDownRefresh": false,
-  "usingComponents": {
-    "default-input": "../../components/defaultInput/defaultInput"
-  }
-}

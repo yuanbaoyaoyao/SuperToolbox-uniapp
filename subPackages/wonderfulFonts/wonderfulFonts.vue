@@ -88,15 +88,12 @@
 					// A - Z 转换
 					if (codePoint >= 65 && codePoint <= 90) {
 						codePoint += 119743;
-						newMessage += String.fromCodePoint(codePoint);
 					}
 					// a - z 转换
 					else if (codePoint >= 97 && codePoint <= 122) {
 						codePoint += 119737;
-						newMessage += String.fromCodePoint(codePoint);
-					} else {
-						newMessage += String.fromCodePoint(codePoint);
 					}
+					newMessage += String.fromCodePoint(codePoint);
 				}
 				this.newMessage1 = newMessage
 			},
@@ -107,15 +104,12 @@
 					// A - Z 转换
 					if (codePoint >= 65 && codePoint <= 90) {
 						codePoint += 120315;
-						newMessage += String.fromCodePoint(codePoint);
 					}
 					// a - z 转换
 					else if (codePoint >= 97 && codePoint <= 122) {
 						codePoint += 120309;
-						newMessage += String.fromCodePoint(codePoint);
-					} else {
-						newMessage += String.fromCodePoint(codePoint);
 					}
+					newMessage += String.fromCodePoint(codePoint);
 				}
 				this.newMessage2 = newMessage
 			},
@@ -126,7 +120,6 @@
 					// A - Z 转换
 					if (codePoint >= 65 && codePoint <= 90) {
 						codePoint += 119795;
-						newMessage += String.fromCodePoint(codePoint);
 					}
 					// a - z 转换
 					else if (codePoint >= 97 && codePoint <= 122) {
@@ -135,10 +128,8 @@
 						} else {
 							codePoint += 119789;
 						}
-						newMessage += String.fromCodePoint(codePoint);
-					} else {
-						newMessage += String.fromCodePoint(codePoint);
 					}
+					newMessage += String.fromCodePoint(codePoint);
 				}
 				this.newMessage3 = newMessage
 			},
@@ -149,15 +140,12 @@
 					// A - Z 转换
 					if (codePoint >= 65 && codePoint <= 90) {
 						codePoint += 119847;
-						newMessage += String.fromCodePoint(codePoint);
 					}
 					// a - z 转换
 					else if (codePoint >= 97 && codePoint <= 122) {
 						codePoint += 119841;
-						newMessage += String.fromCodePoint(codePoint);
-					} else {
-						newMessage += String.fromCodePoint(codePoint);
 					}
+					newMessage += String.fromCodePoint(codePoint);
 				}
 				this.newMessage4 = newMessage
 			},
@@ -186,7 +174,6 @@
 						} else {
 							codePoint += 119899;
 						}
-						newMessage += String.fromCodePoint(codePoint);
 					}
 					// a - z 转换
 					else if (codePoint >= 97 && codePoint <= 122) {
@@ -199,10 +186,8 @@
 						} else {
 							codePoint += 119893;
 						}
-						newMessage += String.fromCodePoint(codePoint);
-					} else {
-						newMessage += String.fromCodePoint(codePoint);
 					}
+					newMessage += String.fromCodePoint(codePoint);
 				}
 				this.newMessage5 = newMessage
 			},
@@ -213,15 +198,12 @@
 					// A - Z 转换
 					if (codePoint >= 65 && codePoint <= 90) {
 						codePoint += 119951;
-						newMessage += String.fromCodePoint(codePoint);
 					}
 					// a - z 转换
 					else if (codePoint >= 97 && codePoint <= 122) {
 						codePoint += 119945;
-						newMessage += String.fromCodePoint(codePoint);
-					} else {
-						newMessage += String.fromCodePoint(codePoint);
 					}
+					newMessage += String.fromCodePoint(codePoint);
 				}
 				this.newMessage6 = newMessage
 			},
@@ -244,15 +226,12 @@
 						} else {
 							codePoint += 120003;
 						}
-						newMessage += String.fromCodePoint(codePoint);
 					}
 					// a - z 转换
 					else if (codePoint >= 97 && codePoint <= 122) {
 						codePoint += 119997;
-						newMessage += String.fromCodePoint(codePoint);
-					} else {
-						newMessage += String.fromCodePoint(codePoint);
 					}
+					newMessage += String.fromCodePoint(codePoint);
 				}
 				this.newMessage7 = newMessage
 			},
@@ -279,15 +258,12 @@
 						} else {
 							codePoint += 120055;
 						}
-						newMessage += String.fromCodePoint(codePoint);
 					}
 					// a - z 转换
 					else if (codePoint >= 97 && codePoint <= 122) {
 						codePoint += 120049;
-						newMessage += String.fromCodePoint(codePoint);
-					} else {
-						newMessage += String.fromCodePoint(codePoint);
 					}
+					newMessage += String.fromCodePoint(codePoint);
 				}
 				this.newMessage8 = newMessage
 			},
@@ -298,15 +274,12 @@
 					// A - Z 转换
 					if (codePoint >= 65 && codePoint <= 90) {
 						codePoint += 120107;
-						newMessage += String.fromCodePoint(codePoint);
 					}
 					// a - z 转换
 					else if (codePoint >= 97 && codePoint <= 122) {
 						codePoint += 120101;
-						newMessage += String.fromCodePoint(codePoint);
-					} else {
-						newMessage += String.fromCodePoint(codePoint);
 					}
+					newMessage += String.fromCodePoint(codePoint);
 				}
 				this.newMessage9 = newMessage
 			},
@@ -317,15 +290,12 @@
 					// A - Z 转换
 					if (codePoint >= 65 && codePoint <= 90) {
 						codePoint += 120159;
-						newMessage += String.fromCodePoint(codePoint);
 					}
 					// a - z 转换
 					else if (codePoint >= 97 && codePoint <= 122) {
 						codePoint += 120153;
-						newMessage += String.fromCodePoint(codePoint);
-					} else {
-						newMessage += String.fromCodePoint(codePoint);
 					}
+					newMessage += String.fromCodePoint(codePoint);
 				}
 				this.newMessage10 = newMessage
 			},
@@ -336,15 +306,12 @@
 					// A - Z 转换
 					if (codePoint >= 65 && codePoint <= 90) {
 						codePoint += 120263;
-						newMessage += String.fromCodePoint(codePoint);
 					}
 					// a - z 转换
 					else if (codePoint >= 97 && codePoint <= 122) {
 						codePoint += 120257;
-						newMessage += String.fromCodePoint(codePoint);
-					} else {
-						newMessage += String.fromCodePoint(codePoint);
 					}
+					newMessage += String.fromCodePoint(codePoint);
 				}
 				this.newMessage11 = newMessage
 			},
@@ -355,15 +322,12 @@
 					// A - Z 转换
 					if (codePoint >= 65 && codePoint <= 90) {
 						codePoint += 120315;
-						newMessage += String.fromCodePoint(codePoint);
 					}
 					// a - z 转换
 					else if (codePoint >= 97 && codePoint <= 122) {
 						codePoint += 120309;
-						newMessage += String.fromCodePoint(codePoint);
-					} else {
-						newMessage += String.fromCodePoint(codePoint);
 					}
+					newMessage += String.fromCodePoint(codePoint);
 				}
 				this.newMessage12 = newMessage
 			},
@@ -374,15 +338,12 @@
 					// A - Z 转换
 					if (codePoint >= 65 && codePoint <= 90) {
 						codePoint += 120367;
-						newMessage += String.fromCodePoint(codePoint);
 					}
 					// a - z 转换
 					else if (codePoint >= 97 && codePoint <= 122) {
 						codePoint += 120361;
-						newMessage += String.fromCodePoint(codePoint);
-					} else {
-						newMessage += String.fromCodePoint(codePoint);
 					}
+					newMessage += String.fromCodePoint(codePoint);
 				}
 				this.newMessage13 = newMessage
 			},
@@ -393,15 +354,12 @@
 					// A - Z 转换
 					if (codePoint >= 65 && codePoint <= 90) {
 						codePoint += 120423;
-						newMessage += String.fromCodePoint(codePoint);
 					}
 					// a - z 转换
 					else if (codePoint >= 97 && codePoint <= 122) {
 						codePoint += 120417;
-						newMessage += String.fromCodePoint(codePoint);
-					} else {
-						newMessage += String.fromCodePoint(codePoint);
 					}
+					newMessage += String.fromCodePoint(codePoint);
 				}
 				this.newMessage14 = newMessage
 			},
@@ -412,15 +370,12 @@
 					// A - Z 转换
 					if (codePoint >= 65 && codePoint <= 90) {
 						codePoint += 120481;
-						newMessage += String.fromCodePoint(codePoint);
 					}
 					// a - z 转换
 					else if (codePoint >= 97 && codePoint <= 122) {
 						codePoint += 120475;
-						newMessage += String.fromCodePoint(codePoint);
-					} else {
-						newMessage += String.fromCodePoint(codePoint);
 					}
+					newMessage += String.fromCodePoint(codePoint);
 				}
 				this.newMessage15 = newMessage
 			},
@@ -431,15 +386,12 @@
 					// A - Z 转换
 					if (codePoint >= 65 && codePoint <= 90) {
 						codePoint += 120539;
-						newMessage += String.fromCodePoint(codePoint);
 					}
 					// a - z 转换
 					else if (codePoint >= 97 && codePoint <= 122) {
 						codePoint += 120533;
-						newMessage += String.fromCodePoint(codePoint);
-					} else {
-						newMessage += String.fromCodePoint(codePoint);
 					}
+					newMessage += String.fromCodePoint(codePoint);
 				}
 				this.newMessage16 = newMessage
 			},
@@ -450,15 +402,12 @@
 					// A - Z 转换
 					if (codePoint >= 65 && codePoint <= 90) {
 						codePoint += 120597;
-						newMessage += String.fromCodePoint(codePoint);
 					}
 					// a - z 转换
 					else if (codePoint >= 97 && codePoint <= 122) {
 						codePoint += 120591;
-						newMessage += String.fromCodePoint(codePoint);
-					} else {
-						newMessage += String.fromCodePoint(codePoint);
 					}
+					newMessage += String.fromCodePoint(codePoint);
 				}
 				this.newMessage17 = newMessage
 			},
@@ -469,15 +418,12 @@
 					// A - Z 转换
 					if (codePoint >= 65 && codePoint <= 90) {
 						codePoint += 120655;
-						newMessage += String.fromCodePoint(codePoint);
 					}
 					// a - z 转换
 					else if (codePoint >= 97 && codePoint <= 122) {
 						codePoint += 120649;
-						newMessage += String.fromCodePoint(codePoint);
-					} else {
-						newMessage += String.fromCodePoint(codePoint);
 					}
+					newMessage += String.fromCodePoint(codePoint);
 				}
 				this.newMessage18 = newMessage
 			},
@@ -488,15 +434,12 @@
 					// A - Z 转换
 					if (codePoint >= 65 && codePoint <= 90) {
 						codePoint += 120655;
-						newMessage += String.fromCodePoint(codePoint);
 					}
 					// a - z 转换
 					else if (codePoint >= 97 && codePoint <= 122) {
 						codePoint += 120649;
-						newMessage += String.fromCodePoint(codePoint);
-					} else {
-						newMessage += String.fromCodePoint(codePoint);
 					}
+					newMessage += String.fromCodePoint(codePoint);
 				}
 				this.newMessage19 = newMessage
 			},

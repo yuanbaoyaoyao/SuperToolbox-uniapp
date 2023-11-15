@@ -1,7 +1,13 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
-require("./xlsx.full.min.js");
-var XLSX = require("./xlsx.full.min.js");
+const store_index = require("../../store/index.js");
+const subPackages_randomShakerPage_xlsx_full_min = require("./xlsx.full.min.js");
+let XLSX;
+if (store_index.store.getters.platform !== "android") {
+  XLSX = require("./xlsx.full.min.js");
+} else {
+  XLSX = subPackages_randomShakerPage_xlsx_full_min.XLSXMIN;
+}
 const _sfc_main = {
   data() {
     return {
@@ -165,5 +171,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     s: common_vendor.o((...args) => $options.handleClearInfo && $options.handleClearInfo(...args))
   } : {});
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Data/Code/Project/mine/frontEnd/uni-app-ruler/ruler/subPackages/randomShakerPage/randomShakerPage.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Data/Code/Project/mine/frontEnd/uniapp/uni-app-ruler/ruler/subPackages/randomShakerPage/randomShakerPage.vue"]]);
 wx.createPage(MiniProgramPage);

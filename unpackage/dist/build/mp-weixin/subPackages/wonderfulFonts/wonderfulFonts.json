@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "奇妙文字",
-  "enablePullDownRefresh": false,
-  "usingComponents": {
-    "default-input": "../../components/defaultInput/defaultInput"
-  }
-}

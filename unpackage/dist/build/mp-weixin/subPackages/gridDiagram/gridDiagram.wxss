@@ -1,1 +1,0 @@
-.newcanvas{display:grid;grid-template-columns:repeat(3,1fr);grid-gap:10px}.grid-diagram-container{display:flex;flex-direction:column;align-items:center;min-height:100vh;min-width:100vw}.grid-diagram-actions{display:flex;justify-content:space-around;width:100vw;margin:20rpx}

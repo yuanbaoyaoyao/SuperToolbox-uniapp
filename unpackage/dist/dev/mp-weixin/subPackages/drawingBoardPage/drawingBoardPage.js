@@ -288,5 +288,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     C: $data.bottomHeight + "px"
   });
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-01d25940"], ["__file", "E:/Data/Code/Project/mine/frontEnd/uni-app-ruler/ruler/subPackages/drawingBoardPage/drawingBoardPage.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-01d25940"], ["__file", "E:/Data/Code/Project/mine/frontEnd/uniapp/uni-app-ruler/ruler/subPackages/drawingBoardPage/drawingBoardPage.vue"]]);
 wx.createPage(MiniProgramPage);

@@ -1,1 +1,0 @@
-.default-input{display:flex;align-items:center;justify-content:space-between;background-color:#c8c8c8;height:80rpx;padding:20rpx 40rpx;border-radius:20rpx;margin-bottom:20rpx;width:80vw}.default-input input{width:70vw}.default-input image{width:50rpx;height:50rpx}

@@ -39,10 +39,16 @@
 </template>
 
 <script>
-	// import * as XLSXMIN from '@/common/utils/xlsx.full.min.js';
-	// var XLSX = require('../../common/utils/xlsx.full.min.js');
+	import store from '@/store/index.js'
 	import * as XLSXMIN from './xlsx.full.min.js';
-	var XLSX = require('./xlsx.full.min.js');
+	let XLSX
+	// // #ifdef MP-WEIXIN
+	if (store.getters.platform !== 'android') {
+		XLSX = require('./xlsx.full.min.js');
+	} else {
+		XLSX = XLSXMIN
+	}
+	// // #endif
 	export default {
 		data() {
 			return {
@@ -93,6 +99,7 @@
 			},
 			chooseFile(e) {
 				let that = this
+				// #ifdef MP-WEIXIN
 				wx.chooseMessageFile({
 					count: 1,
 					type: 'file',
@@ -114,6 +121,44 @@
 						}
 					}
 				})
+				// #endif
+				// #ifdef APP-PLUS
+				switch (plus.os.name) {
+					case "Android":
+						// Android平台: plus.android.*  
+						console.log("Android111111111")
+						break;
+					case "iOS":
+						// iOS平台: plus.ios.*
+						  console.log("Ios111111111111")
+						break;
+					default:
+						// 其它平台  
+						break;
+				}
+
+				// uni.chooseFile({
+				// 	count: 1,
+				// 	type: 'file',
+				// 	extension: ['.xls', '.xlsx'],
+				// 	success: res => {
+				// 		try {
+				// 			const path = res.tempFiles[0].path
+				// 			const fs = wx.getFileSystemManager()
+				// 			const data = fs.readFileSync(path, 'binary') // data为binary数据
+				// 			that.process(data)
+				// 		} catch (e) {
+				// 			console.error(e)
+				// 			uni.showModal({
+				// 				title: '提示',
+				// 				content: "文件读取失败",
+				// 				showCancel: false
+				// 			})
+				// 			return
+				// 		}
+				// 	}
+				// })
+				// #endif
 			},
 			process(data) {
 				let workbook = XLSX.read(data, {
@@ -129,7 +174,7 @@
 
 				for (let item of rawData) {
 					const valuesArray = Object.values(item);
-					for(let value of valuesArray){
+					for (let value of valuesArray) {
 						this.names.push(value)
 					}
 				}

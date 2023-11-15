@@ -1,1 +1,0 @@
-"use strict";const e=require("../common/vendor.js").createStore({state:{platform:"",screenWidth:"",screenHeight:""},mutations:{setPlatform(e,t){e.platform=t},setScreenWidth(e,t){e.screenWidth=t},setScreenHeight(e,t){e.screenHeight=t}},getters:{platform:e=>e.platform,screenWidth:e=>e.screenWidth,screenHeight:e=>e.screenHeight}});exports.store=e;

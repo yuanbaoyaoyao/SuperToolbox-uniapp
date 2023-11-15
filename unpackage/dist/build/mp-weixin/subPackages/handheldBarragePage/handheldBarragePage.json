@@ -1,9 +1,0 @@
-{
-  "navigationBarTitleText": "",
-  "enablePullDownRefresh": false,
-  "navigationStyle": "custom",
-  "usingComponents": {
-    "default-input": "../../components/defaultInput/defaultInput",
-    "t-color-picker": "../../components/t-color-picker/t-color-picker"
-  }
-}

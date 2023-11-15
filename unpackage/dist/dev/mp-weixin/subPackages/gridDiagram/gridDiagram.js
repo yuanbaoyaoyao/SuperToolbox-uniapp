@@ -190,5 +190,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     p: !$data.isShowPhoto && !$data.isSection ? "100vh" : ""
   });
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Data/Code/Project/mine/frontEnd/uni-app-ruler/ruler/subPackages/gridDiagram/gridDiagram.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Data/Code/Project/mine/frontEnd/uniapp/uni-app-ruler/ruler/subPackages/gridDiagram/gridDiagram.vue"]]);
 wx.createPage(MiniProgramPage);

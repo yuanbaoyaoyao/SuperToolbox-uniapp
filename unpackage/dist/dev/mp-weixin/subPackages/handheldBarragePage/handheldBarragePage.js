@@ -33,6 +33,8 @@ const _sfc_main = {
       }
     };
   },
+  mounted() {
+  },
   methods: {
     rgbaToHex(r, g, b, a) {
       const red = r.toString(16).padStart(2, "0");
@@ -122,7 +124,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     a: common_vendor.o((...args) => $options.handleReturn && $options.handleReturn(...args)),
     b: !$data.isShowBarrage
   }, !$data.isShowBarrage ? {
-    c: common_vendor.sr("defaultInput", "1f90c14a-0"),
+    c: common_vendor.sr("defaultInput", "8e6248c8-0"),
     d: common_vendor.o($options.handleChangeTextValue),
     e: common_vendor.p({
       placeholder: "请输入弹幕"
@@ -139,7 +141,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     n: $data.bgColor,
     o: $data.nowBoxAnimationName
   }, {
-    p: common_vendor.sr("colorPicker", "1f90c14a-1"),
+    p: common_vendor.sr("colorPicker", "8e6248c8-1"),
     q: common_vendor.o($options.confirm),
     r: common_vendor.p({
       color: $data.color
@@ -173,5 +175,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     E: common_vendor.o((...args) => $options.handleClosePopup && $options.handleClosePopup(...args))
   } : {});
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Data/Code/Project/mine/frontEnd/uni-app-ruler/ruler/subPackages/handheldBarragePage/handheldBarragePage.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Data/Code/Project/mine/frontEnd/uniapp/uni-app-ruler/ruler/subPackages/handheldBarragePage/handheldBarragePage.vue"]]);
 wx.createPage(MiniProgramPage);

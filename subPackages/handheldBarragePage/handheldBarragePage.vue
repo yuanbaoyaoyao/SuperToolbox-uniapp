@@ -109,6 +109,11 @@
 				}
 			}
 		},
+		mounted() {
+			// #ifdef APP-PLUS
+			plus.navigator.setFullscreen(true);
+			// #endif
+		},
 		methods: {
 			rgbaToHex(r, g, b, a) {
 				const red = r.toString(16).padStart(2, '0');

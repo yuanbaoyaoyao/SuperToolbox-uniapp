@@ -70,13 +70,10 @@ const _sfc_main = {
         codePoint = codePoint.charCodeAt(0);
         if (codePoint >= 65 && codePoint <= 90) {
           codePoint += 119743;
-          newMessage += String.fromCodePoint(codePoint);
         } else if (codePoint >= 97 && codePoint <= 122) {
           codePoint += 119737;
-          newMessage += String.fromCodePoint(codePoint);
-        } else {
-          newMessage += String.fromCodePoint(codePoint);
         }
+        newMessage += String.fromCodePoint(codePoint);
       }
       this.newMessage1 = newMessage;
     },
@@ -86,13 +83,10 @@ const _sfc_main = {
         codePoint = codePoint.charCodeAt(0);
         if (codePoint >= 65 && codePoint <= 90) {
           codePoint += 120315;
-          newMessage += String.fromCodePoint(codePoint);
         } else if (codePoint >= 97 && codePoint <= 122) {
           codePoint += 120309;
-          newMessage += String.fromCodePoint(codePoint);
-        } else {
-          newMessage += String.fromCodePoint(codePoint);
         }
+        newMessage += String.fromCodePoint(codePoint);
       }
       this.newMessage2 = newMessage;
     },
@@ -102,17 +96,14 @@ const _sfc_main = {
         codePoint = codePoint.charCodeAt(0);
         if (codePoint >= 65 && codePoint <= 90) {
           codePoint += 119795;
-          newMessage += String.fromCodePoint(codePoint);
         } else if (codePoint >= 97 && codePoint <= 122) {
           if (codePoint == 104) {
             codePoint = 8462;
           } else {
             codePoint += 119789;
           }
-          newMessage += String.fromCodePoint(codePoint);
-        } else {
-          newMessage += String.fromCodePoint(codePoint);
         }
+        newMessage += String.fromCodePoint(codePoint);
       }
       this.newMessage3 = newMessage;
     },
@@ -122,13 +113,10 @@ const _sfc_main = {
         codePoint = codePoint.charCodeAt(0);
         if (codePoint >= 65 && codePoint <= 90) {
           codePoint += 119847;
-          newMessage += String.fromCodePoint(codePoint);
         } else if (codePoint >= 97 && codePoint <= 122) {
           codePoint += 119841;
-          newMessage += String.fromCodePoint(codePoint);
-        } else {
-          newMessage += String.fromCodePoint(codePoint);
         }
+        newMessage += String.fromCodePoint(codePoint);
       }
       this.newMessage4 = newMessage;
     },
@@ -156,7 +144,6 @@ const _sfc_main = {
           } else {
             codePoint += 119899;
           }
-          newMessage += String.fromCodePoint(codePoint);
         } else if (codePoint >= 97 && codePoint <= 122) {
           if (codePoint == 101) {
             codePoint = 8495;
@@ -167,10 +154,8 @@ const _sfc_main = {
           } else {
             codePoint += 119893;
           }
-          newMessage += String.fromCodePoint(codePoint);
-        } else {
-          newMessage += String.fromCodePoint(codePoint);
         }
+        newMessage += String.fromCodePoint(codePoint);
       }
       this.newMessage5 = newMessage;
     },
@@ -180,13 +165,10 @@ const _sfc_main = {
         codePoint = codePoint.charCodeAt(0);
         if (codePoint >= 65 && codePoint <= 90) {
           codePoint += 119951;
-          newMessage += String.fromCodePoint(codePoint);
         } else if (codePoint >= 97 && codePoint <= 122) {
           codePoint += 119945;
-          newMessage += String.fromCodePoint(codePoint);
-        } else {
-          newMessage += String.fromCodePoint(codePoint);
         }
+        newMessage += String.fromCodePoint(codePoint);
       }
       this.newMessage6 = newMessage;
     },
@@ -208,13 +190,10 @@ const _sfc_main = {
           } else {
             codePoint += 120003;
           }
-          newMessage += String.fromCodePoint(codePoint);
         } else if (codePoint >= 97 && codePoint <= 122) {
           codePoint += 119997;
-          newMessage += String.fromCodePoint(codePoint);
-        } else {
-          newMessage += String.fromCodePoint(codePoint);
         }
+        newMessage += String.fromCodePoint(codePoint);
       }
       this.newMessage7 = newMessage;
     },
@@ -240,13 +219,10 @@ const _sfc_main = {
           } else {
             codePoint += 120055;
           }
-          newMessage += String.fromCodePoint(codePoint);
         } else if (codePoint >= 97 && codePoint <= 122) {
           codePoint += 120049;
-          newMessage += String.fromCodePoint(codePoint);
-        } else {
-          newMessage += String.fromCodePoint(codePoint);
         }
+        newMessage += String.fromCodePoint(codePoint);
       }
       this.newMessage8 = newMessage;
     },
@@ -256,13 +232,10 @@ const _sfc_main = {
         codePoint = codePoint.charCodeAt(0);
         if (codePoint >= 65 && codePoint <= 90) {
           codePoint += 120107;
-          newMessage += String.fromCodePoint(codePoint);
         } else if (codePoint >= 97 && codePoint <= 122) {
           codePoint += 120101;
-          newMessage += String.fromCodePoint(codePoint);
-        } else {
-          newMessage += String.fromCodePoint(codePoint);
         }
+        newMessage += String.fromCodePoint(codePoint);
       }
       this.newMessage9 = newMessage;
     },
@@ -272,13 +245,10 @@ const _sfc_main = {
         codePoint = codePoint.charCodeAt(0);
         if (codePoint >= 65 && codePoint <= 90) {
           codePoint += 120159;
-          newMessage += String.fromCodePoint(codePoint);
         } else if (codePoint >= 97 && codePoint <= 122) {
           codePoint += 120153;
-          newMessage += String.fromCodePoint(codePoint);
-        } else {
-          newMessage += String.fromCodePoint(codePoint);
         }
+        newMessage += String.fromCodePoint(codePoint);
       }
       this.newMessage10 = newMessage;
     },
@@ -288,13 +258,10 @@ const _sfc_main = {
         codePoint = codePoint.charCodeAt(0);
         if (codePoint >= 65 && codePoint <= 90) {
           codePoint += 120263;
-          newMessage += String.fromCodePoint(codePoint);
         } else if (codePoint >= 97 && codePoint <= 122) {
           codePoint += 120257;
-          newMessage += String.fromCodePoint(codePoint);
-        } else {
-          newMessage += String.fromCodePoint(codePoint);
         }
+        newMessage += String.fromCodePoint(codePoint);
       }
       this.newMessage11 = newMessage;
     },
@@ -304,13 +271,10 @@ const _sfc_main = {
         codePoint = codePoint.charCodeAt(0);
         if (codePoint >= 65 && codePoint <= 90) {
           codePoint += 120315;
-          newMessage += String.fromCodePoint(codePoint);
         } else if (codePoint >= 97 && codePoint <= 122) {
           codePoint += 120309;
-          newMessage += String.fromCodePoint(codePoint);
-        } else {
-          newMessage += String.fromCodePoint(codePoint);
         }
+        newMessage += String.fromCodePoint(codePoint);
       }
       this.newMessage12 = newMessage;
     },
@@ -320,13 +284,10 @@ const _sfc_main = {
         codePoint = codePoint.charCodeAt(0);
         if (codePoint >= 65 && codePoint <= 90) {
           codePoint += 120367;
-          newMessage += String.fromCodePoint(codePoint);
         } else if (codePoint >= 97 && codePoint <= 122) {
           codePoint += 120361;
-          newMessage += String.fromCodePoint(codePoint);
-        } else {
-          newMessage += String.fromCodePoint(codePoint);
         }
+        newMessage += String.fromCodePoint(codePoint);
       }
       this.newMessage13 = newMessage;
     },
@@ -336,13 +297,10 @@ const _sfc_main = {
         codePoint = codePoint.charCodeAt(0);
         if (codePoint >= 65 && codePoint <= 90) {
           codePoint += 120423;
-          newMessage += String.fromCodePoint(codePoint);
         } else if (codePoint >= 97 && codePoint <= 122) {
           codePoint += 120417;
-          newMessage += String.fromCodePoint(codePoint);
-        } else {
-          newMessage += String.fromCodePoint(codePoint);
         }
+        newMessage += String.fromCodePoint(codePoint);
       }
       this.newMessage14 = newMessage;
     },
@@ -352,13 +310,10 @@ const _sfc_main = {
         codePoint = codePoint.charCodeAt(0);
         if (codePoint >= 65 && codePoint <= 90) {
           codePoint += 120481;
-          newMessage += String.fromCodePoint(codePoint);
         } else if (codePoint >= 97 && codePoint <= 122) {
           codePoint += 120475;
-          newMessage += String.fromCodePoint(codePoint);
-        } else {
-          newMessage += String.fromCodePoint(codePoint);
         }
+        newMessage += String.fromCodePoint(codePoint);
       }
       this.newMessage15 = newMessage;
     },
@@ -368,13 +323,10 @@ const _sfc_main = {
         codePoint = codePoint.charCodeAt(0);
         if (codePoint >= 65 && codePoint <= 90) {
           codePoint += 120539;
-          newMessage += String.fromCodePoint(codePoint);
         } else if (codePoint >= 97 && codePoint <= 122) {
           codePoint += 120533;
-          newMessage += String.fromCodePoint(codePoint);
-        } else {
-          newMessage += String.fromCodePoint(codePoint);
         }
+        newMessage += String.fromCodePoint(codePoint);
       }
       this.newMessage16 = newMessage;
     },
@@ -384,13 +336,10 @@ const _sfc_main = {
         codePoint = codePoint.charCodeAt(0);
         if (codePoint >= 65 && codePoint <= 90) {
           codePoint += 120597;
-          newMessage += String.fromCodePoint(codePoint);
         } else if (codePoint >= 97 && codePoint <= 122) {
           codePoint += 120591;
-          newMessage += String.fromCodePoint(codePoint);
-        } else {
-          newMessage += String.fromCodePoint(codePoint);
         }
+        newMessage += String.fromCodePoint(codePoint);
       }
       this.newMessage17 = newMessage;
     },
@@ -400,13 +349,10 @@ const _sfc_main = {
         codePoint = codePoint.charCodeAt(0);
         if (codePoint >= 65 && codePoint <= 90) {
           codePoint += 120655;
-          newMessage += String.fromCodePoint(codePoint);
         } else if (codePoint >= 97 && codePoint <= 122) {
           codePoint += 120649;
-          newMessage += String.fromCodePoint(codePoint);
-        } else {
-          newMessage += String.fromCodePoint(codePoint);
         }
+        newMessage += String.fromCodePoint(codePoint);
       }
       this.newMessage18 = newMessage;
     },
@@ -416,13 +362,10 @@ const _sfc_main = {
         codePoint = codePoint.charCodeAt(0);
         if (codePoint >= 65 && codePoint <= 90) {
           codePoint += 120655;
-          newMessage += String.fromCodePoint(codePoint);
         } else if (codePoint >= 97 && codePoint <= 122) {
           codePoint += 120649;
-          newMessage += String.fromCodePoint(codePoint);
-        } else {
-          newMessage += String.fromCodePoint(codePoint);
         }
+        newMessage += String.fromCodePoint(codePoint);
       }
       this.newMessage19 = newMessage;
     }
@@ -454,5 +397,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   } : {});
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Data/Code/Project/mine/frontEnd/uni-app-ruler/ruler/subPackages/wonderfulFonts/wonderfulFonts.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "E:/Data/Code/Project/mine/frontEnd/uniapp/uni-app-ruler/ruler/subPackages/wonderfulFonts/wonderfulFonts.vue"]]);
 wx.createPage(MiniProgramPage);

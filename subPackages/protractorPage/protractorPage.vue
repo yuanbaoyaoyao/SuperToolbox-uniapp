@@ -30,6 +30,11 @@
 				isReverseDirection: false
 			}
 		},
+		mounted() {
+			// #ifdef APP-PLUS
+			plus.navigator.setFullscreen(true);
+			// #endif
+		},
 		onReady() {
 			this.handleGetSysInfo()
 		},

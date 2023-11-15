@@ -1,0 +1,329 @@
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.checkItem[data-v-10cca304] {
+  border: 1px dashed #5667F5;
+  box-sizing: border-box;
+}
+.th-color[data-v-10cca304] {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+}
+.th-color > uni-view[data-v-10cca304] {
+  width: 100%;
+  height: 14.6875rem;
+  background: #FFFFFF;
+  box-shadow: 0 0 0.3125rem #999999;
+  border-radius: 1.875rem 1.875rem 0 0;
+  box-sizing: border-box;
+  padding: 0 1.25rem;
+  overflow: hidden;
+}
+.th-color > uni-view .color-head[data-v-10cca304] {
+  text-align: center;
+  font-size: 0.9375rem;
+  height: 3.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.625rem;
+}
+.th-color > uni-view .color-box[data-v-10cca304] {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.th-color > uni-view .color-box > uni-view[data-v-10cca304] {
+  width: 20%;
+  height: 2.5rem;
+  border-radius: 0.3125rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.th-color > uni-view .color-box > uni-view > uni-view[data-v-10cca304] {
+  width: 1.5625rem;
+  height: 1.5625rem;
+  overflow: hidden;
+  border-radius: 50%;
+  box-sizing: border-box;
+  padding: 0.21875rem;
+  border: 1px solid #C0C0C0;
+}
+.th-color > uni-view .color-box > uni-view > uni-view > uni-view[data-v-10cca304] {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: red;
+}
+.open-color[data-v-10cca304] {
+  animation: fadeInUp-10cca304 0.4s;
+}
+.close-color[data-v-10cca304] {
+  animation: fadeInDown-10cca304 0.5s;
+}
+@keyframes fadeInUp-10cca304 {
+0% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+}
+to {
+    opacity: 1;
+    transform: translateZ(0);
+}
+}
+@keyframes fadeInDown-10cca304 {
+0% {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+}
+to {
+    opacity: 1;
+    transform: translateZ(0);
+}
+}
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.th-line[data-v-7254d304] {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+}
+.th-line > uni-view[data-v-7254d304] {
+  width: 100%;
+  height: 15.625rem;
+  background: #FFFFFF;
+  box-shadow: 0 0 0.3125rem #999999;
+  border-radius: 1.875rem 1.875rem 0 0;
+}
+.th-line > uni-view .line-head[data-v-7254d304] {
+  text-align: center;
+  font-size: 0.9375rem;
+  height: 3.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.625rem;
+}
+.th-line > uni-view .line-box[data-v-7254d304] {
+  box-sizing: border-box;
+  padding: 0 2.1875rem;
+}
+.th-line > uni-view .line-box > uni-view[data-v-7254d304] {
+  margin-bottom: 1.75rem;
+  width: 100%;
+  background-color: #000;
+}
+.open-line[data-v-7254d304] {
+  animation: fadeInUp-7254d304 0.4s;
+}
+.close-line[data-v-7254d304] {
+  animation: fadeInDown-7254d304 0.5s;
+}
+@keyframes fadeInUp-7254d304 {
+0% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+}
+to {
+    opacity: 1;
+    transform: translateZ(0);
+}
+}
+@keyframes fadeInDown-7254d304 {
+0% {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+}
+to {
+    opacity: 1;
+    transform: translateZ(0);
+}
+}
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.hidden[data-v-01d25940] {
+  height: 0 !important;
+  overflow: hidden;
+  border: 0 !important;
+}
+.autograph[data-v-01d25940] {
+  width: 100%;
+  height: 92%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1875rem;
+  color: #C0C0C0;
+}
+.config[data-v-01d25940] {
+  width: 100%;
+  height: 92%;
+  background-color: red;
+}
+.horizontalScreen[data-v-01d25940] {
+  left: -4.6875rem !important;
+  bottom: 0 !important;
+  right: auto !important;
+  transform: rotate(90deg);
+  transform-origin: bottom right;
+}
+.rote-text[data-v-01d25940] {
+  transform: rotate(90deg);
+}
+.rote-action[data-v-01d25940] {
+  transform: rotate(180deg);
+  padding-top: 0 !important;
+}
+.rote-action .th-submit[data-v-01d25940] {
+  transform: rotate(-90deg);
+  width: 3.75rem !important;
+  height: 100% !important;
+}
+.action-box[data-v-01d25940] {
+  height: 8%;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-top: 1px dashed gray;
+}
+.action-box uni-button[data-v-01d25940] {
+  margin: 0;
+  margin-right: 0.3125rem;
+}
+.th-submit[data-v-01d25940] {
+  color: #FFFFFF;
+  transition: all 0.3s;
+}
+.action-bar uni-image[data-v-01d25940] {
+  width: 1.09375rem;
+  height: 1.09375rem;
+}
+.action-bar > uni-image[data-v-01d25940] {
+  transition: all 0.3s;
+}
+.action-bar > uni-view[data-v-01d25940] {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.action-bar > uni-view uni-image[data-v-01d25940] {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 1.875rem;
+}
+.autograph-box[data-v-01d25940] {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  box-sizing: border-box;
+}
+.autograph-box .default-text[data-v-01d25940] {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  z-index: -1;
+  justify-content: center;
+  font-size: 1.1875rem;
+  color: #C0C0C0;
+  letter-spacing: 0.15625rem;
+}
+.roteRight[data-v-01d25940] {
+  transform: rotate(136deg);
+}
+.roteLeft[data-v-01d25940] {
+  transform: rotate(0deg);
+}
+.hover-class[data-v-01d25940] {
+  opacity: 0.6;
+}
